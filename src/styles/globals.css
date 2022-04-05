@@ -1,0 +1,7 @@
+@import 'reset.css';
+@import 'fonts.css';
+@import 'variables.css';
+
+body {
+	font-family: var(--font-body);
+}
