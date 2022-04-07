@@ -2,3 +2,74 @@
 	--font-body: 'Manrope var', 'Manrope', sans-serif;
 	--max-width: 1200px;
 }
+
+:root[data-color-mode='light'] {
+	--body-bg: hsl(228, 24%, 98%);
+	--body-text: hsl(228, 16%, 8%);
+
+	--draft-vertical-lines-color: linear-gradient(
+		to bottom,
+		hsla(224, 16%, 16%, 0) 0%,
+		hsla(224, 16%, 16%, 0.42) 50%,
+		hsla(224, 16%, 16%, 0) 100%
+	);
+	--draft-horizontal-lines-color: linear-gradient(
+		to right,
+		hsla(224, 16%, 16%, 0) 0%,
+		hsla(224, 16%, 16%, 0.42) 50%,
+		hsla(224, 16%, 16%, 0) 100%
+	);
+
+	/*
+	 * Hero Section
+	 */
+
+	--hero-bg: hsl(228, 24%, 98%);
+	--hero-origin-gradient: hsla(228, 24%, 98%, 0%);
+	--hero-final-gradient: hsla(228, 24%, 98%, 81%);
+
+	--hero-link-bg: hsl(228, 16%, 92%);
+	--hero-link-text: hsl(228, 16%, 8%);
+	--hero-link-shadow: 0 0.25rem 2.5rem -0.875rem hsl(312, 56%, 64%);
+	--hero-link-border-gradient: linear-gradient(
+		to right,
+		hsl(348, 81%, 72%),
+		hsl(276, 81%, 72%)
+	);
+}
+
+:root[data-color-mode='dark'] {
+	--body-bg: hsl(228, 16%, 8%);
+	--body-text: hsl(228, 24%, 98%);
+
+	--draft-vertical-lines-color: linear-gradient(
+		to bottom,
+		hsla(224, 16%, 81%, 0) 0%,
+		hsla(224, 16%, 81%, 0.36) 50%,
+		hsla(224, 16%, 81%, 0) 100%
+	);
+
+	--draft-horizontal-lines-color: linear-gradient(
+		to right,
+		hsla(224, 16%, 81%, 0) 0%,
+		hsla(224, 16%, 81%, 0.36) 50%,
+		hsla(224, 16%, 81%, 0) 100%
+	);
+
+	/*
+	 * Hero Section
+	 */
+
+	--hero-bg: hsl(228, 16%, 8%);
+	--hero-origin-gradient: hsla(228, 16%, 8%, 0%);
+	--hero-final-gradient: hsla(228, 16%, 8%, 81%);
+
+	--hero-link-bg: hsl(228, 16%, 16%);
+	--hero-link-text: hsl(228, 24%, 98%);
+	--hero-link-shadow: 0 0.25rem 2.5rem -0.875rem hsl(312, 56%, 64%);
+	--hero-link-border-gradient: linear-gradient(
+		to right,
+		hsl(348, 81%, 72%),
+		hsl(276, 81%, 72%)
+	);
+}

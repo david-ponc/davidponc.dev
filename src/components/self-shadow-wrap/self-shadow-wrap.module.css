@@ -1,0 +1,24 @@
+.wrapper {
+	position: relative;
+}
+
+.shadow {
+	box-sizing: content-box;
+	position: absolute;
+}
+
+.shadow span {
+	overflow: initial !important;
+}
+
+.shadow > span > img {
+	position: absolute;
+	inset: 0;
+	filter: saturate(320%) blur(2rem) opacity(56%);
+	transform: scale(95%) translateY(0.75rem);
+}
+
+.image {
+	position: relative;
+	z-index: 1;
+}

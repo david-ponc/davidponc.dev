@@ -1,0 +1,43 @@
+.wrapper {
+	position: relative;
+	display: flex;
+}
+
+.line {
+	position: absolute;
+}
+
+.top,
+.bottom {
+	height: 1px;
+	width: calc(100% + 8em);
+	left: calc(4em * -1);
+	background: var(--draft-horizontal-lines-color);
+}
+
+.top {
+	top: -1px;
+}
+.bottom {
+	bottom: -1px;
+}
+
+.left,
+.right {
+	height: calc(100% + 3em);
+	width: 1px;
+	top: calc(1.5em * -1);
+	background: var(--draft-vertical-lines-color);
+}
+
+.left {
+	left: -1px;
+}
+
+.right {
+	right: -1px;
+}
+
+.wrapper :not(.line) {
+	z-index: 1;
+}
