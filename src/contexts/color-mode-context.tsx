@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import { createContext, FC, useEffect, useState } from 'react';
 
 import { applyColorMode } from '~/libs/apply-color-mode';
+import eventHandlerColorMode from '~/libs/event-handler-color-mode';
 import getInitialColorMode from '~/libs/initial-color-mode';
 import { ColorMode } from '~/types';
 
@@ -18,6 +19,18 @@ const ColorModeContextProvider: FC = ({ children }) => {
 	const [colorMode, setColorMode] = useState<ColorMode>(
 		document.documentElement.dataset.colorMode as ColorMode
 	);
+
+	useEffect(() => {
+		window
+			.matchMedia('(prefers-color-scheme: dark)')
+			.addEventListener('change', eventHandlerColorMode);
+
+		return () => {
+			window
+				.matchMedia('(prefers-color-scheme: dark)')
+				.removeEventListener('change', eventHandlerColorMode);
+		};
+	}, []);
 
 	useEffect(() => {
 		applyColorMode(colorMode);
