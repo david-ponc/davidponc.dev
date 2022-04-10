@@ -7,6 +7,32 @@
 	--body-bg: hsl(228, 24%, 98%);
 	--body-text: hsl(228, 16%, 8%);
 
+	/*
+	 *  Navbar
+	 */
+
+	--navbar-bg: hsla(224, 16%, 96%);
+	--navbar-border: hsla(224, 16%, 100%, 0.56);
+
+	--navbar-bg-blured: hsla(224, 16%, 90%, 0.48);
+	--navbar-link: hsl(224, 16%, 64%);
+
+	--navbar-menu-button-hover: hsl(224, 18%, 91%);
+	--navbar-menu-overlay-bg: hsla(224, 24%, 4%, 0.08);
+	--navbar-menu-bg: hsla(224, 16%, 96%);
+	--navbar-menu-border: hsl(224, 32%, 100%);
+	--navbar-menu-link: hsl(224, 16%, 48%);
+	--navbar-menu-link-hover: hsl(224, 24%, 24%);
+	--navbar-menu-link-hover-bg: hsl(224, 16%, 92%);
+	--navbar-menu-heading: hsl(224, 16%, 64%);
+	--navbar-menu-modes-bg: hsl(224, 16%, 90%);
+	--navbar-meu-mode-text: hsla(224, 16%, 48%);
+	--navbar-menu-mode-text-hover-bg: hsl(224, 16%, 96%);
+	--navbar-menu-mode-text-hover: hsl(224, 24%, 32%);
+	--navbar-menu-mode-active-bg: hsl(224, 16%, 96%);
+	--navbar-menu-mode-active-text: hsl(224, 32%, 24%);
+	--navbar-menu-mode-active-shadow: inset 0 1px 0 hsla(224, 16%, 100%, 1);
+
 	--draft-vertical-lines-color: linear-gradient(
 		to bottom,
 		hsla(224, 16%, 16%, 0) 0%,
@@ -41,6 +67,32 @@
 :root[data-color-mode='dark'] {
 	--body-bg: hsl(228, 16%, 8%);
 	--body-text: hsl(228, 24%, 98%);
+
+	/*
+	 *  Navbar
+	 */
+
+	--navbar-bg: hsla(224, 16%, 12%);
+	--navbar-border: hsla(224, 16%, 24%, 0.48);
+
+	--navbar-bg-blured: hsla(224, 16%, 16%, 0.48);
+	--navbar-link: hsl(224, 16%, 64%);
+
+	--navbar-menu-button-hover: hsl(224, 18%, 18%);
+	--navbar-menu-overlay-bg: hsla(224, 24%, 4%, 0.32);
+	--navbar-menu-bg: hsla(224, 16%, 12%);
+	--navbar-menu-border: hsla(224, 16%, 24%, 0.48);
+	--navbar-menu-link: hsl(224, 16%, 64%);
+	--navbar-menu-link-hover: hsl(224, 24%, 81%);
+	--navbar-menu-link-hover-bg: hsl(224, 16%, 16%);
+	--navbar-menu-heading: hsl(224, 16%, 42%);
+	--navbar-menu-modes-bg: hsl(224, 16%, 6%);
+	--navbar-meu-mode-text: hsla(224, 16%, 64%);
+	--navbar-menu-mode-text-hover-bg: hsl(224, 16%, 12%);
+	--navbar-menu-mode-text-hover: hsl(224, 24%, 81%);
+	--navbar-menu-mode-active-bg: hsl(224, 16%, 14%);
+	--navbar-menu-mode-active-text: hsl(224, 32%, 96%);
+	--navbar-menu-mode-active-shadow: inset 0 1px 0 hsla(224, 16%, 32%, 0.32);
 
 	--draft-vertical-lines-color: linear-gradient(
 		to bottom,

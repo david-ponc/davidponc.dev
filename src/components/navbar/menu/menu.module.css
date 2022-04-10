@@ -1,0 +1,120 @@
+.trigger,
+.close {
+	background-color: transparent;
+	border: none;
+	padding: 0.25rem;
+	border-radius: 0.25rem;
+	cursor: pointer;
+	color: currentColor;
+	transition: background-color 125ms ease-in-out;
+}
+
+.trigger:hover,
+.close:hover {
+	background-color: var(--navbar-menu-button-hover);
+}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--navbar-menu-overlay-bg);
+	z-index: 1;
+	backdrop-filter: blur(1.5rem);
+}
+
+.container {
+	position: fixed;
+	top: 0.5rem;
+	left: 0.5rem;
+	right: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	z-index: 1;
+	border-radius: 0.5rem;
+	background-color: var(--navbar-menu-bg);
+	border: 1px solid var(--navbar-menu-border);
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.75rem 1.5rem;
+}
+
+.options {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.list {
+	width: 100%;
+	padding: 0.5rem;
+}
+
+.link {
+	width: 100%;
+	font-size: 1.125rem;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 1.125rem 1rem;
+	color: var(--navbar-menu-link);
+	border-radius: 0.5rem;
+	transition: color 125ms ease-in-out, background-color 125ms ease-in-out;
+}
+
+.link:hover {
+	background-color: var(--navbar-menu-link-hover-bg);
+	color: var(--navbar-menu-link-hover);
+}
+
+.heading {
+	font-size: 0.875rem;
+	font-weight: 800;
+	color: var(--navbar-menu-heading);
+	text-transform: uppercase;
+	padding: 0.5rem 1rem;
+}
+
+.modes {
+	margin: 1.5rem 0;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 0.25rem;
+	background-color: var(--navbar-menu-modes-bg);
+	border-radius: 0.5rem;
+	padding: 0.25rem;
+}
+
+.mode {
+	background-color: transparent;
+	border: 0;
+	padding: 1rem 1.5rem;
+	font-size: 0.75rem;
+	font-weight: 900;
+	color: var(--navbar-meu-mode-text);
+	text-transform: uppercase;
+	border-radius: 0.5rem;
+	display: flex;
+	gap: 0.25rem;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.mode:not(.active):hover {
+	background-color: var(--navbar-menu-mode-text-hover-bg);
+	color: var(--navbar-menu-mode-text-hover);
+}
+
+.active {
+	background-color: var(--navbar-menu-mode-active-bg);
+	color: var(--navbar-menu-mode-active-text);
+	box-shadow: var(--navbar-menu-mode-active-shadow);
+}

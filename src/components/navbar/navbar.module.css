@@ -1,0 +1,34 @@
+.container {
+	position: fixed;
+	top: 0.5rem;
+	left: 0.5rem;
+	right: 0.5rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 1;
+	padding: 0.75rem 1.5rem;
+	border-radius: 0.5rem;
+	background-color: var(--navbar-bg);
+	border: 1px solid var(--navbar-border);
+	backdrop-filter: blur(1.5rem);
+}
+
+@supports (backdrop-filter: blur(1.5rem)) {
+	.container {
+		background-color: var(--navbar-bg-blured);
+	}
+}
+
+.links {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.link {
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--navbar-link);
+}

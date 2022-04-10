@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
+import { Navbar } from '~/components/navbar';
 import { HeroSection } from '~/components/sections/hero';
 
 const Home: NextPage = () => {
@@ -13,6 +14,7 @@ const Home: NextPage = () => {
 			</Head>
 
 			<HeroSection />
+			<Navbar />
 		</>
 	);
 };
