@@ -4,9 +4,10 @@ import { createContext, FC, useEffect, useState } from 'react';
 import { applyColorMode } from '~/libs/apply-color-mode';
 import eventHandlerColorMode from '~/libs/event-handler-color-mode';
 import getInitialColorMode from '~/libs/initial-color-mode';
-import { ColorMode } from '~/types';
+import { ColorMode, ColorModeEnum } from '~/types';
 
 interface ColorModeContextType {
+	currentColorMode: ColorMode;
 	colorMode: ColorMode | undefined;
 	changeColorModePreferences: (newPreferences: ColorMode) => void;
 }
@@ -18,6 +19,9 @@ const ColorModeContext = createContext<ColorModeContextType>(
 const ColorModeContextProvider: FC = ({ children }) => {
 	const [colorMode, setColorMode] = useState<ColorMode>(
 		document.documentElement.dataset.colorMode as ColorMode
+	);
+	const [currentColorMode, setCurrentColorMode] = useState<ColorMode>(
+		ColorModeEnum.System
 	);
 
 	useEffect(() => {
@@ -36,20 +40,21 @@ const ColorModeContextProvider: FC = ({ children }) => {
 		applyColorMode(colorMode);
 	}, [colorMode]);
 
-	const changeColorModePreferences = (newPreferences: ColorMode) => {
-		if (newPreferences === 'system') {
+	const changeColorModePreferences = (newPreference: ColorMode) => {
+		if (newPreference === ColorModeEnum.System) {
 			window.localStorage.removeItem('color-mode');
 			const newColorMode = getInitialColorMode() as ColorMode;
 			setColorMode(newColorMode);
 		} else {
-			window.localStorage.setItem('color-mode', newPreferences);
-			setColorMode(newPreferences);
+			window.localStorage.setItem('color-mode', newPreference);
+			setColorMode(newPreference);
 		}
+		setCurrentColorMode(newPreference);
 	};
 
 	return (
 		<ColorModeContext.Provider
-			value={{ colorMode, changeColorModePreferences }}
+			value={{ colorMode, currentColorMode, changeColorModePreferences }}
 		>
 			{children}
 		</ColorModeContext.Provider>
