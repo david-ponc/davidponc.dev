@@ -101,30 +101,3 @@
 	border-radius: 0.5rem;
 	padding: 0.25rem;
 }
-
-.mode {
-	background-color: transparent;
-	border: 0;
-	padding: 1rem 1.5rem;
-	font-size: 0.75rem;
-	font-weight: 900;
-	color: var(--navbar-meu-mode-text);
-	text-transform: uppercase;
-	border-radius: 0.5rem;
-	display: flex;
-	gap: 0.25rem;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
-.mode:not(.active):hover {
-	background-color: var(--navbar-menu-mode-text-hover-bg);
-	color: var(--navbar-menu-mode-text-hover);
-}
-
-.active {
-	background-color: var(--navbar-menu-mode-active-bg);
-	color: var(--navbar-menu-mode-active-text);
-	box-shadow: var(--navbar-menu-mode-active-shadow);
-}
