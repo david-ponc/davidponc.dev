@@ -45,6 +45,16 @@
 	padding: 0.75rem 1.5rem;
 }
 
+.actions {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.actions :not(:last-child) {
+	color: var(--navbar-menu-link);
+}
+
 .options {
 	display: flex;
 	flex-direction: column;
