@@ -1,10 +1,4 @@
-import {
-	DesktopComputerIcon,
-	MenuAlt4Icon,
-	MoonIcon,
-	SunIcon,
-	XIcon,
-} from '@heroicons/react/outline';
+import { MenuAlt4Icon, XIcon } from '@heroicons/react/solid';
 import {
 	Action,
 	Cancel,
@@ -14,18 +8,24 @@ import {
 	Root,
 	Trigger,
 } from '@radix-ui/react-alert-dialog';
-import { useState } from 'react';
+import clsx from 'clsx';
+import { useContext, useState } from 'react';
 
 import { DavidPonceIcon } from '~/components/icons';
 import { Link } from '~/components/primitives';
-import { linksNavigation, socialLinks } from '~/content/navbar';
-import { ColorModeEnum } from '~/types';
+import {
+	colorModeOptions,
+	linksNavigation,
+	socialLinks,
+} from '~/content/navbar';
+import { ColorModeContext } from '~/contexts/color-mode-context';
 
 import styles from './menu.module.css';
-import { ModeItem } from './mode-item';
 
-export const Menu = () => {
+export const MobileMenu = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	const { currentColorMode, changeColorModePreferences } =
+		useContext(ColorModeContext);
 	return (
 		<Root open={isOpen} onOpenChange={setIsOpen}>
 			<section className={styles.actions}>
@@ -56,10 +56,10 @@ export const Menu = () => {
 					</header>
 					<main className={styles.options}>
 						<nav className={styles.list}>
-							{linksNavigation.map(({ href, label }) => (
+							{linksNavigation.map(({ href, icon, label }) => (
 								<Action asChild key={href}>
 									<Link className={styles.link} href={href} passHref>
-										{label}
+										{icon} {label}
 									</Link>
 								</Action>
 							))}
@@ -67,18 +67,18 @@ export const Menu = () => {
 						<section className={styles.list}>
 							<span className={styles.heading}>Modo de color</span>
 							<section className={styles.modes}>
-								<ModeItem name={ColorModeEnum.Dark}>
-									<MoonIcon height='24px' />
-									<span>Oscuro</span>
-								</ModeItem>
-								<ModeItem name={ColorModeEnum.System}>
-									<DesktopComputerIcon height='24px' />
-									<span>Sistema</span>
-								</ModeItem>
-								<ModeItem name={ColorModeEnum.Light}>
-									<SunIcon height='24px' />
-									<span>Claro</span>
-								</ModeItem>
+								{colorModeOptions.map(({ name, label, icon }) => (
+									<Action
+										key={name}
+										className={clsx(
+											styles.mode,
+											currentColorMode === name && styles.active
+										)}
+										onClick={() => changeColorModePreferences(name)}
+									>
+										{icon} {label}
+									</Action>
+								))}
 							</section>
 						</section>
 					</main>

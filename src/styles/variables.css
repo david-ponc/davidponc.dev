@@ -16,6 +16,10 @@
 
 	--navbar-bg-blured: hsla(224, 16%, 90%, 0.48);
 	--navbar-link: hsl(224, 16%, 64%);
+	--navbar-divider-color: hsl(224, 16%, 18%);
+	--navbar-dropdown-shadow: hsla(224, 24%, 72%, 0.64);
+	--navbar-dropdown-item-hover-bg: hsl(224, 16%, 92%);
+	--navbar-dropdown-item-hover-text: hsl(224, 16%, 18%);
 
 	--navbar-menu-button-hover: hsl(224, 18%, 91%);
 	--navbar-menu-overlay-bg: hsla(224, 24%, 4%, 0.08);
@@ -77,6 +81,10 @@
 
 	--navbar-bg-blured: hsla(224, 16%, 16%, 0.48);
 	--navbar-link: hsl(224, 16%, 64%);
+	--navbar-divider-color: hsl(224, 16%, 18%);
+	--navbar-dropdown-shadow: hsla(224, 24%, 4%, 0.72);
+	--navbar-dropdown-item-hover-bg: hsl(224, 16%, 18%);
+	--navbar-dropdown-item-hover-text: hsl(224, 16%, 98%);
 
 	--navbar-menu-button-hover: hsl(224, 18%, 18%);
 	--navbar-menu-overlay-bg: hsla(224, 24%, 4%, 0.32);
