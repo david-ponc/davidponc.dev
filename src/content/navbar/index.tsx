@@ -1,31 +1,30 @@
-import { BriefcaseIcon, FireIcon, HeartIcon } from '@heroicons/react/outline';
+import {
+	BriefcaseIcon,
+	DesktopComputerIcon,
+	FireIcon,
+	HeartIcon,
+	MoonIcon,
+	SunIcon,
+} from '@heroicons/react/solid';
 
 import { GithubIcon, LinkedinIcon } from '~/components/icons';
+import { ColorModeEnum } from '~/types';
 
 const linksNavigation = [
 	{
 		href: '/#proyectos',
-		label: (
-			<>
-				<BriefcaseIcon height='24px' /> Proyectos
-			</>
-		),
+		label: 'Proyectos',
+		icon: <BriefcaseIcon height='24px' />,
 	},
 	{
 		href: '/#habilidades',
-		label: (
-			<>
-				<FireIcon height='24px' /> Habilidades
-			</>
-		),
+		label: 'Habilidades',
+		icon: <FireIcon height='24px' />,
 	},
 	{
 		href: '/#pasatiempo',
-		label: (
-			<>
-				<HeartIcon height='24px' /> Pasatiempos
-			</>
-		),
+		label: 'Pasatiempo',
+		icon: <HeartIcon height='24px' />,
 	},
 ];
 
@@ -40,4 +39,22 @@ const socialLinks = [
 	},
 ];
 
-export { linksNavigation, socialLinks };
+const colorModeOptions = [
+	{
+		name: ColorModeEnum.Dark,
+		label: 'Oscuro',
+		icon: <MoonIcon height={20} />,
+	},
+	{
+		name: ColorModeEnum.System,
+		label: 'Sistema',
+		icon: <DesktopComputerIcon height={20} />,
+	},
+	{
+		name: ColorModeEnum.Light,
+		label: 'Claro',
+		icon: <SunIcon height={20} />,
+	},
+];
+
+export { colorModeOptions, linksNavigation, socialLinks };
