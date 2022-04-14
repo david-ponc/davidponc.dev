@@ -66,6 +66,41 @@
 		hsl(348, 81%, 72%),
 		hsl(276, 81%, 72%)
 	);
+
+	/*
+	 * Projects Section
+	 */
+
+	--projects-project-desc-text: hsl(224, 16%, 42%);
+	--projects-project-tag-bg: hsl(224, 16%, 94%);
+	--projects-project-tag-text: hsl(224, 16%, 48%);
+	--projects-project-link-code-bg: hsl(224, 16%, 94%);
+	--projects-project-link-code-text: hsl(224, 16%, 48%);
+	--projects-project-link-web-bg: linear-gradient(
+		to right,
+		hsl(348, 72%, 48%),
+		hsl(276, 72%, 48%)
+	);
+	--projects-project-link-web-text: hsl(224, 56%, 98%);
+	--projects-project-link-web-shadow: var(--hero-link-shadow);
+	--projects-project-image-shadow-color-1: radial-gradient(
+		circle,
+		rgba(241, 126, 147, 0.81) 0%,
+		rgba(191, 126, 241, 0.81) 100%
+	);
+	--projects-project-image-shadow-color-2: radial-gradient(
+		circle,
+		rgba(241, 126, 147, 0.81) 64%,
+		rgba(191, 126, 241, 0.81) 100%
+	);
+	--projects-secondary-project-bg: hsl(224, 32%, 96%);
+	--projects-secondary-project-border: hsl(224, 24%, 100%);
+	--projects-secondary-project-desc-text: hsl(224, 16%, 48%);
+	--projects-secondary-project-tag-bg: hsl(224, 16%, 90%);
+	--projects-secondary-project-tag-text: hsl(224, 16%, 32%);
+	--projects-secondary-project-link: hsl(224, 16%, 48%);
+	--projects-secondary-project-link-bg: hsl(224, 16%, 90%);
+	--projects-secondary-project-shadow-hover: hsl(224, 16%, 72%);
 }
 
 :root[data-color-mode='dark'] {
@@ -132,4 +167,39 @@
 		hsl(348, 81%, 72%),
 		hsl(276, 81%, 72%)
 	);
+
+	/*
+	 * Projects Section
+	 */
+
+	--projects-project-desc-text: hsl(224, 16%, 48%);
+	--projects-project-tag-bg: hsl(224, 16%, 16%);
+	--projects-project-tag-text: hsl(224, 16%, 56%);
+	--projects-project-link-code-bg: hsl(224, 16%, 12%);
+	--projects-project-link-code-text: hsl(224, 16%, 48%);
+	--projects-project-link-web-bg: linear-gradient(
+		to right,
+		hsl(348, 98%, 81%),
+		hsl(276, 98%, 81%)
+	);
+	--projects-project-link-web-text: hsl(224, 56%, 14%);
+	--projects-project-link-web-shadow: var(--hero-link-shadow);
+	--projects-project-image-shadow-color-1: radial-gradient(
+		circle,
+		rgba(241, 126, 147, 0.56) 0%,
+		rgba(191, 126, 241, 0.56) 100%
+	);
+	--projects-project-image-shadow-color-2: radial-gradient(
+		circle,
+		rgba(241, 126, 147, 0.56) 64%,
+		rgba(191, 126, 241, 0.56) 100%
+	);
+	--projects-secondary-project-bg: hsl(224, 18%, 6%);
+	--projects-secondary-project-border: hsl(224, 16%, 14%);
+	--projects-secondary-project-desc-text: hsl(228, 16%, 56%);
+	--projects-secondary-project-tag-bg: hsl(224, 18%, 14%);
+	--projects-secondary-project-tag-text: hsl(224, 18%, 56%);
+	--projects-secondary-project-link: hsl(224, 18%, 48%);
+	--projects-secondary-project-link-bg: hsl(224, 16%, 12%);
+	--projects-secondary-project-shadow-hover: hsl(224, 32%, 6%);
 }
