@@ -1,0 +1,70 @@
+.project {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	border-radius: 0.5rem;
+	background: var(--projects-secondary-project-bg);
+	border: 1px solid var(--projects-secondary-project-border);
+	padding: 1.5rem 1rem;
+	transition: box-shadow 216ms ease-in-out;
+}
+
+.title {
+	font-size: 1.125rem;
+	font-weight: 800;
+}
+
+.title:hover {
+	text-decoration: underline;
+}
+
+.description {
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--projects-secondary-project-desc-text);
+}
+
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.25rem;
+	list-style: none;
+	padding: 0;
+}
+
+.tag {
+	font-size: 10px;
+	font-weight: 900;
+	text-transform: uppercase;
+	background: var(--projects-secondary-project-tag-bg);
+	color: var(--projects-secondary-project-tag-text);
+	border-radius: 1rem;
+	padding: 0.25rem 0.5rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.links {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 1rem;
+}
+
+.link {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--projects-secondary-project-link);
+	font-size: 0.875rem;
+	font-weight: 700;
+	padding: 0.5rem 1rem;
+	background: var(--projects-secondary-project-link-bg);
+	border-radius: 0.5rem;
+}
+
+.project:hover {
+	box-shadow: 0 0.75rem 2rem -1rem var(--projects-secondary-project-shadow-hover);
+}

@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import { Navbar } from '~/components/navbar';
-import { HeroSection } from '~/components/sections/hero';
+import { HeroSection, ProjectsSection } from '~/components/sections';
 
 const Home: NextPage = () => {
 	return (
@@ -14,6 +14,7 @@ const Home: NextPage = () => {
 			</Head>
 
 			<HeroSection />
+			<ProjectsSection />
 			<Navbar />
 		</>
 	);

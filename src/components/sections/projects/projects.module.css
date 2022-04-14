@@ -1,0 +1,16 @@
+.container {
+	width: min(100%, var(--max-width));
+	margin-inline: auto;
+	min-height: 100vh;
+}
+
+.project {
+	width: 480px;
+	position: relative;
+}
+
+.collection {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: 1.5rem;
+}
