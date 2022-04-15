@@ -99,6 +99,7 @@
 .code {
 	background: var(--projects-project-link-code-bg);
 	color: var(--projects-project-link-code-text);
+	box-shadow: 0 0.75rem 1.5rem -0.75rem var(--projects-project-link-code-shadow);
 }
 
 .web {

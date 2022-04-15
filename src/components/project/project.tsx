@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 
 import { Link } from '~/components/primitives';
 import { ColorModeContext } from '~/contexts/color-mode-context';
-import type { Project as ProjectType } from '~/types';
+import { ColorModeEnum, Project as ProjectType } from '~/types';
 
 import styles from './project.module.css';
 
@@ -14,19 +14,20 @@ export const Project = ({
 	title,
 	description,
 	tags,
-	images,
-	links,
+	image,
+	url,
 	...props
 }: ProjectProps) => {
 	const { colorMode } = useContext(ColorModeContext);
-	const [image, setImage] = useState(() =>
-		colorMode === 'light' ? images[0] : images[1]
+	const [selectedImage, setImage] = useState<string>(() =>
+		colorMode === ColorModeEnum.Dark && image.dark ? image.dark : image.light
 	);
-	const [deploy, repository] = links;
 
 	useEffect(() => {
-		setImage(colorMode === 'light' ? images[0] : images[1]);
-	}, [colorMode, images]);
+		setImage(
+			colorMode === ColorModeEnum.Dark && image.dark ? image.dark : image.light
+		);
+	}, [colorMode, image.dark, image.light]);
 
 	return (
 		<article className={styles.project} {...props}>
@@ -43,17 +44,17 @@ export const Project = ({
 					</ul>
 				</main>
 				<footer className={styles.links}>
-					<Link className={styles.code} href={repository}>
+					<Link className={styles.code} href={url.repository}>
 						<ExternalLinkIcon width={18} /> Código fuente
 					</Link>
-					<Link className={styles.web} href={deploy}>
+					<Link className={styles.web} href={url.deployment}>
 						<ExternalLinkIcon width={18} /> Visitar sitio
 					</Link>
 				</footer>
 			</section>
 			<div className={styles.image}>
 				<Image
-					src={image}
+					src={selectedImage}
 					alt='Image of todo app project'
 					width={480}
 					height={281.25}
