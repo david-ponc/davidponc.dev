@@ -1,8 +1,8 @@
-const mainProjectsInfo = [
+const projectsContent = [
 	{
 		title: 'Lista de pendientes',
 		description:
-			'Esta aplicación fue inspirada por el grupo Dona con el lema de hacer una lista de tareas mas humana. La aplicación cuenta con un sitema de usuarios autenticados mediante correo electronico y contraseña.',
+			'Esta aplicación fue inspirada por el grupo Dona con el lema de hacer una lista de tareas más humana. La aplicación cuenta con un sistema de usuarios autenticados mediante correo electrónico y contraseña.',
 		tags: ['React', 'TypeScript', 'Next.js', 'Styled Components'],
 		image: {
 			light: '/projects/images/todo-app-light.png',
@@ -16,7 +16,7 @@ const mainProjectsInfo = [
 	{
 		title: 'Concurso Verano Frontend',
 		description:
-			'Sitio web estatico para el concurso de verano frontend organizado por la empresa codigofacilito. Cuenta con diversas secciones que cuentan la historia de Cody, asi como una galeria de fotos de los lugares donde estuvo.',
+			'Sitio web estático para el concurso de verano Frontend organizado por la empresa codigofacilito. Cuenta con diversas secciones que cuentan la historia de Cody, así como una galería de fotos de los lugares donde estuvo.',
 		tags: ['HTML', 'CSS', 'JavaScript'],
 		image: {
 			light: '/projects/images/verano-frontend.png',
@@ -28,10 +28,10 @@ const mainProjectsInfo = [
 	},
 ];
 
-const extraProjectsInfo = [
+const repositoriesContent = [
 	{
 		name: 'covid-19-countries-list',
-		description: 'Aplicación que muestra información por pais del covid-19.',
+		description: 'Aplicación que muestra información por país del covid-19.',
 		url: {
 			deployment: 'https://covid.davidponc.dev/',
 			repository: 'https://github.com/david-ponc/covid-19-countries-list',
@@ -41,7 +41,7 @@ const extraProjectsInfo = [
 	{
 		name: 'upload-file',
 		description:
-			'Aplicación que permite la subida de imagenes utilizando firebase.',
+			'Aplicación que permite la subida de imágenes utilizando firebase.',
 		url: {
 			deployment: 'https://upload-file.vercel.app/',
 			repository: 'https://github.com/david-ponc/upload-file',
@@ -51,7 +51,7 @@ const extraProjectsInfo = [
 	{
 		name: 'medio-ambiente-fcc',
 		description:
-			'Sitio web para difusion de eventos relacionados con el medio ambiente.',
+			'Sitio web para difusión de eventos relacionados con el medio ambiente.',
 		url: {
 			deployment: 'https://david-ponc.github.io/medio-ambiente-fcc/',
 			repository: 'https://github.com/david-ponc/medio-ambiente-fcc',
@@ -60,4 +60,4 @@ const extraProjectsInfo = [
 	},
 ];
 
-export { extraProjectsInfo, mainProjectsInfo };
+export { projectsContent, repositoriesContent };
