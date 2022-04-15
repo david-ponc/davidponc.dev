@@ -10,6 +10,8 @@
 }
 
 .title {
+	width: fit-content;
+	gap: 0.5rem;
 	font-size: 1.125rem;
 	font-weight: 800;
 }
@@ -24,26 +26,42 @@
 	color: var(--projects-secondary-project-desc-text);
 }
 
-.tags {
+.languages {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	gap: 0.25rem;
+	gap: 1rem;
 	list-style: none;
 	padding: 0;
 }
 
-.tag {
-	font-size: 10px;
-	font-weight: 900;
-	text-transform: uppercase;
-	background: var(--projects-secondary-project-tag-bg);
+.language {
+	font-size: 0.75rem;
+	font-weight: 600;
+	text-transform: capitalize;
 	color: var(--projects-secondary-project-tag-text);
-	border-radius: 1rem;
-	padding: 0.25rem 0.5rem;
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
+}
+
+.language[data-color]::before {
+	content: '';
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 50%;
+}
+
+.language[data-color='HTML']::before {
+	background: hsl(16, 81%, 64%);
+}
+
+.language[data-color='JavaScript']::before {
+	background: hsl(56, 81%, 64%);
+}
+
+.language[data-color='CSS']::before {
+	background: hsl(220, 81%, 64%);
 }
 
 .links {
@@ -55,6 +73,7 @@
 
 .link {
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	gap: 0.5rem;
 	color: var(--projects-secondary-project-link);
