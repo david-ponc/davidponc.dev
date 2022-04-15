@@ -1,8 +1,14 @@
 import dynamic from 'next/dynamic';
-import { createContext, FC, useEffect, useState } from 'react';
+import {
+	createContext,
+	FC,
+	ReactNode,
+	useCallback,
+	useEffect,
+	useState,
+} from 'react';
 
 import { applyColorMode } from '~/libs/apply-color-mode';
-import eventHandlerColorMode from '~/libs/event-handler-color-mode';
 import getInitialColorMode from '~/libs/initial-color-mode';
 import { ColorMode, ColorModeEnum } from '~/types';
 
@@ -16,12 +22,24 @@ const ColorModeContext = createContext<ColorModeContextType>(
 	{} as ColorModeContextType
 );
 
-const ColorModeContextProvider: FC = ({ children }) => {
+const ColorModeContextProvider: FC<{
+	children: ReactNode;
+}> = ({ children }) => {
 	const [colorMode, setColorMode] = useState<ColorMode>(
 		document.documentElement.dataset.colorMode as ColorMode
 	);
+
 	const [currentColorMode, setCurrentColorMode] = useState<ColorMode>(
 		ColorModeEnum.System
+	);
+
+	const eventHandlerColorMode = useCallback(
+		(event: MediaQueryListEvent) => {
+			const isDarkMode = event.matches;
+			const colorMode = isDarkMode ? 'dark' : 'light';
+			setColorMode(colorMode);
+		},
+		[setColorMode]
 	);
 
 	useEffect(() => {
@@ -34,7 +52,7 @@ const ColorModeContextProvider: FC = ({ children }) => {
 				.matchMedia('(prefers-color-scheme: dark)')
 				.removeEventListener('change', eventHandlerColorMode);
 		};
-	}, []);
+	}, [eventHandlerColorMode]);
 
 	useEffect(() => {
 		applyColorMode(colorMode);
