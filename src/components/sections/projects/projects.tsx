@@ -12,10 +12,11 @@ export const ProjectsSection = () => {
 					<MainProject key={project.title} {...project} />
 				))}
 			</main>
-			<footer>
+			<footer className={styles.footer}>
+				<h3 className={styles.title}>Repositorios destacados</h3>
 				<section className={styles.collection}>
 					{extraProjectsInfo.map(project => (
-						<SecondaryProject key={project.title} {...project} />
+						<SecondaryProject key={project.name} {...project} />
 					))}
 				</section>
 			</footer>

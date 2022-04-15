@@ -9,6 +9,17 @@
 	position: relative;
 }
 
+.footer {
+	padding: 1.5rem 0;
+}
+
+.title {
+	text-align: center;
+	font-size: 1.25rem;
+	font-weight: 900;
+	margin: 2rem 0;
+}
+
 .collection {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
