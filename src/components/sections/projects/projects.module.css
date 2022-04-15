@@ -9,7 +9,7 @@
 	position: relative;
 }
 
-.footer {
+.repositories {
 	padding: 1.5rem 0;
 }
 
@@ -24,4 +24,31 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 	gap: 1.5rem;
+}
+
+.footer {
+	display: flex;
+	justify-content: flex-end;
+	padding-bottom: 1.5rem;
+}
+
+.link {
+	text-align: right;
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: hsl(224, 92%, 64%);
+	position: relative;
+}
+
+.link:hover.link::after {
+	content: '';
+	position: absolute;
+	display: inline-block;
+	bottom: 0;
+	width: 100%;
+	height: 1.5px;
+	background: hsl(224, 92%, 64%);
 }
