@@ -10,8 +10,22 @@ export interface Project {
 	title: string;
 	description: string;
 	tags: Array<string>;
-	images: Array<string>;
-	links: Array<string>;
+	image: {
+		light: string;
+		dark?: string;
+	};
+	url: {
+		repository: string;
+		deployment: string;
+	};
 }
 
-export type SecondaryProject = Omit<Project, 'images'>;
+export interface Repository {
+	name: string;
+	description: string;
+	url: {
+		repository: string;
+		deployment: string;
+	};
+	languages: Array<string>;
+}
