@@ -15,6 +15,7 @@ export const Project = ({
 	description,
 	tags,
 	image,
+	placeholder,
 	url,
 	...props
 }: ProjectProps) => {
@@ -22,12 +23,22 @@ export const Project = ({
 	const [selectedImage, setImage] = useState<string>(() =>
 		colorMode === ColorModeEnum.Dark && image.dark ? image.dark : image.light
 	);
+	const [selectedPlaceholderImage, setPlaceholderImage] = useState<string>(() =>
+		colorMode === ColorModeEnum.Dark && placeholder.dark
+			? placeholder.dark
+			: placeholder.light
+	);
 
 	useEffect(() => {
 		setImage(
 			colorMode === ColorModeEnum.Dark && image.dark ? image.dark : image.light
 		);
-	}, [colorMode, image.dark, image.light]);
+		setPlaceholderImage(
+			colorMode === ColorModeEnum.Dark && placeholder.dark
+				? placeholder.dark
+				: placeholder.light
+		);
+	}, [colorMode, image.dark, image.light, placeholder.dark, placeholder.light]);
 
 	return (
 		<article className={styles.project} {...props}>
@@ -60,6 +71,8 @@ export const Project = ({
 					height={281.25}
 					layout='responsive'
 					objectFit='contain'
+					placeholder='blur'
+					blurDataURL={selectedPlaceholderImage}
 				/>
 			</div>
 		</article>
