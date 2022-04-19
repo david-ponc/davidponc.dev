@@ -14,6 +14,10 @@ export interface Project {
 		light: string;
 		dark?: string;
 	};
+	placeholder: {
+		light: string;
+		dark?: string;
+	};
 	url: {
 		repository: string;
 		deployment: string;
