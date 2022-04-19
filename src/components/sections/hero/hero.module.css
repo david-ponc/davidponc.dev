@@ -36,8 +36,8 @@
 	position: absolute;
 	inset: 0;
 	background: radial-gradient(
-			50% 150% at 50% 50%,
-			var(--hero-origin-gradient) 0%,
+			circle,
+			var(--hero-origin-gradient) 0,
 			var(--hero-final-gradient) 100%
 		),
 		linear-gradient(transparent 86%, var(--body-bg));
