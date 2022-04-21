@@ -18,8 +18,8 @@ const Home: NextPage = () => {
 			</Head>
 
 			<HeroSection />
-			<SkillsSection />
 			<ProjectsSection />
+			<SkillsSection />
 			<Navbar />
 		</>
 	);
