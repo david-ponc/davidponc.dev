@@ -1,5 +1,4 @@
-import { ExternalLinkIcon } from '@heroicons/react/solid';
-// import Image from 'next/image';
+import { CodeIcon, RocketIcon } from '@primer/octicons-react';
 import { useContext, useEffect, useState } from 'react';
 
 import { Link } from '~/components/primitives';
@@ -45,25 +44,14 @@ export const Project = ({
 				</main>
 				<footer className={styles.links}>
 					<Link className={styles.code} href={url.repository}>
-						<ExternalLinkIcon width={18} /> Código fuente
+						<CodeIcon size={16} /> Código fuente
 					</Link>
 					<Link className={styles.web} href={url.deployment}>
-						<ExternalLinkIcon width={18} /> Visitar sitio
+						<RocketIcon size={16} /> Visitar sitio
 					</Link>
 				</footer>
 			</section>
-			<div className={styles.image}>
-				{selectedImage}
-				{/* <Image
-					src={selectedImage}
-					alt='Image of todo app project'
-					width={480}
-					height={281.25}
-					layout='responsive'
-					objectFit='contain'
-					placeholder='blur'
-				/> */}
-			</div>
+			<div className={styles.image}>{selectedImage}</div>
 		</article>
 	);
 };
