@@ -22,8 +22,8 @@ const linksNavigation = [
 		icon: <FireIcon height='24px' />,
 	},
 	{
-		href: '/#pasatiempo',
-		label: 'Pasatiempo',
+		href: '/#ocupaciones',
+		label: 'Ocupaciones',
 		icon: <HeartIcon height='24px' />,
 	},
 ];
