@@ -11,12 +11,8 @@ export interface Project {
 	description: string;
 	tags: Array<string>;
 	image: {
-		light: string;
-		dark?: string;
-	};
-	placeholder: {
-		light: string;
-		dark?: string;
+		light: any;
+		dark?: any;
 	};
 	url: {
 		repository: string;
