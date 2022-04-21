@@ -1,6 +1,6 @@
 import { DavidPonceIcon } from '~/components/icons';
 import { Link } from '~/components/primitives';
-import { useMediaQuery } from '~/hooks/useMediaQuery';
+import { useMediaQuery } from '~/hooks/use-media-query';
 
 import { DesktopMenu } from './desktop-menu/menu';
 import { MobileMenu } from './mobile-menu/menu';
