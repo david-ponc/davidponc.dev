@@ -108,17 +108,17 @@
 	 */
 
 	--react-color: 193, 95%, 68%;
-	--skill-react-bg: hsla(var(--react-color), 12%);
+	--skill-react-bg: hsla(var(--react-color), 8%);
 	--skill-react-fill-color: hsl(var(--react-color));
 	--skill-react-border-shadow: hsla(var(--react-color), 24%);
 
 	--node-color: 89, 53%, 54%;
-	--skill-node-bg: hsla(var(--node-color), 12%);
+	--skill-node-bg: hsla(var(--node-color), 8%);
 	--skill-node-fill-color: hsl(var(--node-color));
 	--skill-node-border-shadow: hsla(var(--node-color), 24%);
 
 	--typescript-color: 211, 60%, 48%;
-	--skill-typescript-bg: hsla(var(--typescript-color), 12%);
+	--skill-typescript-bg: hsla(var(--typescript-color), 8%);
 	--skill-typescript-fill-color: hsl(var(--typescript-color));
 	--skill-typescript-border-shadow: hsla(var(--typescript-color), 8%);
 
@@ -128,12 +128,12 @@
 	--skill-next-border-shadow: hsla(var(--next-color), 8%);
 
 	--git-color: 11, 90%, 55%;
-	--skill-git-bg: hsla(var(--git-color), 12%);
+	--skill-git-bg: hsla(var(--git-color), 8%);
 	--skill-git-fill-color: hsl(var(--git-color));
 	--skill-git-border-shadow: hsla(var(--git-color), 8%);
 
 	--bash-color: 208, 16%, 19%;
-	--skill-bash-bg: hsla(var(--bash-color), 12%);
+	--skill-bash-bg: hsla(var(--bash-color), 8%);
 	--skill-bash-fill-color: hsl(var(--bash-color));
 	--skill-bash-border-shadow: hsla(var(--bash-color), 8%);
 
