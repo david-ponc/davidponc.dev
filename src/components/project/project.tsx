@@ -1,5 +1,5 @@
 import { ExternalLinkIcon } from '@heroicons/react/solid';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { useContext, useEffect, useState } from 'react';
 
 import { Link } from '~/components/primitives';
@@ -15,30 +15,19 @@ export const Project = ({
 	description,
 	tags,
 	image,
-	placeholder,
 	url,
 	...props
 }: ProjectProps) => {
 	const { colorMode } = useContext(ColorModeContext);
-	const [selectedImage, setImage] = useState<string>(() =>
+	const [selectedImage, setImage] = useState(() =>
 		colorMode === ColorModeEnum.Dark && image.dark ? image.dark : image.light
-	);
-	const [selectedPlaceholderImage, setPlaceholderImage] = useState<string>(() =>
-		colorMode === ColorModeEnum.Dark && placeholder.dark
-			? placeholder.dark
-			: placeholder.light
 	);
 
 	useEffect(() => {
 		setImage(
 			colorMode === ColorModeEnum.Dark && image.dark ? image.dark : image.light
 		);
-		setPlaceholderImage(
-			colorMode === ColorModeEnum.Dark && placeholder.dark
-				? placeholder.dark
-				: placeholder.light
-		);
-	}, [colorMode, image.dark, image.light, placeholder.dark, placeholder.light]);
+	}, [colorMode, image.dark, image.light]);
 
 	return (
 		<article className={styles.project} {...props}>
@@ -64,7 +53,8 @@ export const Project = ({
 				</footer>
 			</section>
 			<div className={styles.image}>
-				<Image
+				{selectedImage}
+				{/* <Image
 					src={selectedImage}
 					alt='Image of todo app project'
 					width={480}
@@ -72,8 +62,7 @@ export const Project = ({
 					layout='responsive'
 					objectFit='contain'
 					placeholder='blur'
-					blurDataURL={selectedPlaceholderImage}
-				/>
+				/> */}
 			</div>
 		</article>
 	);
