@@ -1,31 +1,16 @@
 .project {
-	height: 100vh;
-	display: grid;
-	grid-template-columns: 1fr auto;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column-reverse;
 	align-items: center;
-	gap: 5rem;
-}
-
-.project:nth-child(even) {
-	grid-template-columns: auto 1fr;
-}
-
-.project:nth-child(even) :first-child {
-	grid-column: 2 / 3;
-}
-
-.project:nth-child(even) :last-child {
-	grid-column: 1 / 2;
-	grid-row: 1;
-}
-
-.project:nth-child(even) .info {
-	justify-self: end;
+	justify-content: center;
+	gap: 1.5rem;
+	padding: 6rem 1.5rem;
 }
 
 .image {
 	position: relative;
-	width: 480px;
+	width: 100%;
 	border-radius: 0.5rem;
 }
 
@@ -63,6 +48,7 @@
 
 .body {
 	gap: 2rem;
+	width: min(100%, 640px);
 }
 
 .title {
@@ -71,7 +57,7 @@
 }
 
 .desc {
-	font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+	font-size: clamp(1rem, 1.5vw, 1.125rem);
 	font-weight: 500;
 	color: var(--projects-project-desc-text);
 }
@@ -79,10 +65,16 @@
 .links,
 .tags {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	gap: 1rem;
 	list-style: none;
 	padding: 0;
+}
+
+.links {
+	flex-direction: column-reverse;
+	gap: 2rem;
 }
 
 .web,
@@ -90,10 +82,12 @@
 	font-size: 1rem;
 	font-weight: 700;
 	border-radius: 0.5rem;
-	padding: 0.5rem 1.125rem;
+	padding: 0.75rem 1.125rem;
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	gap: 0.5rem;
+	width: 100%;
 }
 
 .code {
@@ -116,4 +110,48 @@
 	color: var(--projects-project-tag-text);
 	padding: 0.25rem 0.5rem;
 	border-radius: 1.5rem;
+}
+
+@media screen and (min-width: 1440px) {
+	.project {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		align-items: center;
+		gap: 5rem;
+		padding: 1.5rem;
+	}
+
+	.project:nth-child(even) {
+		grid-template-columns: auto 1fr;
+	}
+
+	.project:nth-child(even) :first-child {
+		grid-column: 2 / 3;
+	}
+
+	.project:nth-child(even) :last-child {
+		grid-column: 1 / 2;
+		grid-row: 1;
+	}
+
+	.project:nth-child(even) .info {
+		justify-self: end;
+	}
+
+	.links {
+		flex-direction: row;
+		gap: 1rem;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.image {
+		width: 480px;
+	}
+
+	.web,
+	.code {
+		width: auto;
+		padding: 0.5rem 1.125rem;
+	}
 }
