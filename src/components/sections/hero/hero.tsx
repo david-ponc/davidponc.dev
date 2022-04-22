@@ -7,7 +7,9 @@ import { SelfShadowWrap } from '~/components/self-shadow-wrap';
 export const Hero = () => {
 	return (
 		<Layout as='main' className={styles.container}>
-			<div className={styles.background} />
+			<div className={styles.backgroundGradient}>
+				<div className={styles.backgroundPattern} />
+			</div>
 			<SelfShadowWrap
 				width='210px'
 				height='189px'
