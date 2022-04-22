@@ -1,15 +1,16 @@
 import { ArrowNarrowRightIcon } from '@heroicons/react/solid';
+import { forwardRef } from 'react';
 
-import { Layout } from '~/components/layouts';
 import { Link } from '~/components/primitives';
 import { MainProject, SecondaryProject } from '~/components/project';
 import { projectsContent, repositoriesContent } from '~/content/pages';
 
 import styles from './projects.module.css';
 
-export const ProjectsSection = () => {
+// eslint-disable-next-line react/display-name
+export const ProjectsSection = forwardRef<HTMLDivElement, {}>((props, ref) => {
 	return (
-		<Layout as='section' id='proyectos' className={styles.container}>
+		<section ref={ref} id='proyectos' className={styles.container} {...props}>
 			<main>
 				{projectsContent.map(project => (
 					<MainProject key={project.title} {...project} />
@@ -31,6 +32,6 @@ export const ProjectsSection = () => {
 					Más repositorios <ArrowNarrowRightIcon height={16} />
 				</Link>
 			</footer>
-		</Layout>
+		</section>
 	);
-};
+});

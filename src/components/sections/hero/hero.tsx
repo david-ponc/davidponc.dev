@@ -1,12 +1,14 @@
+import { forwardRef } from 'react';
+
 import { DraftLinesWrap } from '~/components/draft-lines-wrap';
-import { Layout } from '~/components/layouts';
 import { Link } from '~/components/primitives';
 import styles from '~/components/sections/hero/hero.module.css';
 import { SelfShadowWrap } from '~/components/self-shadow-wrap';
 
-export const Hero = () => {
+// eslint-disable-next-line react/display-name
+export const Hero = forwardRef<HTMLDivElement, {}>((props, ref) => {
 	return (
-		<Layout as='main' className={styles.container}>
+		<section ref={ref} className={styles.container} {...props}>
 			<div className={styles.backgroundGradient}>
 				<div className={styles.backgroundPattern} />
 			</div>
@@ -24,6 +26,6 @@ export const Hero = () => {
 					Contáctame
 				</Link>
 			</DraftLinesWrap>
-		</Layout>
+		</section>
 	);
-};
+});
