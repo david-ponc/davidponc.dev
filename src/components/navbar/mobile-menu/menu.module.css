@@ -38,6 +38,13 @@
 	border: 1px solid var(--navbar-menu-border);
 }
 
+.containerAdapted {
+	--value: -1px;
+	top: var(--value);
+	left: var(--value);
+	right: var(--value);
+}
+
 .header {
 	display: flex;
 	justify-content: space-between;
@@ -79,9 +86,14 @@
 	transition: color 125ms ease-in-out, background-color 125ms ease-in-out;
 }
 
-.link:hover {
+.link:not(.activeLink):hover {
 	background-color: var(--navbar-menu-link-hover-bg);
 	color: var(--navbar-menu-link-hover);
+}
+
+.activeLink {
+	color: var(--navbar-menu-link-text-active);
+	text-shadow: 0 0.375em 1em var(--navbar-menu-link-shadow-active);
 }
 
 .heading {
