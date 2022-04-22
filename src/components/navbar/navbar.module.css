@@ -9,13 +9,18 @@
 	z-index: 1;
 	padding: 0.75rem 1.5rem;
 	border-radius: 0.5rem;
+	border: 1px solid transparent;
+	transition: background-color 250ms ease;
+}
+
+.blured {
 	background-color: var(--navbar-bg);
 	border: 1px solid var(--navbar-border);
 	backdrop-filter: blur(1.5rem);
 }
 
 @supports (backdrop-filter: blur(1.5rem)) {
-	.container {
+	.blured {
 		background-color: var(--navbar-bg-blured);
 	}
 }
