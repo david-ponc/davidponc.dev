@@ -12,7 +12,7 @@ import styles from './navbar.module.css';
 export const Navbar = ({
 	currentSection,
 }: {
-	currentSection: 'hero' | 'projects' | 'skills';
+	currentSection: 'hero' | 'projects' | 'skills' | 'hobbies';
 }) => {
 	const isDesktop = useMediaQuery('(min-width: 768px)');
 	const { isScrolled } = useScroll();

@@ -9,7 +9,7 @@ import styles from './menu.module.css';
 export const DesktopMenu = ({
 	currentSection,
 }: {
-	currentSection: 'hero' | 'projects' | 'skills';
+	currentSection: 'hero' | 'projects' | 'skills' | 'hobbies';
 }) => {
 	return (
 		<section className={styles.container}>
@@ -27,6 +27,9 @@ export const DesktopMenu = ({
 								styles.activeLink,
 							currentSection === 'skills' &&
 								label === 'Habilidades' &&
+								styles.activeLink,
+							currentSection === 'hobbies' &&
+								label === 'Ocupaciones' &&
 								styles.activeLink
 						)}
 					>

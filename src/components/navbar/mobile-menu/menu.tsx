@@ -18,7 +18,7 @@ import styles from './menu.module.css';
 export const MobileMenu = ({
 	currentSection,
 }: {
-	currentSection: 'hero' | 'projects' | 'skills';
+	currentSection: 'hero' | 'projects' | 'skills' | 'hobbies';
 }) => {
 	const { isScrolled } = useScroll();
 	const { currentColorMode, changeColorModePreferences } =
@@ -76,6 +76,9 @@ export const MobileMenu = ({
 											styles.activeLink,
 										currentSection === 'skills' &&
 											label === 'Habilidades' &&
+											styles.activeLink,
+										currentSection === 'hobbies' &&
+											label === 'Ocupaciones' &&
 											styles.activeLink
 									)}
 									replace

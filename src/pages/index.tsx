@@ -6,6 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import { Navbar } from '~/components/navbar';
 import {
 	HeroSection,
+	HobbiesSection,
 	ProjectsSection,
 	SkillsSection,
 } from '~/components/sections';
@@ -16,8 +17,9 @@ const Home: NextPage = () => {
 		threshold: [0.25, 0.5, 0.75],
 	});
 	const [skillsRef, skillsInView] = useInView({ threshold: 0.5 });
+	const [hobbiesRef, hobbiesInView] = useInView({ threshold: 0.5 });
 	const [currentSection, setCurrentSection] = useState<
-		'hero' | 'projects' | 'skills'
+		'hero' | 'projects' | 'skills' | 'hobbies'
 	>('hero');
 	useEffect(() => {
 		let current = 'hero';
@@ -31,9 +33,12 @@ const Home: NextPage = () => {
 		if (skillsInView) {
 			current = 'skills';
 		}
+		if (hobbiesInView) {
+			current = 'hobbies';
+		}
 
 		if (current !== currentSection) {
-			setCurrentSection(current as 'hero' | 'projects' | 'skills');
+			setCurrentSection(current as 'hero' | 'projects' | 'skills' | 'hobbies');
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [heroInView, projectsInView, skillsInView]);
@@ -48,6 +53,7 @@ const Home: NextPage = () => {
 			<HeroSection ref={heroRef} />
 			<ProjectsSection ref={projectsRef} />
 			<SkillsSection ref={skillsRef} />
+			<HobbiesSection ref={hobbiesRef} />
 			<Navbar currentSection={currentSection} />
 		</>
 	);
