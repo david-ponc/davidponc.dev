@@ -9,10 +9,16 @@
 	font-size: 0.875rem;
 	font-weight: 600;
 	color: var(--navbar-menu-link);
+	transition: color 250ms ease, text-shadow 300ms ease;
 }
 
-.link:hover {
+.link:not(.activeLink):hover {
 	color: var(--navbar-menu-link-hover);
+}
+
+.activeLink {
+	color: var(--navbar-menu-link-text-active);
+	text-shadow: 0 0.375em 1em var(--navbar-menu-link-shadow-active);
 }
 
 .divider {

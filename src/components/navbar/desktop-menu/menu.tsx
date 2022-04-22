@@ -9,7 +9,13 @@ export const DesktopMenu = () => {
 		<section className={styles.container}>
 			<nav className={styles.links}>
 				{linksNavigation.map(({ href, label }) => (
-					<Link key={href} href={href} passHref className={styles.link}>
+					<Link
+						key={href}
+						href={href}
+						passHref
+						className={styles.link}
+						activeClassName={styles.activeLink}
+					>
 						{label}
 					</Link>
 				))}

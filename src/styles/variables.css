@@ -28,6 +28,8 @@
 	--navbar-menu-link: hsl(224, 16%, 48%);
 	--navbar-menu-link-hover: hsl(224, 24%, 24%);
 	--navbar-menu-link-hover-bg: hsl(224, 16%, 92%);
+	--navbar-menu-link-text-active: hsl(276, 81%, 48%);
+	--navbar-menu-link-shadow-active: hsla(348, 72%, 48%, 48%);
 	--navbar-menu-heading: hsl(224, 16%, 64%);
 	--navbar-menu-modes-bg: hsl(224, 16%, 90%);
 	--navbar-meu-mode-text: hsla(224, 16%, 48%);
@@ -165,6 +167,8 @@
 	--navbar-menu-link: hsl(224, 16%, 64%);
 	--navbar-menu-link-hover: hsl(224, 24%, 81%);
 	--navbar-menu-link-hover-bg: hsl(224, 16%, 16%);
+	--navbar-menu-link-text-active: hsl(276, 98%, 81%);
+	--navbar-menu-link-shadow-active: hsla(348, 98%, 81%, 56%);
 	--navbar-menu-heading: hsl(224, 16%, 42%);
 	--navbar-menu-modes-bg: hsl(224, 16%, 6%);
 	--navbar-meu-mode-text: hsla(224, 16%, 64%);
