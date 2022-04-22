@@ -1,10 +1,16 @@
+import clsx from 'clsx';
+
 import { Link } from '~/components/primitives';
 import { linksNavigation, socialLinks } from '~/content/navbar';
 
 import { ColorDropdown } from './color-dropdown';
 import styles from './menu.module.css';
 
-export const DesktopMenu = () => {
+export const DesktopMenu = ({
+	currentSection,
+}: {
+	currentSection: 'hero' | 'projects' | 'skills';
+}) => {
 	return (
 		<section className={styles.container}>
 			<nav className={styles.links}>
@@ -13,8 +19,16 @@ export const DesktopMenu = () => {
 						key={href}
 						href={href}
 						passHref
-						className={styles.link}
-						activeClassName={styles.activeLink}
+						replace
+						className={clsx(
+							styles.link,
+							currentSection === 'projects' &&
+								label === 'Proyectos' &&
+								styles.activeLink,
+							currentSection === 'skills' &&
+								label === 'Habilidades' &&
+								styles.activeLink
+						)}
 					>
 						{label}
 					</Link>
