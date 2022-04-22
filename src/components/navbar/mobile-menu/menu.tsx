@@ -1,15 +1,7 @@
+import { Menu } from '@headlessui/react';
 import { MenuAlt4Icon, XIcon } from '@heroicons/react/solid';
-import {
-	Action,
-	Cancel,
-	Content,
-	Overlay,
-	Portal,
-	Root,
-	Trigger,
-} from '@radix-ui/react-alert-dialog';
 import clsx from 'clsx';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 
 import { DavidPonceIcon } from '~/components/icons';
 import { Link } from '~/components/primitives';
@@ -19,71 +11,100 @@ import {
 	socialLinks,
 } from '~/content/navbar';
 import { ColorModeContext } from '~/contexts/color-mode-context';
+import { useScroll } from '~/hooks/use-scroll';
 
 import styles from './menu.module.css';
 
-export const MobileMenu = () => {
-	const [isOpen, setIsOpen] = useState(false);
+export const MobileMenu = ({
+	currentSection,
+}: {
+	currentSection: 'hero' | 'projects' | 'skills';
+}) => {
+	const { isScrolled } = useScroll();
 	const { currentColorMode, changeColorModePreferences } =
 		useContext(ColorModeContext);
+
 	return (
-		<Root open={isOpen} onOpenChange={setIsOpen}>
+		<Menu>
 			<section className={styles.actions}>
 				{socialLinks.map(({ href, label }) => (
-					<Link key={href} href={href} passHref>
+					<Link key={href} href={href} replace passHref>
 						{label}
 					</Link>
 				))}
-				<Trigger className={styles.trigger}>
+				<Menu.Button className={styles.trigger}>
 					<MenuAlt4Icon height='20px' />
-				</Trigger>
+				</Menu.Button>
 			</section>
-			<Portal>
-				<Overlay className={styles.overlay} onClick={() => setIsOpen(false)} />
-				<Content className={styles.container}>
-					<header className={styles.header}>
-						<DavidPonceIcon size={20} />
-						<section className={styles.actions}>
-							{socialLinks.map(({ href, label }) => (
-								<Link key={href} href={href} passHref>
+
+			<Menu.Items
+				className={clsx(
+					styles.container,
+					isScrolled && styles.containerAdapted
+				)}
+			>
+				<header className={styles.header}>
+					<Menu.Item>
+						<Link passHref href='/' replace>
+							<DavidPonceIcon size={20} />
+						</Link>
+					</Menu.Item>
+					<section className={styles.actions}>
+						{socialLinks.map(({ href, label }) => (
+							<Menu.Item key={href}>
+								<Link href={href} replace passHref>
 									{label}
 								</Link>
+							</Menu.Item>
+						))}
+						<Menu.Item as='button' className={styles.close}>
+							<XIcon height='20px' />
+						</Menu.Item>
+					</section>
+				</header>
+				<main className={styles.options}>
+					<nav className={styles.list}>
+						{linksNavigation.map(({ href, icon, label }) => (
+							<Menu.Item key={href}>
+								<Link
+									passHref
+									href={href}
+									className={clsx(
+										styles.link,
+										currentSection === 'projects' &&
+											label === 'Proyectos' &&
+											styles.activeLink,
+										currentSection === 'skills' &&
+											label === 'Habilidades' &&
+											styles.activeLink
+									)}
+									replace
+								>
+									{icon} {label}
+								</Link>
+							</Menu.Item>
+						))}
+					</nav>
+					<section className={styles.list}>
+						<span className={styles.heading}>Modo de color</span>
+						<section className={styles.modes}>
+							{colorModeOptions.map(({ name, label, icon }) => (
+								<Menu.Item
+									as='button'
+									key={name}
+									className={clsx(
+										styles.mode,
+										currentColorMode === name && styles.active
+									)}
+									onClick={() => changeColorModePreferences(name)}
+								>
+									{icon} {label}
+								</Menu.Item>
 							))}
-							<Cancel className={styles.close}>
-								<XIcon height='20px' />
-							</Cancel>
 						</section>
-					</header>
-					<main className={styles.options}>
-						<nav className={styles.list}>
-							{linksNavigation.map(({ href, icon, label }) => (
-								<Action asChild key={href}>
-									<Link className={styles.link} href={href} passHref>
-										{icon} {label}
-									</Link>
-								</Action>
-							))}
-						</nav>
-						<section className={styles.list}>
-							<span className={styles.heading}>Modo de color</span>
-							<section className={styles.modes}>
-								{colorModeOptions.map(({ name, label, icon }) => (
-									<Action
-										key={name}
-										className={clsx(
-											styles.mode,
-											currentColorMode === name && styles.active
-										)}
-										onClick={() => changeColorModePreferences(name)}
-									>
-										{icon} {label}
-									</Action>
-								))}
-							</section>
-						</section>
-					</main>
-				</Content>
-			</Portal>
-		</Root>
+					</section>
+				</main>
+			</Menu.Items>
+		</Menu>
 	);
 };
