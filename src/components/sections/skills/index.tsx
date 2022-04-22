@@ -6,8 +6,7 @@ import {
 	ReactJs,
 	Typescript as TypeScriptJs,
 } from '@icons-pack/react-simple-icons';
-
-import { Layout } from '~/components/layouts';
+import { forwardRef } from 'react';
 
 import styles from './skills.module.css';
 
@@ -38,9 +37,10 @@ const skills = [
 	},
 ];
 
-export const SkillsSection = () => {
+// eslint-disable-next-line react/display-name
+export const SkillsSection = forwardRef<HTMLDivElement, {}>((props, ref) => {
 	return (
-		<Layout as='section' id='habilidades' className={styles.container}>
+		<section ref={ref} id='habilidades' className={styles.container} {...props}>
 			<header className={styles.header}>
 				<h2 className={styles.title}>Habilidades</h2>
 			</header>
@@ -52,6 +52,6 @@ export const SkillsSection = () => {
 					</figure>
 				))}
 			</section>
-		</Layout>
+		</section>
 	);
-};
+});
