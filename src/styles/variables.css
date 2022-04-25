@@ -140,6 +140,13 @@
 	--skill-bash-border-shadow: hsla(var(--bash-color), 8%);
 
 	--skill-caption-text: hsl(224, 16%, 56%);
+
+	/*
+	 * Hobbies Section
+	 */
+	--hobbies-pattern-bg-filters: blur(1.5rem) brightness(2);
+	--hobbies-pattern-opacity: 0.32;
+	--hobbies-text: hsl(224, 16%, 46%);
 }
 
 :root[data-color-mode='dark'] {
@@ -280,4 +287,11 @@
 	--skill-bash-border-shadow: hsla(var(--bash-color), 8%);
 
 	--skill-caption-text: hsl(224, 16%, 56%);
+
+	/*
+	 * Hobbies Section
+	 */
+	--hobbies-pattern-bg-filters: blur(2rem) brightness(0.3);
+	--hobbies-pattern-opacity: 1;
+	--hobbies-text: hsl(224, 16%, 48%);
 }
