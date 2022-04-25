@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import {
+	ComponentType,
 	createContext,
 	FC,
 	ReactNode,
@@ -79,13 +80,14 @@ const ColorModeContextProvider: FC<{
 	);
 };
 
-const ColorModeContextDynamicProvider = dynamic(
-	() =>
-		import('~/contexts/color-mode-context').then(
-			(mod: any) => mod.ColorModeContextProvider
-		),
-	{ ssr: false }
-);
+const ColorModeContextDynamicProvider: ComponentType<{ children: ReactNode }> =
+	dynamic(
+		() =>
+			import('~/contexts/color-mode-context').then(
+				(mod: any) => mod.ColorModeContextProvider
+			),
+		{ ssr: false }
+	);
 
 export {
 	ColorModeContext,
