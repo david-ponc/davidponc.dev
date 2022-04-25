@@ -3,7 +3,7 @@ import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 import { useRouter } from 'next/router';
 import { ComponentPropsWithRef, FC } from 'react';
 
-import styles from './Link.module.css';
+import styles from './link.module.css';
 
 type AnchorProps = ComponentPropsWithRef<'a'> & NextLinkProps;
 interface LinkProps extends AnchorProps {
