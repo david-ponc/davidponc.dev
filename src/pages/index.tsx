@@ -42,12 +42,13 @@ const Home: NextPage = () => {
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [heroInView, projectsInView, skillsInView]);
+
 	return (
 		<>
 			<Head>
 				<title>David Ponce Vargas</title>
 				<meta name='description' content='Personal website' />
-				<link rel='icon' href='/favicon.ico' />
+				<link rel='icon' href='favicon.svg' />
 			</Head>
 
 			<HeroSection ref={heroRef} />
