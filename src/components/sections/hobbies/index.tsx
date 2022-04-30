@@ -13,25 +13,23 @@ export const HobbiesSection = forwardRef<HTMLDivElement, {}>((props, ref) => {
 			<div className={styles.mask}>
 				<div className={styles.pattern} />
 			</div>
-			<figure>
-				<Link
-					href={hobbiesContent.image.href}
-					passHref
-					className={styles.imageWrapper}
-				>
-					<Image
-						src={hobbiesContent.image.cover}
-						width={1200}
-						height={514.29}
-						quality={100}
-						alt={hobbiesContent.image.alt}
-						objectFit='contain'
-						objectPosition='center'
-						placeholder='blur'
-						blurDataURL={hobbiesContent.image.blurData}
-					/>
-				</Link>
-			</figure>
+			<Link
+				href={hobbiesContent.image.href}
+				passHref
+				className={styles.imageWrapper}
+			>
+				<Image
+					src={hobbiesContent.image.cover}
+					width={1200}
+					height={280}
+					quality={100}
+					alt={hobbiesContent.image.alt}
+					objectFit='cover'
+					objectPosition='center'
+					placeholder='blur'
+					blurDataURL={hobbiesContent.image.blurData}
+				/>
+			</Link>
 			<article className={styles.content}>
 				<h2 className={styles.title}>{hobbiesContent.title}</h2>
 				{hobbiesContent.paragraphs.map((paragraph, index) => (
