@@ -145,8 +145,8 @@
 	 * Hobbies Section
 	 */
 	--hobbies-pattern-bg-filters: blur(1.5rem) brightness(2);
-	--hobbies-pattern-opacity: 0.32;
-	--hobbies-text: hsl(224, 16%, 46%);
+	--hobbies-pattern-opacity: 0.24;
+	--hobbies-text: hsl(224, 16%, 32%);
 }
 
 :root[data-color-mode='dark'] {
