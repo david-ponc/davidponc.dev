@@ -2,6 +2,7 @@ import clsx from 'clsx';
 
 import { Link } from '~/components/primitives';
 import { linksNavigation, socialLinks } from '~/content/navbar';
+import { SectionsNames } from '~/types';
 
 import { ColorDropdown } from './color-dropdown';
 import styles from './menu.module.css';
@@ -9,7 +10,7 @@ import styles from './menu.module.css';
 export const DesktopMenu = ({
 	currentSection,
 }: {
-	currentSection: 'hero' | 'projects' | 'skills' | 'hobbies';
+	currentSection: SectionsNames;
 }) => {
 	return (
 		<section className={styles.container}>

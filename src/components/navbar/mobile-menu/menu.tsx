@@ -12,13 +12,14 @@ import {
 } from '~/content/navbar';
 import { ColorModeContext } from '~/contexts/color-mode-context';
 import { useScroll } from '~/hooks/use-scroll';
+import { SectionsNames } from '~/types';
 
 import styles from './menu.module.css';
 
 export const MobileMenu = ({
 	currentSection,
 }: {
-	currentSection: 'hero' | 'projects' | 'skills' | 'hobbies';
+	currentSection: SectionsNames;
 }) => {
 	const { isScrolled } = useScroll();
 	const { currentColorMode, changeColorModePreferences } =

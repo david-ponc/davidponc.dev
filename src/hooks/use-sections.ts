@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-type SectionsNames = 'hero' | 'projects' | 'skills' | 'hobbies';
+import { SectionsNames } from '~/types';
 
 const useSections = () => {
 	const [heroRef, heroInView] = useInView({ threshold: 0.5 });
