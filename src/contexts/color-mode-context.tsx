@@ -27,11 +27,11 @@ const ColorModeContextProvider: FC<{
 	children: ReactNode;
 }> = ({ children }) => {
 	const [colorMode, setColorMode] = useState<ColorMode>(
-		document.documentElement.dataset.colorMode as ColorMode
+		() => getInitialColorMode() as ColorMode
 	);
 
-	const [currentColorMode, setCurrentColorMode] = useState<ColorMode>(
-		ColorModeEnum.System
+	const [currentColorMode, setCurrentColorMode] = useState<ColorMode>(() =>
+		getCurrentColorMode()
 	);
 
 	const eventHandlerColorMode = useCallback(
@@ -88,6 +88,20 @@ const ColorModeContextDynamicProvider: ComponentType<{ children: ReactNode }> =
 			),
 		{ ssr: false }
 	);
+
+const getCurrentColorMode = () => {
+	const colorMode = window.localStorage.getItem('color-mode');
+
+	if (colorMode === ColorModeEnum.Light) {
+		return ColorModeEnum.Light;
+	}
+
+	if (colorMode === ColorModeEnum.Dark) {
+		return ColorModeEnum.Dark;
+	}
+
+	return ColorModeEnum.System;
+};
 
 export {
 	ColorModeContext,

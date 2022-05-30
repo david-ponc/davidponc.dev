@@ -1,5 +1,11 @@
 import { ColorSwatchIcon } from '@heroicons/react/solid';
-import { Content, Item, Root, Trigger } from '@radix-ui/react-dropdown-menu';
+import {
+	Content,
+	RadioGroup,
+	RadioItem,
+	Root,
+	Trigger,
+} from '@radix-ui/react-dropdown-menu';
 import clsx from 'clsx';
 import { useContext } from 'react';
 
@@ -18,18 +24,21 @@ export const ColorDropdown = () => {
 				<ColorSwatchIcon height='20px' />
 			</Trigger>
 			<Content className={styles.container}>
-				{colorModeOptions.map(({ name, label, icon }) => (
-					<Item
-						key={name}
-						className={clsx(
-							styles.item,
-							currentColorMode === name && styles.active
-						)}
-						onClick={() => changeColorModePreferences(name)}
-					>
-						{icon} {label}
-					</Item>
-				))}
+				<RadioGroup>
+					{colorModeOptions.map(({ name, label, icon }) => (
+						<RadioItem
+							key={name}
+							value={name}
+							className={clsx(
+								styles.item,
+								currentColorMode === name && styles.active
+							)}
+							onSelect={() => changeColorModePreferences(name)}
+						>
+							{icon} {label}
+						</RadioItem>
+					))}
+				</RadioGroup>
 			</Content>
 		</Root>
 	);
