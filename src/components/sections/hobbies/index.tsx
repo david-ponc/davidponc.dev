@@ -6,8 +6,7 @@ import { hobbiesContent } from '~/content/pages/hobbies';
 
 import styles from './hobbies.module.css';
 
-// eslint-disable-next-line react/display-name
-export const HobbiesSection = forwardRef<HTMLDivElement, {}>((props, ref) => {
+const HobbiesSection = forwardRef<HTMLDivElement, {}>((props, ref) => {
 	return (
 		<section ref={ref} id='ocupaciones' className={styles.container} {...props}>
 			<div className={styles.mask}>
@@ -41,3 +40,7 @@ export const HobbiesSection = forwardRef<HTMLDivElement, {}>((props, ref) => {
 		</section>
 	);
 });
+
+HobbiesSection.displayName = 'HobbiesSection';
+
+export { HobbiesSection };

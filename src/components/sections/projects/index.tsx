@@ -7,8 +7,7 @@ import { projectsContent, repositoriesContent } from '~/content/pages';
 
 import styles from './projects.module.css';
 
-// eslint-disable-next-line react/display-name
-export const ProjectsSection = forwardRef<HTMLDivElement, {}>((props, ref) => {
+const ProjectsSection = forwardRef<HTMLDivElement, {}>((props, ref) => {
 	return (
 		<section ref={ref} id='proyectos' className={styles.container} {...props}>
 			<main>
@@ -35,3 +34,7 @@ export const ProjectsSection = forwardRef<HTMLDivElement, {}>((props, ref) => {
 		</section>
 	);
 });
+
+ProjectsSection.displayName = 'ProjectsSection';
+
+export { ProjectsSection };

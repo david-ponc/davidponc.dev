@@ -5,8 +5,7 @@ import { Link } from '~/components/primitives';
 import styles from '~/components/sections/hero/hero.module.css';
 import { SelfShadowWrap } from '~/components/self-shadow-wrap';
 
-// eslint-disable-next-line react/display-name
-export const Hero = forwardRef<HTMLDivElement, {}>((props, ref) => {
+const HeroSection = forwardRef<HTMLDivElement, {}>((props, ref) => {
 	return (
 		<section ref={ref} className={styles.container} {...props}>
 			<div className={styles.backgroundGradient}>
@@ -29,3 +28,7 @@ export const Hero = forwardRef<HTMLDivElement, {}>((props, ref) => {
 		</section>
 	);
 });
+
+HeroSection.displayName = 'HeroSection';
+
+export { HeroSection };
