@@ -4,7 +4,7 @@ import getInitialColorMode from '~/libs/initial-color-mode';
 
 export default function Document() {
 	return (
-		<Html>
+		<Html lang='es'>
 			<Head>
 				<script
 					dangerouslySetInnerHTML={{
