@@ -38,6 +38,8 @@
 	--navbar-menu-mode-active-bg: hsl(224, 16%, 96%);
 	--navbar-menu-mode-active-text: hsl(224, 32%, 24%);
 	--navbar-menu-mode-active-shadow: inset 0 1px 0 hsla(224, 16%, 100%, 1);
+	--navbar-menu-link-glow-color: hsl(276, 81%, 72%);
+	--navbar-menu-link-glow-shadow: drop-shadow(0 0 0.5rem hsl(348, 81%, 72%));
 
 	--draft-vertical-lines-color: linear-gradient(
 		to bottom,
@@ -184,6 +186,8 @@
 	--navbar-menu-mode-active-bg: hsl(224, 16%, 14%);
 	--navbar-menu-mode-active-text: hsl(224, 32%, 96%);
 	--navbar-menu-mode-active-shadow: inset 0 1px 0 hsla(224, 16%, 32%, 0.32);
+	--navbar-menu-link-glow-color: hsl(276, 81%, 72%);
+	--navbar-menu-link-glow-shadow: drop-shadow(0 0 0.5rem hsl(348, 81%, 72%));
 
 	--draft-vertical-lines-color: linear-gradient(
 		to bottom,

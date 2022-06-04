@@ -27,6 +27,11 @@
 	background-color: var(--navbar-divider-color);
 }
 
+.menuContainer {
+	position: relative;
+	display: flex;
+}
+
 .trigger {
 	background-color: transparent;
 	border: 0;
@@ -35,11 +40,11 @@
 	cursor: pointer;
 }
 
-.container[data-state='open'] {
-	margin-top: 0.5rem;
-	display: flex;
-	flex-direction: column;
-	gap: 0;
+.items {
+	position: absolute;
+	right: 0;
+	width: 140px;
+	top: calc(100% + 0.5rem);
 	background-color: var(--navbar-menu-bg);
 	border-radius: 0.5rem;
 	border: 1px solid var(--navbar-menu-border);
@@ -48,6 +53,8 @@
 
 .item {
 	width: 100%;
+	border: 0;
+	background-color: transparent;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
@@ -83,4 +90,9 @@
 	background-color: var(--navbar-dropdown-item-hover-bg);
 	color: var(--navbar-dropdown-item-hover-text);
 	outline: none;
+}
+
+.glow {
+	fill: var(--navbar-menu-link-glow-color);
+	filter: var(--navbar-menu-link-glow-shadow);
 }

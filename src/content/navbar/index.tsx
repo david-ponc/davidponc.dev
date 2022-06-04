@@ -31,11 +31,11 @@ const linksNavigation = [
 const socialLinks = [
 	{
 		href: 'https://www.linkedin.com/in/david-ponc/',
-		label: <LinkedinIcon size={20} />,
+		label: <LinkedinIcon size={24} />,
 	},
 	{
 		href: 'https://github.com/david-ponc',
-		label: <GithubIcon size={20} />,
+		label: <GithubIcon size={24} />,
 	},
 ];
 
@@ -43,17 +43,17 @@ const colorModeOptions = [
 	{
 		name: ColorModeEnum.Dark,
 		label: 'Oscuro',
-		icon: <MoonIcon height={20} />,
+		icon: MoonIcon,
 	},
 	{
 		name: ColorModeEnum.System,
 		label: 'Sistema',
-		icon: <DesktopComputerIcon height={20} />,
+		icon: DesktopComputerIcon,
 	},
 	{
 		name: ColorModeEnum.Light,
 		label: 'Claro',
-		icon: <SunIcon height={20} />,
+		icon: SunIcon,
 	},
 ];
 

@@ -1,11 +1,5 @@
-import { ColorSwatchIcon } from '@heroicons/react/solid';
-import {
-	Content,
-	RadioGroup,
-	RadioItem,
-	Root,
-	Trigger,
-} from '@radix-ui/react-dropdown-menu';
+import { Menu } from '@headlessui/react';
+import { MoonIcon, SunIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import { useContext } from 'react';
 
@@ -15,31 +9,38 @@ import { ColorModeContext } from '~/contexts/color-mode-context';
 import styles from './menu.module.css';
 
 export const ColorDropdown = () => {
-	const { currentColorMode, changeColorModePreferences } =
+	const { currentColorMode, changeColorModePreferences, colorMode } =
 		useContext(ColorModeContext);
+	const CurrentIcon = colorMode === 'dark' ? MoonIcon : SunIcon;
 
 	return (
-		<Root>
-			<Trigger className={styles.trigger}>
-				<ColorSwatchIcon height='20px' />
-			</Trigger>
-			<Content className={styles.container}>
-				<RadioGroup>
-					{colorModeOptions.map(({ name, label, icon }) => (
-						<RadioItem
-							key={name}
-							value={name}
-							className={clsx(
-								styles.item,
-								currentColorMode === name && styles.active
-							)}
-							onSelect={() => changeColorModePreferences(name)}
-						>
-							{icon} {label}
-						</RadioItem>
+		<div className={styles.menuContainer}>
+			<Menu>
+				<Menu.Button className={styles.trigger}>
+					{/* <ColorSwatchIcon height='20px' /> */}
+					<CurrentIcon
+						width={24}
+						height={24}
+						className={clsx(colorMode === currentColorMode && styles.glow)}
+					/>
+				</Menu.Button>
+				<Menu.Items as='section' className={styles.items}>
+					{colorModeOptions.map(({ name, label, icon: Icon }) => (
+						<Menu.Item key={name}>
+							<button
+								className={clsx(
+									styles.item,
+									currentColorMode === name && styles.active
+								)}
+								onClick={() => changeColorModePreferences(name)}
+							>
+								<Icon width={20} height={20} />
+								<span>{label}</span>
+							</button>
+						</Menu.Item>
 					))}
-				</RadioGroup>
-			</Content>
-		</Root>
+				</Menu.Items>
+			</Menu>
+		</div>
 	);
 };

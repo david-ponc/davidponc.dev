@@ -92,7 +92,7 @@ export const MobileMenu = ({
 					<section className={styles.list}>
 						<span className={styles.heading}>Modo de color</span>
 						<section className={styles.modes}>
-							{colorModeOptions.map(({ name, label, icon }) => (
+							{colorModeOptions.map(({ name, label, icon: Icon }) => (
 								<Menu.Item
 									as='button'
 									key={name}
@@ -102,7 +102,7 @@ export const MobileMenu = ({
 									)}
 									onClick={() => changeColorModePreferences(name)}
 								>
-									{icon} {label}
+									<Icon width={24} /> {label}
 								</Menu.Item>
 							))}
 						</section>

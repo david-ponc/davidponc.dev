@@ -21,7 +21,7 @@ export const Navbar = ({
 	return (
 		<header className={clsx(styles.container, isScrolled && styles.blured)}>
 			<Link href='/' replace passHref>
-				<DavidPonceIcon size={20} />
+				<DavidPonceIcon size={24} />
 			</Link>
 			{isDesktop ? (
 				<DesktopMenu currentSection={currentSection} />
