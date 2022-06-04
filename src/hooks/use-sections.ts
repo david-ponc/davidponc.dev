@@ -32,7 +32,7 @@ const useSections = () => {
 		if (current !== currentSection) {
 			setCurrentSection(current);
 		}
-	}, [heroInView, projectsInView, skillsInView]);
+	}, [heroInView, projectsInView, skillsInView, hobbiesInView, currentSection]);
 
 	return {
 		currentSection,
