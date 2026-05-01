@@ -4,7 +4,7 @@ import '~/core/styles/global.css';
 import { Font } from 'astro:assets';
 ---
 
-<html lang="en">
+<html lang="en" class="scroll-smooth antialiased">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -15,7 +15,7 @@ import { Font } from 'astro:assets';
 		<Font cssVariable="--font-app-sans" preload />
 		<Font cssVariable="--font-app-mono" />
 	</head>
-	<body>
+	<body class="flex min-h-full flex-col bg-background text-foreground">
 		<slot />
 	</body>
 </html>
