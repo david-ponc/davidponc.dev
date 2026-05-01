@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+@theme inline {
+	--default-font-family: var(--font-app-sans);
+	--default-mono-font-family: var(--font-app-mono);
+}
