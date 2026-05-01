@@ -1,21 +1,21 @@
 {
-  "format_on_save": "on",
-  "formatter": [
-    { "language_server": { "name": "biome" } },
-    { "code_action": "source.fixAll.biome" },
-    { "code_action": "source.organizeImports.biome" }
-  ],
-  "lsp": {
-    "tailwindcss-language-server": {
-      "settings": {
-        "classFunctions": ["cn", "tv"],
-        "experimental": {
-          "classRegex": [
-            "[cls|className]\\s\\:\\=\\s\"([^\"]*)",
-            ["\\[((.|\\n)*)\\]", "'([^']*)'"]
-          ]
-        }
-      }
-    }
-  }
+	"format_on_save": "on",
+	"formatter": [
+		{ "language_server": { "name": "biome" } },
+		{ "code_action": "source.fixAll.biome" },
+		{ "code_action": "source.organizeImports.biome" }
+	],
+	"lsp": {
+		"tailwindcss-language-server": {
+			"settings": {
+				"classFunctions": ["cn", "tv"],
+				"experimental": {
+					"classRegex": [
+						"[cls|className]\\s\\:\\=\\s\"([^\"]*)",
+						["\\[((.|\\n)*)\\]", "'([^']*)'"]
+					]
+				}
+			}
+		}
+	}
 }
