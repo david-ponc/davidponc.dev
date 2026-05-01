@@ -2,11 +2,12 @@
 
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, fontProviders } from 'astro/config';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 // https://astro.build/config
 export default defineConfig({
 	vite: {
-		plugins: [tailwindcss()],
+		plugins: [tsconfigPaths(), tailwindcss()],
 	},
 	fonts: [
 		{
