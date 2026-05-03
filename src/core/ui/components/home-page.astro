@@ -1,0 +1,49 @@
+---
+import Navbar from "~/core/ui/components/navbar.astro";
+import Root from "~/core/ui/layouts/root.astro";
+import { getLocale, useTranslations } from "~/i18n";
+import ContactMe from "./contact-me.astro";
+
+const lang = getLocale(Astro.currentLocale);
+const t = useTranslations(lang);
+---
+
+<Root lang={lang} title="David Ponce Vargas">
+  <Navbar lang={lang} />
+  <section
+    class="relative flex size-full min-h-[75dvh] items-center justify-center"
+  >
+    <div
+      style={{ "--box-size": "1.5rem" }}
+      class:list={[
+        "absolute -z-1 h-full w-full bg-conic-[from_90deg_at_1px_1px] from-background from-25% to-muted to-0% bg-size-[var(--box-size)_var(--box-size)]",
+        "before:bg-noise before:absolute before:inset-0",
+        "after:absolute after:inset-0 after:bg-radial-[circle_at_center_top_in_oklch] after:from-transparent after:to-background after:to-55%",
+      ]}
+    >
+    </div>
+
+    <div
+      class="z-1 mx-auto flex items-center justify-between w-full max-w-6xl gap-24"
+    >
+      <section class="">
+        <h1
+          class="bg-linear-to-r from-brand-a to-brand-b bg-clip-text text-4xl font-bold text-transparent"
+        >
+          David Ponce Vargas
+        </h1>
+        <h2 class="text-3xl font-medium text-muted-foreground">
+          {t.hero.role}
+        </h2>
+        <p class="mt-4 text-muted-foreground max-w-prose mb-12">
+          {t.hero.bio}
+        </p>
+        <ContactMe />
+      </section>
+      <figure
+        class="bg-avatar relative aspect-4/3 h-auto w-56 bg-contain bg-center bg-no-repeat before:absolute before:top-2 before:-z-1 before:size-full before:opacity-50 before:blur-xl before:[background:inherit]"
+      >
+      </figure>
+    </div>
+  </section>
+</Root>

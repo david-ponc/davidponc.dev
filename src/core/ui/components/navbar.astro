@@ -1,0 +1,50 @@
+---
+import DavidPoncLogo from "../../../assets/davidponc.svg";
+import GitHubLogo from "../../../assets/github.svg";
+import LinkedInLogo from "../../../assets/linkedin.svg";
+import { getLocale, useTranslations, type Locale } from "~/i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(getLocale(lang));
+---
+
+<header
+  class="-mb-px w-full border-b py-3 text-sm font-medium border-b-border/50"
+>
+  <div class="max-w-6xl mx-auto grid grid-cols-[auto_1fr_auto]">
+    <DavidPoncLogo class="size-6" />
+
+    <div class="col-start-3 flex items-center gap-4">
+      <nav class="flex items-center gap-3 text-muted-foreground">
+        <a href="#projects" class="transition-colors hover:text-brand-b">
+          {t.navbar.projects}
+        </a>
+        <a href="#skills" class="transition-colors hover:text-brand-b">
+          {t.navbar.skills}
+        </a>
+        <a href="#occupations" class="transition-colors hover:text-brand-b">
+          {t.navbar.occupations}
+        </a>
+      </nav>
+      <div class="h-full w-px bg-muted"></div>
+      <nav class="flex items-center gap-3">
+        <a
+          href="https://www.linkedin.com/in/david-ponc/"
+          class="transition-colors text-muted-foreground hover:text-brand-a"
+        >
+          <LinkedInLogo class="size-5" />
+        </a>
+        <a
+          href="https://github.com/david-ponc"
+          class="transition-colors text-muted-foreground hover:text-brand-a"
+        >
+          <GitHubLogo class="size-5" />
+        </a>
+      </nav>
+    </div>
+  </div>
+</header>
