@@ -27,9 +27,15 @@
 :root {
 	--background: var(--color-white);
 	--foreground: var(--color-mauve-900);
+  --primary: var(--color-indigo-500);
+  --primary-foreground: var(--color-mauve-50);
 	--muted: var(--color-mauve-100);
 	--muted-foreground: var(--color-mauve-500);
-	--border: var(--color-mauve-200);
+  --secondary: var(--color-mauve-100);
+  --secondary-foreground: var(--color-mauve-500);
+  --card: var(--color-white);
+  --card-foreground: var(--color-mauve-900);
+	--border: --alpha(var(--color-mauve-300) / 70%);
 	--brand-a: var(--color-indigo-400);
 	--brand-b: var(--color-rose-400);
 }
@@ -37,8 +43,14 @@
 .dark {
 	--background: var(--color-mauve-950);
 	--foreground: var(--color-mauve-50);
+  --primary: var(--color-indigo-500);
+  --primary-foreground: var(--color-mauve-50);
 	--muted: var(--color-mauve-800);
   --muted-foreground: var(--color-mauve-400);
+  --secondary: var(--color-mauve-800);
+  --secondary-foreground: var(--color-mauve-400);
+  --card: var(--color-mauve-900);
+  --card-foreground: var(--color-mauve-50);
 	--border: --alpha(var(--color-mauve-50) / 10%);
 	--brand-a: var(--color-indigo-300);
   --brand-b: var(--color-rose-300);
@@ -50,9 +62,15 @@
 
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
 	--color-border: var(--border);
 	--color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
   --color-brand-a: var(--brand-a);
   --color-brand-b: var(--brand-b);
 }
@@ -60,6 +78,27 @@
 @theme {
   --background-image-avatar: url("../../assets/images/avatar.webp");
   --background-image-noise: url("../../assets/images/noise.png");
+  --inset-shadow-t-px: inset 0 1px 0 0;
+  --background-image-default-active: linear-gradient(
+		to bottom,
+		--alpha(var(--color-indigo-900) / 16%),
+		transparent
+	);
+	--background-image-secondary-active: linear-gradient(
+		to bottom,
+		--alpha(var(--color-mauve-900) / 4%),
+		transparent
+	);
+	--background-image-outline-active: linear-gradient(
+		to bottom,
+		--alpha(var(--color-mauve-900) / 4%),
+		transparent
+	);
+	--background-image-glow-outline-active: linear-gradient(
+		to bottom,
+		--alpha(var(--color-mauve-900) / 4%),
+		transparent
+	);
 }
 
 @property --contact-me-angle {
@@ -81,6 +120,8 @@
     background-clip: padding-box;
     border: 2px solid transparent;
     transition: --contact-me-angle 0.6s ease;
+    background-image: var(--background-image-noise);
+    background-color: var(--color-background);
 
     &::before,
     &::after {
