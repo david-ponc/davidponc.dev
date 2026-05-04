@@ -1,13 +1,18 @@
 ---
 import { getLocale, useTranslations } from "~/i18n";
+import Button from "~/core/components/ui/button";
 
 const lang = getLocale(Astro.currentLocale);
 const t = useTranslations(lang);
+// class="contact-me inline-flex items-center gap-2 px-4 py-1.5 rounded-lg text-muted-foreground hover:text-foreground"
 ---
 
-<a
-  href=""
-  class="contact-me inline-flex items-center gap-2 px-4 py-1.5 bg-background rounded-lg text-muted-foreground hover:text-foreground"
+<Button
+  as="a"
+  target="_blank"
+  variant="glow-outline"
+  rel="noopener noreferrer"
+  href="https://www.linkedin.com/in/david-ponc/"
 >
   <span class="relative z-1">{t.hero.contact}</span>
   <svg
@@ -22,4 +27,4 @@ const t = useTranslations(lang);
     >
     </path>
   </svg>
-</a>
+</Button>

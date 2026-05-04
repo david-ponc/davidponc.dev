@@ -1,7 +1,7 @@
 ---
-import DavidPoncLogo from "../../../assets/davidponc.svg";
-import GitHubLogo from "../../../assets/github.svg";
-import LinkedInLogo from "../../../assets/linkedin.svg";
+import DavidPoncLogo from "../../../../assets/davidponc.svg";
+import GitHubLogo from "../../../../assets/github.svg";
+import LinkedInLogo from "../../../../assets/linkedin.svg";
 import { getLocale, useTranslations, type Locale } from "~/i18n";
 
 interface Props {
@@ -33,12 +33,16 @@ const t = useTranslations(getLocale(lang));
       <div class="h-full w-px bg-muted"></div>
       <nav class="flex items-center gap-3">
         <a
+          target="_blank"
+          rel="noopener noreferrer"
           href="https://www.linkedin.com/in/david-ponc/"
           class="transition-colors text-muted-foreground hover:text-brand-a"
         >
           <LinkedInLogo class="size-5" />
         </a>
         <a
+          target="_blank"
+          rel="noopener noreferrer"
           href="https://github.com/david-ponc"
           class="transition-colors text-muted-foreground hover:text-brand-a"
         >

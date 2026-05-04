@@ -1,0 +1,33 @@
+---
+import type { HTMLTag, Polymorphic } from "astro/types";
+import {
+  buttonVariants,
+  type ButtonVariant,
+  type ButtonSize,
+} from "./button.variants";
+
+type Props<Tag extends HTMLTag> = Polymorphic<{
+  as: Tag;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  class?: string;
+}>;
+
+const {
+  as: Tag = "button",
+  variant,
+  size,
+  class: className,
+  ...rest
+} = Astro.props;
+const extraAttrs =
+  Tag === "button" && !("type" in rest) ? { type: "button" as const } : {};
+---
+
+<Tag
+  class={buttonVariants({ variant, size, class: className })}
+  {...extraAttrs}
+  {...rest}
+>
+  <slot />
+</Tag>

@@ -1,0 +1,17 @@
+---
+import Navbar from "~/core/components/sections/navbar/index.astro";
+import Root from "~/core/components/layouts/root.astro";
+import { getLocale } from "~/i18n";
+import Wire from "~/core/components/ui/wire/wire-path.astro";
+import HeroSection from "~/core/components/sections/hero/index.astro";
+import ProjectsSection from "~/core/components/sections/projects/index.astro";
+
+const lang = getLocale(Astro.currentLocale);
+---
+
+<Root lang={lang} title="David Ponce Vargas">
+  <Navbar lang={lang} />
+  <Wire />
+  <HeroSection />
+  <ProjectsSection />
+</Root>
