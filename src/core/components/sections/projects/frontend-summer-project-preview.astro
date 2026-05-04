@@ -26,7 +26,7 @@
 
     <!-- Capa 2 -->
     <div
-      class="bg-[#FCEFD6] [grid-area:content] translate-z-10 transform-3d flex flex-col items-center p-8 gap-2 rounded-md"
+      class="bg-[#FCEFD6] [grid-area:content] translate-z-10 transform-3d text-center flex flex-col items-center p-8 gap-2 rounded-md transition-[translate] duration-500 delay-75 [article:has(a:hover)_&]:translate-z-14 [article:has(a:hover)_&]:delay-75"
     >
       <svg
         width="192"
@@ -56,8 +56,12 @@
         ></path>
       </svg>
 
-      <h5 class="text-black font-bold">Estas son mis vacaciones</h5>
-      <p class="text-muted-foreground text-xs font-medium">
+      <h5 class="font-bold blur-[1.5px] text-foreground/24">
+        Estas son mis vacaciones
+      </h5>
+      <p
+        class="text-xs font-medium blur-[1.5px] text-muted-foreground/24 text-pretty"
+      >
         Soy Cody, un aspirante a Dev, en 2019, organicé un viaje para
         desestresarme del código y en esta página quiero compartir contigo.
       </p>
@@ -65,7 +69,7 @@
 
     <!-- Capa 3 -->
     <div
-      class="flex flex-col items-center gap-2 [grid-area:content] text-center translate-z-12 pt-8 text-sm transform-3d"
+      class="flex flex-col items-center gap-2 [grid-area:content] text-center translate-z-11 p-8 text-sm transform-3d transition-[translate] duration-500 delay-150 [article:has(a:hover)_&]:translate-z-15 [article:has(a:hover)_&]:delay-0"
     >
       <svg
         width="192"
@@ -210,8 +214,16 @@
           fill-rule="evenodd"
           clip-rule="evenodd"
           d="M123.87 41.14C123.07 41.21 120.48 41.62 120.48 41.62C120.48 41.62 121.74 42.82 122.42 43.08L119.02 44.04C119.02 44.04 119.7 45.62 122.42 45.5L120 47.43C120 47.43 121.38 49.32 122.9 48.88C124.42 48.45 124.27 42.35 123.87 41.14Z"
-          fill="#1BB898"></path>
+          fill="#1BB898"
+        >
+        </path>
       </svg>
+
+      <h5 class="font-bold">Estas son mis vacaciones</h5>
+      <p class="text-muted-foreground text-xs font-medium text-pretty">
+        Soy Cody, un aspirante a Dev, en 2019, organicé un viaje para
+        desestresarme del código y en esta página quiero compartir contigo.
+      </p>
     </div>
   </div>
 </div>
