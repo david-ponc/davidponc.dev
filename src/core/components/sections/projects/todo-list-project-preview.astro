@@ -1,12 +1,11 @@
 ---
 const currentDate = new Date();
-const options = {
+const formattedDate = currentDate.toLocaleDateString("es-ES", {
   weekday: "long",
   year: "numeric",
   month: "long",
   day: "numeric",
-};
-const formattedDate = currentDate.toLocaleDateString("es-ES", options);
+});
 ---
 
 <div class="perspective-[1950px]">
@@ -15,6 +14,7 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", options);
   >
     <!-- Capa 1 -->
     <div
+      data-layer="1"
       class="relative size-full overflow-hidden rounded-md border border-brand-b/70 bg-background [grid-area:content]"
     >
       <svg class="absolute inset-0 h-full w-full text-brand-b/70">
@@ -37,7 +37,8 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", options);
 
     <!-- Capa 2.1 -->
     <div
-      class="bg-card flex flex-col gap-2 border border-border rounded-md [grid-area:content] translate-z-10 px-9 pt-9 pb-4 text-sm transform-3d"
+      data-layer="2"
+      class="bg-card flex flex-col gap-2 border border-border rounded-md [grid-area:content] translate-z-10 transition-[translate] duration-500 px-9 pt-9 pb-4 text-sm transform-3d delay-75 [article:has(a:hover)_&]:translate-z-14 [article:has(a:hover)_&]:delay-75"
     >
       <header>
         <h5
@@ -56,7 +57,8 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", options);
 
     <!-- Capa 2.2 -->
     <div
-      class="flex flex-col gap-2 [grid-area:content] translate-z-10 px-9 py-5 pt-32 text-sm transform-3d"
+      data-layer="2"
+      class="flex flex-col gap-2 [grid-area:content] translate-z-10 px-9 py-5 pt-32 text-sm transform-3d transition-[translate] duration-500 delay-75 [article:has(a:hover)_&]:translate-z-14 [article:has(a:hover)_&]:delay-75"
     >
       <div class="relative size-full">
         <svg
@@ -98,7 +100,8 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", options);
 
     <!-- Capa 3 -->
     <div
-      class="flex flex-col gap-2 [grid-area:content] translate-z-12 px-9 py-5 pt-32 text-sm transform-3d"
+      data-layer="3"
+      class="flex flex-col gap-2 [grid-area:content] translate-z-12 px-9 py-5 pt-32 text-sm transform-3d transition-[translate] duration-500 delay-150 [article:has(a:hover)_&]:translate-z-16 [article:has(a:hover)_&]:delay-0"
     >
       <div
         class="bg-background rounded-lg ring ring-border p-1 pl-3 text-muted-foreground flex items-center gap-4"
@@ -168,9 +171,10 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", options);
       </div>
     </div>
 
-    <!-- Capa 3 -->
+    <!-- Capa 4 -->
     <div
-      class="flex flex-col gap-2 [grid-area:content] translate-z-13 px-9 py-5 pt-32 text-sm transform-3d"
+      data-layer="4"
+      class="flex flex-col gap-2 [grid-area:content] translate-z-13 px-9 py-5 pt-32 text-sm transform-3d transition-[translate] duration-500 delay-150 [article:has(a:hover)_&]:translate-z-18 [article:has(a:hover)_&]:delay-0"
     >
       <div class="p-1 pl-3 text-muted-foreground flex items-center gap-4">
         <p class="grow">Escribe una tarea</p>
