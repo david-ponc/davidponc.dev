@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       '@astrojs/vercel':
-        specifier: ^10.0.6
+        specifier: 10.0.6
         version: 10.0.6(astro@6.2.1(@types/node@24.12.2)(@vercel/functions@3.5.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2))(rollup@4.60.2)
       '@tailwindcss/vite':
         specifier: 4.2.4
