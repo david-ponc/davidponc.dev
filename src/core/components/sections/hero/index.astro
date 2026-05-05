@@ -1,10 +1,10 @@
 ---
-import { getLocale, useTranslations } from "~/i18n";
+import { getLocale, getTranslations } from "~/i18n";
 import ContactMe from "./contact-me.astro";
 import WireNode from "~/core/components/ui/wire/wire-node.astro";
 
 const lang = getLocale(Astro.currentLocale);
-const t = useTranslations(lang);
+const t = getTranslations(lang);
 ---
 
 <section class="relative flex size-full items-center justify-center mb-40">

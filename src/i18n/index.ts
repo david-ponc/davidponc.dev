@@ -10,7 +10,7 @@ export const DEFAULT_LOCALE: Locale = 'es';
 
 const translations: Record<Locale, Translations> = { es, en };
 
-export function useTranslations(locale: Locale): Translations {
+export function getTranslations(locale: Locale): Translations {
 	return translations[locale];
 }
 

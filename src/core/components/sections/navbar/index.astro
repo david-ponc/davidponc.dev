@@ -2,7 +2,7 @@
 import DavidPoncLogo from "../../../../assets/davidponc.svg";
 import GitHubLogo from "../../../../assets/github.svg";
 import LinkedInLogo from "../../../../assets/linkedin.svg";
-import { getLocale, useTranslations, type Locale } from "~/i18n";
+import { getLocale, getTranslations, type Locale } from "~/i18n";
 import { ThemeToggle } from "./theme-toggle";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-const t = useTranslations(getLocale(lang));
+const t = getTranslations(getLocale(lang));
 const theme = Astro.cookies.get("theme")?.value || "system";
 ---
 

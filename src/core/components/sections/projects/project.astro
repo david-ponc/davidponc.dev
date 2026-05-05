@@ -3,15 +3,15 @@ import Button from "~/core/components/ui/button";
 import WireNode from "~/core/components/ui/wire/wire-node.astro";
 import RocketIcon from "~/assets/rocket.svg";
 import CodeIcon from "~/assets/code.svg";
-import { getLocale, useTranslations } from "~/i18n";
+import { getLocale, getTranslations } from "~/i18n";
 import type { Project } from "~/data/projects";
 import type { ProjectTranslation } from "~/i18n/types";
 
-type Props = Omit<Project, 'key'> & ProjectTranslation;
+type Props = Omit<Project, "key"> & ProjectTranslation;
 
 const { title, tags, description, sourceUrl, websiteUrl } = Astro.props;
 const lang = getLocale(Astro.currentLocale);
-const t = useTranslations(lang);
+const t = getTranslations(lang);
 ---
 
 <article class="grid grid-cols-[3fr_2fr] gap-16">

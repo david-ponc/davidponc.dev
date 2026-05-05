@@ -1,11 +1,11 @@
 ---
-import { getLocale, useTranslations } from "~/i18n";
+import { getLocale, getTranslations } from "~/i18n";
 import { projects } from "~/data/projects";
 import Project from "./project.astro";
 import ProjectPreview from "./project-preview.astro";
 
 const lang = getLocale(Astro.currentLocale);
-const t = useTranslations(lang);
+const t = getTranslations(lang);
 
 const localizedProjects = projects.map((project) => ({
   ...project,

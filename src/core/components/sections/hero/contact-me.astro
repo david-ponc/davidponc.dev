@@ -1,9 +1,9 @@
 ---
-import { getLocale, useTranslations } from "~/i18n";
+import { getLocale, getTranslations } from "~/i18n";
 import Button from "~/core/components/ui/button";
 
 const lang = getLocale(Astro.currentLocale);
-const t = useTranslations(lang);
+const t = getTranslations(lang);
 // class="contact-me inline-flex items-center gap-2 px-4 py-1.5 rounded-lg text-muted-foreground hover:text-foreground"
 ---
 
