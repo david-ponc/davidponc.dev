@@ -10,10 +10,16 @@
 		"astro": "astro"
 	},
 	"dependencies": {
+		"@astrojs/react": "5.0.4",
 		"@astrojs/vercel": "10.0.6",
+		"@base-ui/react": "1.4.1",
 		"@tailwindcss/vite": "4.2.4",
+		"@types/react": "19.2.14",
+		"@types/react-dom": "19.2.3",
 		"astro": "6.2.1",
 		"clsx": "2.1.1",
+		"react": "19.2.5",
+		"react-dom": "19.2.5",
 		"tailwind-merge": "3.5.0",
 		"tailwind-variants": "3.2.2",
 		"tailwindcss": "4.2.4"

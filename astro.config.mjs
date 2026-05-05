@@ -1,5 +1,4 @@
-// @ts-check
-
+import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, fontProviders } from 'astro/config';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -7,7 +6,10 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
+// @ts-check
+
 export default defineConfig({
+  integrations: [react()],
   vite: {
       plugins: [tsconfigPaths(), tailwindcss()],
 	},
