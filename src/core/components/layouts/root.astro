@@ -11,9 +11,12 @@ interface Props {
 }
 
 const { lang = DEFAULT_LOCALE, title = "David Ponce Vargas" } = Astro.props;
+
+const themeCookie = Astro.cookies.get("theme")?.value;
+const isDark = themeCookie === "dark";
 ---
 
-<html lang={lang} class="scroll-smooth antialiased">
+<html lang={lang} class:list={["scroll-smooth antialiased", { dark: isDark }]}>
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -23,6 +26,19 @@ const { lang = DEFAULT_LOCALE, title = "David Ponce Vargas" } = Astro.props;
 		<title>{title}</title>
 		<Font cssVariable="--font-app-sans" preload />
 		<Font cssVariable="--font-app-mono" />
+		<script is:inline>
+			(function () {
+				var cookie = document.cookie.match(/(?:^|; )theme=([^;]*)/);
+				var theme = cookie ? decodeURIComponent(cookie[1]) : "system";
+				if (theme === "system") {
+					if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+						document.documentElement.classList.add("dark");
+					} else {
+						document.documentElement.classList.remove("dark");
+					}
+				}
+			})();
+		</script>
 	</head>
 	<body
 		class="flex min-h-full flex-col bg-background text-foreground tracking-[-1.5%]"

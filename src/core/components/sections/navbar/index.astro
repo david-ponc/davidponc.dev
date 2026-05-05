@@ -3,6 +3,7 @@ import DavidPoncLogo from "../../../../assets/davidponc.svg";
 import GitHubLogo from "../../../../assets/github.svg";
 import LinkedInLogo from "../../../../assets/linkedin.svg";
 import { getLocale, useTranslations, type Locale } from "~/i18n";
+import { ThemeToggle } from "./theme-toggle";
 
 interface Props {
   lang?: Locale;
@@ -10,6 +11,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(getLocale(lang));
+const theme = Astro.cookies.get("theme")?.value || "system";
 ---
 
 <header
@@ -19,24 +21,37 @@ const t = useTranslations(getLocale(lang));
     <DavidPoncLogo class="size-6" />
 
     <div class="col-start-3 flex items-center gap-4">
-      <nav class="flex items-center gap-3 text-muted-foreground">
-        <a href="#projects" class="transition-colors hover:text-brand-b">
+      <nav
+        class="relative flex items-center text-muted-foreground before:pointer-events-none before:absolute before:rounded-md before:bg-brand-b/12 before:transition-[inset,opacity] before:duration-200 before:ease before:inset-[anchor(inside)] before:[position-anchor:--nav-anchor] before:opacity-0 has-[a:hover]:before:opacity-100 has-[a:focus-visible]:before:opacity-100"
+      >
+        <a
+          href="#projects"
+          class="px-2.5 py-1 transition-colors hover:text-brand-b focus-visible:text-brand-b hover:[anchor-name:--nav-anchor] focus-visible:[anchor-name:--nav-anchor]"
+        >
           {t.navbar.projects}
         </a>
-        <a href="#skills" class="transition-colors hover:text-brand-b">
+        <a
+          href="#skills"
+          class="px-2.5 py-1 transition-colors hover:text-brand-b focus-visible:text-brand-b hover:[anchor-name:--nav-anchor] focus-visible:[anchor-name:--nav-anchor]"
+        >
           {t.navbar.skills}
         </a>
-        <a href="#occupations" class="transition-colors hover:text-brand-b">
+        <a
+          href="#occupations"
+          class="px-2.5 py-1 transition-colors hover:text-brand-b focus-visible:text-brand-b hover:[anchor-name:--nav-anchor] focus-visible:[anchor-name:--nav-anchor]"
+        >
           {t.navbar.occupations}
         </a>
       </nav>
       <div class="h-full w-px bg-muted"></div>
-      <nav class="flex items-center gap-3">
+      <nav
+        class="relative flex items-center before:pointer-events-none before:absolute before:rounded-md before:bg-brand-a/12 before:transition-[inset,opacity] before:duration-200 before:ease before:inset-[anchor(inside)] before:[position-anchor:--social-anchor] before:opacity-0 has-[a,button]:hover:before:opacity-100 has-[a,button]:focus-visible:before:opacity-100"
+      >
         <a
           target="_blank"
           rel="noopener noreferrer"
           href="https://www.linkedin.com/in/david-ponc/"
-          class="transition-colors text-muted-foreground hover:text-brand-a"
+          class="p-1 transition-colors text-muted-foreground hover:text-brand-a focus-visible:text-brand-a hover:[anchor-name:--social-anchor] focus-visible:[anchor-name:--social-anchor]"
         >
           <LinkedInLogo class="size-5" />
         </a>
@@ -44,10 +59,11 @@ const t = useTranslations(getLocale(lang));
           target="_blank"
           rel="noopener noreferrer"
           href="https://github.com/david-ponc"
-          class="transition-colors text-muted-foreground hover:text-brand-a"
+          class="p-1 transition-colors text-muted-foreground hover:text-brand-a focus-visible:text-brand-a hover:[anchor-name:--social-anchor] focus-visible:[anchor-name:--social-anchor]"
         >
           <GitHubLogo class="size-5" />
         </a>
+        <ThemeToggle client:load initialValue={theme} />
       </nav>
     </div>
   </div>
