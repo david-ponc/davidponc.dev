@@ -36,6 +36,9 @@ export const buttonVariants = tv({
 				'ring-transparent bg-transparent text-secondary-foreground hover:bg-muted hover:text-foreground',
 				'active:after:absolute active:after:rounded-[inherit] active:after:inset-0 active:after:bg-accent/50',
 			],
+			link: [
+				'ring-transparent bg-transparent text-primary underline-offset-4 hover:underline',
+			],
 		},
 		size: {
 			default: [
@@ -54,6 +57,7 @@ export const buttonVariants = tv({
 				"size-10 py-2.5 [&_svg:not([class*='size-'])]:size-4",
 				'active:pt-[calc(--spacing(2.5)+1px)] active:pb-[calc(--spacing(2.5)-1px)]',
 			],
+			inline: ['h-auto p-0'],
 		},
 	},
 	defaultVariants: {
