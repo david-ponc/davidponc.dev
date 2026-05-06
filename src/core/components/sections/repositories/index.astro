@@ -3,6 +3,8 @@ import { getLocale, getTranslations } from "~/i18n";
 import Repository from "./repository.astro";
 import { repositories } from "~/data/repositories";
 import WireNode from "../../ui/wire/wire-node.astro";
+import Button from "../../ui/button";
+import ArrowTopRightOnSquareIcon from "~/assets/arrow-top-right-on-square.svg";
 
 const lang = getLocale(Astro.currentLocale);
 const t = getTranslations(lang);
@@ -34,6 +36,20 @@ const localizedRepositories = repositories.map((repository) => ({
         ))
       }
     </section>
+    <footer class="-mt-7 flex items-center justify-end">
+      <Button
+        as="a"
+        size="inline"
+        target="_blank"
+        href="https://github.com/david-ponc?tab=repositories"
+        variant="link"
+        rel="noopener noreferrer"
+        class="gap-1"
+      >
+        {t.repositories.actions.viewAll}
+        <ArrowTopRightOnSquareIcon class="size-4" />
+      </Button>
+    </footer>
   </div>
 </section>
 

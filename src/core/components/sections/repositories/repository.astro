@@ -5,7 +5,7 @@ import type { RepositoryTranslation } from "~/i18n/types";
 import Button from "../../ui/button";
 import CodeIcon from "~/assets/code.svg";
 import RocketIcon from "~/assets/rocket.svg";
-
+import BookmarkIcon from "~/assets/bookmark.svg";
 type Props = Repository & RepositoryTranslation;
 
 const { title, tags, description, sourceUrl, websiteUrl } = Astro.props;
@@ -15,43 +15,20 @@ const t = getTranslations(lang);
 ---
 
 <article
-  class="glow-card flex flex-col gap-4 bg-card rounded-lg border border-transparent bg-clip-padding"
+  class="glow-card flex flex-col gap-4 bg-card rounded-lg border border-transparent bg-clip-padding p-4"
 >
-  <header class="flex items-center gap-2 p-4 pb-0">
-    <svg width="16" height="16" x="0" y="0" viewBox="0 0 18 18">
-      <path
-        fill="none"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="1.5"
-        d="M2.75 14V4.25a2 2 0 0 1 2-2h10.5v10"></path>
-      <path
-        fill="currentColor"
-        d="M11 14H7v3.5a.5.5 0 0 0 .854.354L9 16.708l1.146 1.146A.5.5 0 0 0 11 17.5z"
-      ></path>
-      <path
-        fill="none"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="1.5"
-        d="M5.25 15.75H4.5a1.75 1.75 0 1 1 0-3.5h10.75c-.641.844-.734 2.547 0 3.5h-2.5"
-      ></path>
-      <circle cx="5.75" cy="9.75" r=".75" fill="currentColor"></circle>
-      <circle cx="5.75" cy="4.75" r=".75" fill="currentColor"></circle>
-      <circle cx="5.75" cy="7.25" r=".75" fill="currentColor"></circle>
-    </svg>
+  <header class="flex items-center gap-2">
+    <BookmarkIcon class="size-4 text-muted-foreground" />
     <h3 class="text-base/none font-medium">{title}</h3>
   </header>
-  <section class="p-4 py-0 flex flex-col gap-2">
+  <section class="flex flex-col gap-2">
     <p class="max-w-prose text-sm text-muted-foreground">{description}</p>
     <ul class="text-xs font-medium flex items-center gap-4">
       {
         tags.map((tag) => (
           <li
             data-tag={tag.toLowerCase()}
-            class="flex items-center gap-1 before:size-1.5 before:rounded-full before:bg-muted"
+            class="flex items-center gap-1 before:size-1.5 before:rounded-full before:bg-muted text-muted-foreground"
           >
             {tag}
           </li>
@@ -59,7 +36,7 @@ const t = getTranslations(lang);
       }
     </ul>
   </section>
-  <footer class="flex justify-end p-4 pt-2 gap-4">
+  <footer class="flex items-center justify-end-safe mt-1 gap-3">
     {
       sourceUrl ? (
         <Button

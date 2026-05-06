@@ -45,5 +45,6 @@ export type Repositories = {
 	actions: {
 		source: string;
 		website: string;
+		viewAll: string;
 	};
 };

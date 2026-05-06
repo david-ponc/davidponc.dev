@@ -54,6 +54,7 @@ export const es = {
 		actions: {
 			source: 'Código fuente',
 			website: 'Visitar sitio',
+			viewAll: 'Ver todos',
 		},
 	},
 } satisfies Translations;

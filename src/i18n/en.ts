@@ -52,6 +52,7 @@ export const en = {
 		actions: {
 			source: 'Source code',
 			website: 'Visit website',
+			viewAll: 'View all',
 		},
 	},
 } satisfies Translations;
