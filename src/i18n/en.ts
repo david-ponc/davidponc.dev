@@ -1,4 +1,5 @@
 import { PROJECT_KEY } from '~/data/projects';
+import { REPOSITORY_KEY } from '~/data/repositories';
 
 import type { Translations } from './types';
 
@@ -30,6 +31,27 @@ export const en = {
 				description:
 					'Static website for the Frontend Summer contest organized by the company codigofacilito. It features various sections that tell the story of Cody, as well as a photo gallery of the places he was.',
 			},
+		},
+	},
+	repositories: {
+		heading: 'Featured repositories',
+		repositories: {
+			[REPOSITORY_KEY.ReadingList]: {
+				title: 'Reading List',
+				description: 'Web application with a book catalog and reading list management',
+			},
+			[REPOSITORY_KEY.UploadFile]: {
+				title: 'File Upload',
+				description: 'Application that allows image upload with Firebase',
+			},
+			[REPOSITORY_KEY.Enviroment]: {
+				title: 'FCC Environment',
+				description: 'Website for promoting events related to the environment',
+			},
+		},
+		actions: {
+			source: 'Source code',
+			website: 'Visit website',
 		},
 	},
 } satisfies Translations;

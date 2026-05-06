@@ -32,6 +32,10 @@ export const buttonVariants = tv({
 			'glow-outline': [
 				'ring-transparent contact-me text-muted-foreground hover:text-foreground',
 			],
+			ghost: [
+				'ring-transparent bg-transparent text-secondary-foreground hover:bg-muted hover:text-foreground',
+				'active:after:absolute active:after:rounded-[inherit] active:after:inset-0 active:after:bg-accent/50',
+			],
 		},
 		size: {
 			default: [
@@ -41,6 +45,10 @@ export const buttonVariants = tv({
 			sm: [
 				'h-9 px-3 py-1.5',
 				'active:pt-[calc(--spacing(1.5)+1px)] active:pb-[calc(--spacing(1.5)-1px)]',
+			],
+			xs: [
+				'h-8 px-2.5 py-1 text-sm',
+				'active:pt-[calc(--spacing(1)+1px)] active:pb-[calc(--spacing(1)-1px)]',
 			],
 			icon: [
 				"size-10 py-2.5 [&_svg:not([class*='size-'])]:size-4",

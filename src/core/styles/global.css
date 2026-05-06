@@ -114,6 +114,34 @@
 }
 
 @layer components {
+  .glow-card {
+    position: relative;
+    background-clip: padding-box;
+    border-color: transparent;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background:
+        radial-gradient(
+          500px circle at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
+          var(--color-brand-b),
+          transparent 40%
+        ),
+        var(--color-border);
+      opacity: 1;
+      transition: background 300ms ease;
+      z-index: -1;
+      pointer-events: none;
+    }
+  }
+
+  .glow-container:not(:hover) .glow-card::before {
+    background: var(--color-border);
+  }
+
   .contact-me {
     --contact-me-angle: 135deg;
     position: relative;
@@ -154,5 +182,41 @@
     &:hover::before {
       opacity: 1;
     }
+  }
+}
+
+[data-tag=javascript] {
+  &::before {
+    background-color: var(--color-yellow-400);
+  }
+}
+
+[data-tag=typescript], [data-tag=css] {
+  &::before {
+    background-color: var(--color-blue-400);
+  }
+}
+
+[data-tag='tailwind css'] {
+  &::before {
+    background-color: var(--color-teal-400);
+  }
+}
+
+[data-tag=playwright] {
+  &::before {
+    background-color: var(--color-green-400);
+  }
+}
+
+[data-tag=sveltekit], [data-tag=firebase], [data-tag=html] {
+  &::before {
+    background-color: var(--color-red-400);
+  }
+}
+
+[data-tag='next.js'] {
+  &::before {
+    background-color: var(--color-foreground);
   }
 }

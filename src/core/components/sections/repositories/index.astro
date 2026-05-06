@@ -1,0 +1,52 @@
+---
+import { getLocale, getTranslations } from "~/i18n";
+import Repository from "./repository.astro";
+import { repositories } from "~/data/repositories";
+import WireNode from "../../ui/wire/wire-node.astro";
+
+const lang = getLocale(Astro.currentLocale);
+const t = getTranslations(lang);
+
+const localizedRepositories = repositories.map((repository) => ({
+  ...repository,
+  ...t.repositories.repositories[repository.key],
+}));
+---
+
+<section class="flex min-h-[75dvh] items-center justify-center">
+  <div class="z-1 mx-auto flex flex-col w-full max-w-6xl gap-12">
+    <header class="relative">
+      <h2 id="repositories" class="text-2xl font-medium text-muted-foreground">
+        {t.repositories.heading}
+      </h2>
+    </header>
+
+    <section
+      id="glow-container"
+      class="glow-container relative grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-4"
+    >
+      <WireNode class="top-1/2 -left-2" />
+      <WireNode class="top-1/2 left-6" />
+      <WireNode class="top-1/2 -left-2" />
+      {
+        localizedRepositories.map((repository) => (
+          <Repository {...repository} />
+        ))
+      }
+    </section>
+  </div>
+</section>
+
+<script>
+  const container = document.getElementById("glow-container");
+  if (container) {
+    container.addEventListener("mousemove", (e) => {
+      const cards = container.querySelectorAll<HTMLElement>(".glow-card");
+      cards.forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
+        card.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
+      });
+    });
+  }
+</script>

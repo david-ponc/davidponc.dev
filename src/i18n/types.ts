@@ -1,9 +1,11 @@
 import type { ProjectKey } from '~/data/projects';
+import type { RepositoryKey } from '~/data/repositories';
 
 export type Translations = {
 	navbar: Navbar;
 	hero: Hero;
 	projects: Projects;
+	repositories: Repositories;
 };
 
 export type Navbar = {
@@ -26,6 +28,20 @@ export type ProjectTranslation = {
 export type Projects = {
 	heading: string;
 	projects: Record<ProjectKey, ProjectTranslation>;
+	actions: {
+		source: string;
+		website: string;
+	};
+};
+
+export type RepositoryTranslation = {
+	title: string;
+	description: string;
+};
+
+export type Repositories = {
+	heading: string;
+	repositories: Record<RepositoryKey, RepositoryTranslation>;
 	actions: {
 		source: string;
 		website: string;
