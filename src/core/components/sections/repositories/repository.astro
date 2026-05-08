@@ -15,14 +15,14 @@ const t = getTranslations(lang);
 ---
 
 <article
-  class="glow-card flex flex-col gap-4 bg-card rounded-lg border border-transparent bg-clip-padding p-4"
+  class="glow-card flex flex-col gap-4 bg-card rounded-xl border border-transparent bg-clip-padding p-4"
 >
   <header class="flex items-center gap-2">
     <BookmarkIcon class="size-4 text-muted-foreground" />
     <h3 class="text-base/none font-medium">{title}</h3>
   </header>
   <section class="flex flex-col gap-2">
-    <p class="max-w-prose text-sm text-muted-foreground">{description}</p>
+    <p class="max-w-prose text-sm text-muted-foreground text-pretty">{description}</p>
     <ul class="text-xs font-medium flex items-center gap-4">
       {
         tags.map((tag) => (

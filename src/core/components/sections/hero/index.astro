@@ -7,7 +7,7 @@ const lang = getLocale(Astro.currentLocale);
 const t = getTranslations(lang);
 ---
 
-<section class="relative flex size-full items-center justify-center mb-40">
+<section class="relative flex size-full items-center justify-center">
   <div
     style={{ "--box-size": "1.5rem" }}
     class:list={[
@@ -19,18 +19,18 @@ const t = getTranslations(lang);
   </div>
 
   <div
-    class="z-1 mx-auto flex items-center justify-between min-h-[50dvh] w-full max-w-6xl gap-24"
+    class="z-1 mx-auto flex items-center justify-between min-h-[70dvh] w-full max-w-6xl gap-16"
   >
     <section>
       <h1
-        class="bg-linear-to-r from-brand-a to-brand-b bg-clip-text text-4xl font-bold text-transparent"
+        class="bg-linear-to-r from-brand-a to-brand-b bg-clip-text text-4xl font-bold text-transparent text-balance"
       >
         David Ponce Vargas
       </h1>
-      <h2 class="text-3xl font-medium text-muted-foreground">
+      <h2 class="text-3xl font-medium text-muted-foreground text-balance">
         {t.hero.role}
       </h2>
-      <p class="mt-4 text-muted-foreground max-w-prose mb-12">
+      <p class="mt-4 text-muted-foreground max-w-prose mb-12 text-pretty">
         {t.hero.bio}
       </p>
       <div class="relative inline-block">
@@ -40,7 +40,10 @@ const t = getTranslations(lang);
       </div>
     </section>
     <figure
-      class="bg-avatar relative aspect-4/3 h-auto w-56 bg-contain bg-center bg-no-repeat before:absolute before:top-2 before:-z-1 before:size-full before:opacity-50 before:blur-xl before:[background:inherit]"
+      class:list={[
+        "aspect-3/4 h-auto w-full max-w-xs mr-9 bg-avatar relative size-full bg-cover bg-no-repeat rounded-lg",
+        "before:absolute before:top-4 before:-z-1 before:size-full before:opacity-50 before:blur-xl before:[background:inherit] before:rounded-lg",
+      ]}
     >
     </figure>
   </div>

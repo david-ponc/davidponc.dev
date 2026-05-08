@@ -14,7 +14,7 @@ export const buttonVariants = tv({
 	base: [
 		'relative inline-flex items-center justify-center gap-2 rounded-lg ring',
 		'select-none whitespace-nowrap',
-		'transition-colors duration-75 ease-in-out',
+		'transition-[color,background-color,box-shadow,scale] duration-75 ease-in-out',
 		'focus-visible:outline-2 focus-visible:outline-offset-2',
 	],
 	variants: {

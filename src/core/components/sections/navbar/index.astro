@@ -15,9 +15,9 @@ const theme = Astro.cookies.get("theme")?.value || "system";
 ---
 
 <header
-  class="-mb-px w-full border-b py-3 text-sm font-medium border-b-border/50"
+  class="-mb-px w-full border-b py-1.5 text-sm font-medium border-b-border/50"
 >
-  <div class="max-w-6xl mx-auto grid grid-cols-[auto_1fr_auto]">
+  <div class="max-w-6xl mx-auto grid grid-cols-[auto_1fr_auto] items-center">
     <DavidPoncLogo class="size-6" />
 
     <div class="col-start-3 flex items-center gap-4">
@@ -43,7 +43,7 @@ const theme = Astro.cookies.get("theme")?.value || "system";
           {t.navbar.occupations}
         </a>
       </nav>
-      <div class="h-full w-px bg-muted"></div>
+      <div class="h-8 w-px bg-muted"></div>
       <nav
         class="relative flex items-center before:pointer-events-none before:absolute before:rounded-md before:bg-brand-a/12 before:transition-[inset,opacity] before:duration-200 before:ease before:inset-[anchor(inside)] before:[position-anchor:--social-anchor] before:opacity-0 has-[a,button]:hover:before:opacity-100 has-[a,button]:focus-visible:before:opacity-100"
       >
@@ -51,7 +51,7 @@ const theme = Astro.cookies.get("theme")?.value || "system";
           target="_blank"
           rel="noopener noreferrer"
           href="https://www.linkedin.com/in/david-ponc/"
-          class="p-1 transition-colors text-muted-foreground hover:text-brand-a focus-visible:text-brand-a hover:[anchor-name:--social-anchor] focus-visible:[anchor-name:--social-anchor]"
+          class="p-2.5 transition-colors text-muted-foreground hover:text-brand-a focus-visible:text-brand-a hover:[anchor-name:--social-anchor] focus-visible:[anchor-name:--social-anchor]"
         >
           <LinkedInLogo class="size-5" />
         </a>
@@ -59,7 +59,7 @@ const theme = Astro.cookies.get("theme")?.value || "system";
           target="_blank"
           rel="noopener noreferrer"
           href="https://github.com/david-ponc"
-          class="p-1 transition-colors text-muted-foreground hover:text-brand-a focus-visible:text-brand-a hover:[anchor-name:--social-anchor] focus-visible:[anchor-name:--social-anchor]"
+          class="p-2.5 transition-colors text-muted-foreground hover:text-brand-a focus-visible:text-brand-a hover:[anchor-name:--social-anchor] focus-visible:[anchor-name:--social-anchor]"
         >
           <GitHubLogo class="size-5" />
         </a>

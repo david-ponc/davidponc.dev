@@ -17,7 +17,7 @@ const t = getTranslations(lang);
 <article class="grid grid-cols-[3fr_2fr] gap-16">
   <div class="flex flex-col gap-6">
     <header class="flex flex-col gap-2">
-      <h4 class="text-2xl">{title}</h4>
+      <h4 class="text-2xl text-balance">{title}</h4>
       <div class="flex items-center gap-2">
         {
           tags.map((tag) => (
@@ -32,6 +32,7 @@ const t = getTranslations(lang);
       <p class="text-muted-foreground">
         {description}
       </p>
+
     </div>
     <footer class="flex items-center gap-3 relative">
       <WireNode class="-left-2" />
