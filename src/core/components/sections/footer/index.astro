@@ -2,6 +2,10 @@
 import LinkedInLogo from "~/assets/linkedin.svg";
 import GitHubLogo from "~/assets/github.svg";
 import WireNode from "../../ui/wire/wire-node.astro";
+import { getLocale, getTranslations } from "~/i18n";
+
+const lang = getLocale(Astro.currentLocale);
+const t = getTranslations(lang);
 ---
 
 <footer
@@ -14,7 +18,7 @@ import WireNode from "../../ui/wire/wire-node.astro";
   <div class="mx-auto w-full max-w-6xl px-4 pt-12 pb-24 relative">
     <section>
       <nav
-        class="relative flex items-center before:pointer-events-none before:absolute before:rounded-md before:bg-brand-a/12 before:transition-[inset,opacity] before:duration-200 before:ease before:inset-[anchor(inside)] before:[position-anchor:--social-anchor] before:opacity-0 has-[a,button]:hover:before:opacity-100 has-[a,button]:focus-visible:before:opacity-100"
+        class="relative flex items-center before:pointer-events-none before:absolute before:rounded-md before:bg-brand-a/12 before:transition-[inset,opacity] before:duration-200 before:ease before:inset-[anchor(inside)] before:[position-anchor:--social-anchor] before:opacity-0 has-[a,button]:hover:before:opacity-100 has-[a,button]:focus-visible:before:opacity-100 mb-4"
       >
         <a
           target="_blank"
@@ -23,7 +27,7 @@ import WireNode from "../../ui/wire/wire-node.astro";
           class="relative p-1.5 transition-colors text-muted-foreground hover:text-brand-a focus-visible:text-brand-a hover:[anchor-name:--social-anchor] focus-visible:[anchor-name:--social-anchor]"
         >
           <WireNode class="top-1/2 left-1/2" />
-          <LinkedInLogo class="size-7" />
+          <LinkedInLogo class="size-7 bg-background/6 backdrop-blur-xs" />
         </a>
         <a
           target="_blank"
@@ -34,9 +38,11 @@ import WireNode from "../../ui/wire/wire-node.astro";
           <GitHubLogo class="size-7" />
         </a>
       </nav>
-      <p class="mt-4 text-sm text-muted-foreground">
-        © {new Date().getFullYear()} David Ponce Vargas. Todos los derechos reservados.
-      </p>
+      {
+        t.footer.contact.map((line) => (
+          <p class="text-muted-foreground max-w-prose text-pretty">{line}</p>
+        ))
+      }
     </section>
     <figure>
       <svg
