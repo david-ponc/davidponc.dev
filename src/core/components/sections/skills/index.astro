@@ -1,3 +1,35 @@
+---
+import TypeScriptIcon from "~/assets/typescript.svg";
+import ReactIcon from "~/assets/react.svg";
+import NextIcon from "~/assets/next.svg";
+import NodeIcon from "~/assets/node.svg";
+import GitIcon from "~/assets/git.svg";
+import DockerIcon from "~/assets/docker.svg";
+import TailwindCSSIcon from "~/assets/tailwindcss.svg";
+import PostgresIcon from "~/assets/postgres.svg";
+import TanstackIcon from "~/assets/tanstack.svg";
+
+const skills = [
+  { Icon: TypeScriptIcon, label: "TypeScript" },
+  { Icon: ReactIcon, label: "React.js" },
+  { Icon: NextIcon, label: "Next.js" },
+  { Icon: NodeIcon, label: "Node.js" },
+  { Icon: GitIcon, label: "Git" },
+  { Icon: DockerIcon, label: "Docker" },
+  { Icon: TailwindCSSIcon, label: "Tailwind CSS" },
+  { Icon: PostgresIcon, label: "PostgreSQL" },
+  { Icon: TanstackIcon, label: "TanStack query" },
+];
+---
+
+<svg aria-hidden="true" class="absolute size-0 overflow-visible">
+  <defs>
+    <filter id="skill-blur" width="500%" height="500%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="28"></feGaussianBlur>
+    </filter>
+  </defs>
+</svg>
+
 <section class="flex items-center justify-center">
   <div class="z-1 mx-auto flex flex-col w-full max-w-6xl gap-12">
     <header class="relative">
@@ -6,6 +38,129 @@
       </h2>
     </header>
 
-    <section></section>
+    <section
+      class="grid grid-cols-[repeat(auto-fill,minmax(7.5rem,1fr))] gap-2"
+    >
+      {
+        skills.map(({ Icon, label }) => (
+          <div class="skill-card">
+            <div class="skill-glow" aria-hidden="true">
+              <Icon />
+            </div>
+            <Icon />
+            <span>{label}</span>
+          </div>
+        ))
+      }
+    </section>
   </div>
 </section>
+
+<style>
+  .skill-card {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    container-type: size;
+    overflow: hidden;
+    border-radius: 12px;
+
+    --icon-saturate: 5;
+    --icon-brightness: 1.3;
+    --border-width: 2px;
+    --border-blur: 0;
+    --border-saturate: 4.2;
+    --border-brightness: 2.5;
+    --border-contrast: 2.5;
+  }
+
+  .skill-card::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    inset: 0;
+    border-radius: inherit;
+    border: var(--border-width, 2px) solid transparent;
+    backdrop-filter: blur(calc(var(--border-blur, 0) * 1px))
+      saturate(var(--border-saturate, 4.2))
+      brightness(var(--border-brightness, 2.5))
+      contrast(var(--border-contrast, 2.5));
+    mask:
+      linear-gradient(#fff 0 100%) border-box,
+      linear-gradient(#fff 0 100%) padding-box;
+    mask-composite: exclude;
+    z-index: 3;
+    clip-path: inset(0 round 12px);
+    transform: translateZ(0);
+    opacity: var(--border-opacity, 0);
+    transition: opacity 0.3s ease-out;
+  }
+
+  .skill-card > svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .skill-card > span {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-muted-foreground);
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+  }
+
+  .skill-glow {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+    filter: url(#skill-blur) saturate(var(--icon-saturate))
+      brightness(var(--icon-brightness));
+    translate: calc(var(--pointer-x, -10) * 50cqi)
+      calc(var(--pointer-y, -10) * 50cqh);
+    scale: 3.4;
+    will-change: translate;
+    z-index: 1;
+  }
+
+  .skill-glow > svg {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+</style>
+
+<script>
+  const cards = document.querySelectorAll<HTMLElement>(".skill-card");
+
+  document.addEventListener("pointermove", (e) => {
+    cards.forEach((card) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
+      const y = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
+
+      card.style.setProperty("--pointer-x", x.toFixed(3));
+      card.style.setProperty("--pointer-y", y.toFixed(3));
+
+      const dist = Math.sqrt(x * x + y * y);
+      const proximity = Math.max(0, 1 - dist / 2);
+      card.style.setProperty("--border-opacity", proximity.toFixed(3));
+    });
+  });
+
+  document.addEventListener("pointerleave", () => {
+    cards.forEach((card) => {
+      card.style.setProperty("--border-opacity", "0");
+    });
+  });
+</script>
