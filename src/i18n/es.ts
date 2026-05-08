@@ -57,4 +57,10 @@ export const es = {
 			viewAll: 'Ver todos',
 		},
 	},
+	footer: {
+		contact: [
+			'Siempre abierto a nuevos proyectos y colaboraciones.',
+			'No dudes en escribirme',
+		],
+	},
 } satisfies Translations;

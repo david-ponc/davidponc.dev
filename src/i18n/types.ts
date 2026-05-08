@@ -6,6 +6,7 @@ export type Translations = {
 	hero: Hero;
 	projects: Projects;
 	repositories: Repositories;
+	footer: Footer;
 };
 
 export type Navbar = {
@@ -47,4 +48,8 @@ export type Repositories = {
 		website: string;
 		viewAll: string;
 	};
+};
+
+export type Footer = {
+	contact: string[];
 };

@@ -55,4 +55,10 @@ export const en = {
 			viewAll: 'View all',
 		},
 	},
+	footer: {
+		contact: [
+			'Always open to new projects and collaborations.',
+			'Feel free to reach out to me',
+		],
+	},
 } satisfies Translations;
