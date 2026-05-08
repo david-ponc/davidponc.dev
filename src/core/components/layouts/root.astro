@@ -28,14 +28,15 @@ const isDark = themeCookie === "dark";
 		<Font cssVariable="--font-app-mono" />
 		<script is:inline>
 			(function () {
-				var cookie = document.cookie.match(/(?:^|; )theme=([^;]*)/);
-				var theme = cookie ? decodeURIComponent(cookie[1]) : "system";
+				const mq = window.matchMedia("(prefers-color-scheme: dark)");
+				const cookie = document.cookie.match(/(?:^|; )theme=([^;]*)/);
+				const theme = cookie ? decodeURIComponent(cookie[1]) : "system";
+
 				if (theme === "system") {
-					if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-						document.documentElement.classList.add("dark");
-					} else {
-						document.documentElement.classList.remove("dark");
-					}
+					document.documentElement.classList.toggle("dark", mq.matches);
+					mq.addEventListener("change", ({ matches }) => {
+						document.documentElement.classList.toggle("dark", matches);
+					});
 				}
 			})();
 		</script>
