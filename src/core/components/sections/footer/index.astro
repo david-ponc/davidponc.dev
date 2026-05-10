@@ -15,7 +15,7 @@ const t = getTranslations(lang);
     "after:absolute after:top-0 after:right-0 after:w-1/2 after:border-t after:border-t-border after:border-dashed",
   ]}
 >
-  <div class="mx-auto w-full max-w-6xl px-4 pt-12 pb-24 relative">
+  <div class="mx-auto w-full max-w-6xl px-4 py-12 relative">
     <section>
       <nav
         class="relative flex items-center before:pointer-events-none before:absolute before:rounded-md before:bg-brand-a/12 before:transition-[inset,opacity] before:duration-200 before:ease before:inset-[anchor(inside)] before:[position-anchor:--social-anchor] before:opacity-0 has-[a,button]:hover:before:opacity-100 has-[a,button]:focus-visible:before:opacity-100 mb-4"
@@ -40,7 +40,9 @@ const t = getTranslations(lang);
       </nav>
       {
         t.footer.contact.map((line) => (
-          <p class="text-muted-foreground max-w-prose text-pretty">{line}</p>
+          <p class="text-sm text-muted-foreground max-w-prose text-pretty">
+            {line}
+          </p>
         ))
       }
     </section>
