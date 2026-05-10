@@ -57,6 +57,9 @@ export const es = {
 			viewAll: 'Ver todos',
 		},
 	},
+	skills: {
+		heading: 'Habilidades',
+	},
 	footer: {
 		contact: [
 			'Siempre abierto a nuevos proyectos y colaboraciones.',

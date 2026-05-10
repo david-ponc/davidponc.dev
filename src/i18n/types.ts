@@ -6,6 +6,7 @@ export type Translations = {
 	hero: Hero;
 	projects: Projects;
 	repositories: Repositories;
+	skills: Skills;
 	footer: Footer;
 };
 
@@ -48,6 +49,10 @@ export type Repositories = {
 		website: string;
 		viewAll: string;
 	};
+};
+
+export type Skills = {
+	heading: string;
 };
 
 export type Footer = {
