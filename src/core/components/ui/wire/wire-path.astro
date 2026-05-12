@@ -103,6 +103,8 @@
   let totalLength = 0;
   let scrollStart = 0;
   let scrollEnd = 0;
+  let lastNodeLength = 0;
+  let lastNode: HTMLElement | null = null;
 
   const glowEl = document.getElementById("wire-glow") as SVGPathElement | null;
   const staticEl = document.getElementById(
@@ -134,6 +136,13 @@
     glowEl.setAttribute("d", d);
 
     totalLength = glowEl.getTotalLength();
+
+    lastNode = nodes[nodes.length - 1];
+    lastNodeLength = lengthAtMaxY(
+      glowEl,
+      totalLength,
+      points[points.length - 1].y,
+    );
 
     glowEl.style.strokeDasharray = `${GLOW_LENGTH} ${totalLength + GLOW_LENGTH}`;
     glowEl.style.strokeDashoffset = String(GLOW_LENGTH);
@@ -194,6 +203,10 @@
       gradient.setAttribute("y1", String(tail.y));
       gradient.setAttribute("x2", String(tip.x));
       gradient.setAttribute("y2", String(tip.y));
+    }
+    // Activate the last node when the glow tip reaches it
+    if (lastNode) {
+      lastNode.toggleAttribute("data-active", tipLength >= lastNodeLength);
     }
   }
 

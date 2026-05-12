@@ -26,8 +26,10 @@ const t = getTranslations(lang);
           href="https://www.linkedin.com/in/david-ponc/"
           class="relative p-1.5 transition-colors text-muted-foreground hover:text-brand-a focus-visible:text-brand-a hover:[anchor-name:--social-anchor] focus-visible:[anchor-name:--social-anchor]"
         >
-          <WireNode class="top-1/2 left-1/2" />
-          <LinkedInLogo class="size-7 bg-background/6 backdrop-blur-xs" />
+          <WireNode class="top-1/2 left-1/2 peer" />
+          <LinkedInLogo
+            class="size-7 bg-background/6 backdrop-blur-xs peer-data-active:text-brand-b delay-100"
+          />
         </a>
         <a
           target="_blank"
@@ -64,6 +66,8 @@ const t = getTranslations(lang);
           stroke="currentColor"
           stroke-width="0.2"
           stroke-dasharray="0.4,0.2"
+          fill="var(--color-border)"
+          fill-opacity="0.125"
           mask="url(#path-1-inside-1_14_4)"></path>
       </svg>
     </figure>
