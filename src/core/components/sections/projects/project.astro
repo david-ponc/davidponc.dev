@@ -6,6 +6,7 @@ import CodeIcon from "~/assets/code.svg";
 import { getLocale, getTranslations } from "~/i18n";
 import type { Project } from "~/data/projects";
 import type { ProjectTranslation } from "~/i18n/types";
+import Badge from "../../ui/badge.astro";
 
 type Props = Omit<Project, "key"> & ProjectTranslation;
 
@@ -19,22 +20,15 @@ const t = getTranslations(lang);
     <header class="flex flex-col gap-2">
       <h4 class="text-2xl text-balance">{title}</h4>
       <div class="flex items-center gap-2">
-        {
-          tags.map((tag) => (
-            <span class="text-sm font-medium px-2.5 py-0.5 rounded-full bg-muted/50 outline outline-border">
-              {tag}
-            </span>
-          ))
-        }
+        {tags.map((tag) => <Badge>{tag}</Badge>)}
       </div>
     </header>
     <div class="max-w-prose">
       <p class="text-muted-foreground">
         {description}
       </p>
-
     </div>
-    <footer class="flex items-center gap-3 relative">
+    <footer class="flex items-center gap-3 relative bg-background">
       <WireNode class="-left-2" />
       <WireNode class="left-6" />
       <WireNode class="-left-2" />

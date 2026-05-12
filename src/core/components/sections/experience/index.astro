@@ -1,0 +1,32 @@
+---
+import { experience } from "~/data/experience";
+import { getLocale, getTranslations } from "~/i18n";
+import { formatPeriod } from "./format-period";
+import Experience from "./experience.astro";
+
+const lang = getLocale(Astro.currentLocale);
+const t = getTranslations(lang);
+
+const localizedExperience = experience.map((item) => ({
+  ...item,
+  ...t.experience.items[item.key],
+  period: formatPeriod(item.startDate, item.endDate, {
+    locale: lang,
+    present: t.experience.present,
+  }),
+}));
+---
+
+<section class="flex min-h-[65dvh] items-center justify-center">
+  <div class="z-1 mx-auto flex flex-col w-full max-w-6xl gap-12">
+    <header>
+      <h2 id="experience" class="text-2xl font-medium text-muted-foreground">
+        {t.experience.heading}
+      </h2>
+    </header>
+
+    <div class="flex flex-col gap-8">
+      {localizedExperience.map((item) => <Experience {...item} />)}
+    </div>
+  </div>
+</section>

@@ -1,3 +1,4 @@
+import type { ExperienceKey } from '~/data/experience';
 import type { ProjectKey } from '~/data/projects';
 import type { RepositoryKey } from '~/data/repositories';
 
@@ -7,13 +8,14 @@ export type Translations = {
 	projects: Projects;
 	repositories: Repositories;
 	skills: Skills;
+	experience: Experience;
 	footer: Footer;
 };
 
 export type Navbar = {
 	projects: string;
 	skills: string;
-	occupations: string;
+	experience: string;
 };
 
 export type Hero = {
@@ -53,6 +55,19 @@ export type Repositories = {
 
 export type Skills = {
 	heading: string;
+};
+
+export type ExperienceTranslation = {
+	role: string;
+	location: string;
+	heading: string;
+	achievements: string[];
+};
+
+export type Experience = {
+	heading: string;
+	present: string;
+	items: Record<ExperienceKey, ExperienceTranslation>;
 };
 
 export type Footer = {

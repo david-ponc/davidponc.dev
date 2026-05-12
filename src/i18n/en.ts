@@ -1,3 +1,4 @@
+import { EXPERIENCE_KEY } from '~/data/experience';
 import { PROJECT_KEY } from '~/data/projects';
 import { REPOSITORY_KEY } from '~/data/repositories';
 
@@ -7,7 +8,7 @@ export const en = {
 	navbar: {
 		projects: 'Projects',
 		skills: 'Skills',
-		occupations: 'Occupations',
+		experience: 'Experience',
 	},
 	hero: {
 		role: 'Web Developer',
@@ -57,6 +58,25 @@ export const en = {
 	},
 	skills: {
 		heading: 'Skills',
+	},
+	experience: {
+		heading: 'Experience',
+		present: 'Present',
+		items: {
+			[EXPERIENCE_KEY.Urdaten]: {
+				role: 'Frontend Developer',
+				location: 'CDMX, Mexico · Remote',
+				heading: 'Achievements',
+				achievements: [
+					'Implemented a design system that standardized components, accelerated product delivery, and improved consistency across the product.',
+					'Introduced quality standards (linting and automatic formatting) that reduced production errors and improved collaboration among developers.',
+					'Defined code standards and strategies based on clean and hexagonal architecture adapted to Next.js, improving project maintainability.',
+					'Collaborated with the design team on developing new features and flow improvements, prioritizing user experience.',
+					'Worked alongside the backend team to define, structure, and integrate the product communication services.',
+					'Led the migration to App Directory in Next.js, establishing a scalable foundation and improving product load performance.',
+				],
+			},
+		},
 	},
 	footer: {
 		contact: [
