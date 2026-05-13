@@ -1,0 +1,16 @@
+---
+import type { Locale } from "~/i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang } = Astro.props;
+---
+
+<a
+  href={lang === "en" ? "/" : "/en"}
+  class="size-10 flex items-center justify-center text-muted-foreground transition-colors not-disabled:hover:text-brand-a focus-visible:text-brand-a rounded-lg hover:bg-brand-a/12 focus-visible:bg-brand-a/12"
+>
+  {lang === "en" ? "ES" : "EN"}
+</a>
