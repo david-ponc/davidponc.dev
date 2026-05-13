@@ -105,60 +105,9 @@
   let scrollEnd = 0;
   let lastNodeLength = 0;
   let lastNode: HTMLElement | null = null;
-
-  const glowEl = document.getElementById("wire-glow") as SVGPathElement | null;
-  const staticEl = document.getElementById(
-    "wire-path-static",
-  ) as SVGPathElement | null;
-  const svgEl = document.getElementById("wire-svg") as SVGSVGElement | null;
-
-  function updatePath() {
-    const nodes = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-wire-node]"),
-    );
-    if (nodes.length < 2 || !glowEl || !staticEl || !svgEl) return;
-
-    // Resize SVG to cover full page
-    const pageHeight = document.documentElement.scrollHeight;
-    svgEl.style.height = `${pageHeight}px`;
-
-    // Page-absolute coordinates: viewport position + current scroll
-    const points = nodes.map((n) => {
-      const r = n.getBoundingClientRect();
-      return {
-        x: r.left + r.width / 2,
-        y: r.top + r.height / 2 + window.scrollY,
-      };
-    });
-
-    const d = buildPath(points);
-    staticEl.setAttribute("d", d);
-    glowEl.setAttribute("d", d);
-
-    totalLength = glowEl.getTotalLength();
-
-    lastNode = nodes[nodes.length - 1];
-    lastNodeLength = lengthAtMaxY(
-      glowEl,
-      totalLength,
-      points[points.length - 1].y,
-    );
-
-    glowEl.style.strokeDasharray = `${GLOW_LENGTH} ${totalLength + GLOW_LENGTH}`;
-    glowEl.style.strokeDashoffset = String(GLOW_LENGTH);
-
-    // scrollStart: first node absolute Y minus half viewport (node enters center)
-    // scrollEnd: clamped to maxScroll so the glow always reaches the last node
-    const maxScroll =
-      document.documentElement.scrollHeight - window.innerHeight;
-    scrollStart = Math.max(0, points[0].y - window.innerHeight * 0.5);
-    scrollEnd = Math.min(
-      points[points.length - 1].y - window.innerHeight * 0.5,
-      maxScroll,
-    );
-
-    updateGlow();
-  }
+  let glowEl: SVGPathElement | null = null;
+  let staticEl: SVGPathElement | null = null;
+  let svgEl: SVGSVGElement | null = null;
 
   function lengthAtMaxY(
     path: SVGPathElement,
@@ -194,7 +143,6 @@
     const offset = GLOW_LENGTH - tipLength;
     glowEl.style.strokeDashoffset = String(offset);
 
-    // Update gradient coordinates to follow the glow segment (tail → tip)
     const tip = glowEl.getPointAtLength(tipLength);
     const tail = glowEl.getPointAtLength(tailLength);
     const gradient = document.getElementById("wire-gradient");
@@ -204,14 +152,72 @@
       gradient.setAttribute("x2", String(tip.x));
       gradient.setAttribute("y2", String(tip.y));
     }
-    // Activate the last node when the glow tip reaches it
     if (lastNode) {
       lastNode.toggleAttribute("data-active", tipLength >= lastNodeLength);
     }
   }
 
-  document.addEventListener("DOMContentLoaded", updatePath);
-  window.addEventListener("resize", updatePath);
-  window.addEventListener("scroll", updateGlow, { passive: true });
-  updatePath();
+  function updatePath() {
+    glowEl = document.getElementById("wire-glow") as SVGPathElement | null;
+    staticEl = document.getElementById(
+      "wire-path-static",
+    ) as SVGPathElement | null;
+    svgEl = document.getElementById("wire-svg") as SVGSVGElement | null;
+
+    const nodes = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-wire-node]"),
+    );
+    if (nodes.length < 2 || !glowEl || !staticEl || !svgEl) return;
+
+    const pageHeight = document.documentElement.scrollHeight;
+    svgEl.style.height = `${pageHeight}px`;
+
+    const points = nodes.map((n) => {
+      const r = n.getBoundingClientRect();
+      return {
+        x: r.left + r.width / 2,
+        y: r.top + r.height / 2 + window.scrollY,
+      };
+    });
+
+    const d = buildPath(points);
+    staticEl.setAttribute("d", d);
+    glowEl.setAttribute("d", d);
+
+    totalLength = glowEl.getTotalLength();
+
+    lastNode = nodes[nodes.length - 1];
+    lastNodeLength = lengthAtMaxY(
+      glowEl,
+      totalLength,
+      points[points.length - 1].y,
+    );
+
+    glowEl.style.strokeDasharray = `${GLOW_LENGTH} ${totalLength + GLOW_LENGTH}`;
+    glowEl.style.strokeDashoffset = String(GLOW_LENGTH);
+
+    const maxScroll =
+      document.documentElement.scrollHeight - window.innerHeight;
+    scrollStart = Math.max(0, points[0].y - window.innerHeight * 0.5);
+    scrollEnd = Math.min(
+      points[points.length - 1].y - window.innerHeight * 0.5,
+      maxScroll,
+    );
+
+    updateGlow();
+  }
+
+  function setup() {
+    updatePath();
+    window.addEventListener("resize", updatePath);
+    window.addEventListener("scroll", updateGlow, { passive: true });
+  }
+
+  function teardown() {
+    window.removeEventListener("resize", updatePath);
+    window.removeEventListener("scroll", updateGlow);
+  }
+
+  document.addEventListener("astro:page-load", setup);
+  document.addEventListener("astro:before-swap", teardown);
 </script>
