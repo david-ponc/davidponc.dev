@@ -27,34 +27,34 @@
 :root {
 	--background: var(--color-white);
 	--foreground: var(--color-mauve-900);
-  --primary: var(--color-indigo-500);
-  --primary-foreground: var(--color-mauve-50);
+	--primary: var(--color-indigo-500);
+	--primary-foreground: var(--color-mauve-50);
 	--muted: var(--color-mauve-100);
 	--muted-foreground: var(--color-mauve-500);
-  --secondary: var(--color-mauve-100);
-  --secondary-foreground: var(--color-mauve-500);
-  --card: var(--color-white);
-  --card-foreground: var(--color-mauve-900);
+	--secondary: var(--color-mauve-100);
+	--secondary-foreground: var(--color-mauve-500);
+	--card: var(--color-white);
+	--card-foreground: var(--color-mauve-900);
 	--border: --alpha(var(--color-mauve-300) / 70%);
 	--brand-a: var(--color-indigo-400);
 	--brand-b: var(--color-rose-400);
 }
 
 .dark {
-  --background-image-avatar: url("../../assets/images/me.webp");
+	--background-image-avatar: url("../../assets/images/me.webp");
 	--background: var(--color-mauve-950);
 	--foreground: var(--color-mauve-50);
-  --primary: var(--color-indigo-500);
-  --primary-foreground: var(--color-mauve-50);
+	--primary: var(--color-indigo-500);
+	--primary-foreground: var(--color-mauve-50);
 	--muted: var(--color-mauve-800);
-  --muted-foreground: var(--color-mauve-400);
-  --secondary: var(--color-mauve-800);
-  --secondary-foreground: var(--color-mauve-400);
-  --card: var(--color-mauve-900);
-  --card-foreground: var(--color-mauve-50);
+	--muted-foreground: var(--color-mauve-400);
+	--secondary: var(--color-mauve-800);
+	--secondary-foreground: var(--color-mauve-400);
+	--card: var(--color-mauve-900);
+	--card-foreground: var(--color-mauve-50);
 	--border: --alpha(var(--color-mauve-50) / 10%);
 	--brand-a: var(--color-indigo-300);
-  --brand-b: var(--color-rose-300);
+	--brand-b: var(--color-rose-300);
 }
 
 @theme inline {
@@ -63,24 +63,24 @@
 
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
 	--color-border: var(--border);
 	--color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-brand-a: var(--brand-a);
-  --color-brand-b: var(--brand-b);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-brand-a: var(--brand-a);
+	--color-brand-b: var(--brand-b);
 }
 
 @theme {
-  --background-image-avatar: url("../../assets/images/me-light.webp");
-  --background-image-noise: url("../../assets/images/noise.png");
-  --inset-shadow-t-px: inset 0 1px 0 0;
-  --background-image-default-active: linear-gradient(
+	--background-image-avatar: url("../../assets/images/me-light.webp");
+	--background-image-noise: url("../../assets/images/noise.png");
+	--inset-shadow-t-px: inset 0 1px 0 0;
+	--background-image-default-active: linear-gradient(
 		to bottom,
 		--alpha(var(--color-indigo-900) / 16%),
 		transparent
@@ -102,122 +102,142 @@
 	);
 }
 
+@keyframes fade-in-up {
+	0% {
+		opacity: 0;
+		transform: scale(0.95);
+		filter: blur(6px);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+		filter: blur(0);
+	}
+}
+
 @property --contact-me-angle {
-  syntax: '<angle>';
-  inherits: true;
-  initial-value: 135deg;
+	syntax: "<angle>";
+	inherits: true;
+	initial-value: 135deg;
 }
 
 @keyframes contact-me-rotate {
-  to {
-    --contact-me-angle: 495deg; /* 135deg + 360deg */
-  }
+	to {
+		--contact-me-angle: 495deg; /* 135deg + 360deg */
+	}
 }
 
 @layer components {
-  .glow-card {
-    position: relative;
-    background-clip: padding-box;
-    border-color: transparent;
+	.glow-card {
+		position: relative;
+		background-clip: padding-box;
+		border-color: transparent;
 
-    &::before {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: inherit;
-      background:
-        radial-gradient(
-          500px circle at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
-          var(--color-brand-b),
-          transparent 40%
-        ),
-        var(--color-border);
-      opacity: 1;
-      transition: background 300ms ease;
-      z-index: -1;
-      pointer-events: none;
-    }
-  }
+		&::before {
+			content: "";
+			position: absolute;
+			inset: -1px;
+			border-radius: inherit;
+			background:
+				radial-gradient(
+					500px circle at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
+					var(--color-brand-b),
+					transparent 40%
+				),
+				var(--color-border);
+			opacity: 1;
+			transition: background 300ms ease;
+			z-index: -1;
+			pointer-events: none;
+		}
+	}
 
-  .glow-container:not(:hover) .glow-card::before {
-    background: var(--color-border);
-  }
+	.glow-container:not(:hover) .glow-card::before {
+		background: var(--color-border);
+	}
 
-  .contact-me {
-    --contact-me-angle: 135deg;
-    position: relative;
-    background-clip: padding-box;
-    border: 2px solid transparent;
-    transition: --contact-me-angle 0.6s ease;
-    background-image: var(--background-image-noise);
-    background-color: var(--color-background);
+	.contact-me {
+		--contact-me-angle: 135deg;
+		position: relative;
+		background-clip: padding-box;
+		border: 2px solid transparent;
+		transition: --contact-me-angle 0.6s ease;
+		background-image: var(--background-image-noise);
+		background-color: var(--color-background);
 
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      border-radius: inherit;
-      transition: opacity 75ms ease-out;
-    }
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			inset: -2px;
+			border-radius: inherit;
+			transition: opacity 75ms ease-out;
+		}
 
-    &::after {
-      background: var(--color-border);
-      z-index: -1;
-    }
+		&::after {
+			background: var(--color-border);
+			z-index: -1;
+		}
 
-    &::before {
-      background: linear-gradient(var(--contact-me-angle), var(--color-brand-a), var(--color-brand-b));
-      opacity: 0;
-      z-index: -2;
-    }
+		&::before {
+			background: linear-gradient(
+				var(--contact-me-angle),
+				var(--color-brand-a),
+				var(--color-brand-b)
+			);
+			opacity: 0;
+			z-index: -2;
+		}
 
-    &:hover {
-      animation: contact-me-rotate 2s linear infinite;
-    }
+		&:hover {
+			animation: contact-me-rotate 2s linear infinite;
+		}
 
-    &:hover::after {
-      opacity: 0;
-    }
+		&:hover::after {
+			opacity: 0;
+		}
 
-    &:hover::before {
-      opacity: 1;
-    }
-  }
+		&:hover::before {
+			opacity: 1;
+		}
+	}
 }
 
-[data-tag=javascript] {
-  &::before {
-    background-color: var(--color-yellow-400);
-  }
+[data-tag="javascript"] {
+	&::before {
+		background-color: var(--color-yellow-400);
+	}
 }
 
-[data-tag=typescript], [data-tag=css] {
-  &::before {
-    background-color: var(--color-blue-400);
-  }
+[data-tag="typescript"],
+[data-tag="css"] {
+	&::before {
+		background-color: var(--color-blue-400);
+	}
 }
 
-[data-tag='tailwind css'] {
-  &::before {
-    background-color: var(--color-teal-400);
-  }
+[data-tag="tailwind css"] {
+	&::before {
+		background-color: var(--color-teal-400);
+	}
 }
 
-[data-tag=playwright] {
-  &::before {
-    background-color: var(--color-green-400);
-  }
+[data-tag="playwright"] {
+	&::before {
+		background-color: var(--color-green-400);
+	}
 }
 
-[data-tag=sveltekit], [data-tag=firebase], [data-tag=html] {
-  &::before {
-    background-color: var(--color-red-400);
-  }
+[data-tag="sveltekit"],
+[data-tag="firebase"],
+[data-tag="html"] {
+	&::before {
+		background-color: var(--color-red-400);
+	}
 }
 
-[data-tag='next.js'] {
-  &::before {
-    background-color: var(--color-foreground);
-  }
+[data-tag="next.js"] {
+	&::before {
+		background-color: var(--color-foreground);
+	}
 }
