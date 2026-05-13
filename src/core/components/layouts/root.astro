@@ -4,6 +4,7 @@ import "~/core/styles/global.css";
 import { Font } from "astro:assets";
 import type { Locale } from "~/i18n";
 import { DEFAULT_LOCALE } from "~/i18n";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
 	lang?: Locale;
@@ -12,7 +13,7 @@ interface Props {
 
 const { lang = DEFAULT_LOCALE, title = "David Ponce Vargas" } = Astro.props;
 
-const themeCookie = Astro.cookies.get("theme")?.value;
+const themeCookie = Astro.cookies.get("theme")?.value ?? "system";
 const isDark = themeCookie === "dark";
 ---
 
@@ -26,18 +27,29 @@ const isDark = themeCookie === "dark";
 		<title>{title}</title>
 		<Font cssVariable="--font-app-sans" preload />
 		<Font cssVariable="--font-app-mono" />
+		<ClientRouter />
 		<script is:inline>
 			(function () {
-				const mq = window.matchMedia("(prefers-color-scheme: dark)");
-				const cookie = document.cookie.match(/(?:^|; )theme=([^;]*)/);
-				const theme = cookie ? decodeURIComponent(cookie[1]) : "system";
+				const DARK_CLASS = "dark";
+				const systemMq = window.matchMedia("(prefers-color-scheme: dark)");
 
-				if (theme === "system") {
-					document.documentElement.classList.toggle("dark", mq.matches);
-					mq.addEventListener("change", ({ matches }) => {
-						document.documentElement.classList.toggle("dark", matches);
-					});
+				function getStoredTheme() {
+					const match = document.cookie.match(/(?:^|; )theme=([^;]*)/);
+					return match ? decodeURIComponent(match[1]) : "system";
 				}
+
+				function applyTheme() {
+					const theme = getStoredTheme();
+					const prefersDark =
+						theme === "system" ? systemMq.matches : theme === "dark";
+					document.documentElement.classList.toggle(DARK_CLASS, prefersDark);
+				}
+
+				applyTheme();
+
+				document.addEventListener("astro:after-swap", applyTheme);
+
+				systemMq.addEventListener("change", applyTheme);
 			})();
 		</script>
 	</head>

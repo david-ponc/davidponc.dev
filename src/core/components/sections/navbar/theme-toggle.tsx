@@ -1,9 +1,34 @@
 import { Menu } from '@base-ui/react/menu';
 import { type SVGProps, useState } from 'react';
 
-export function ThemeToggle({ initialValue }: { initialValue: string }) {
+type Theme = 'light' | 'dark' | 'system';
+
+function applyThemeToDocument(theme: Theme): void {
+	const prefersDark =
+		theme === 'system'
+			? window.matchMedia('(prefers-color-scheme: dark)').matches
+			: theme === 'dark';
+
+	document.documentElement.classList.toggle('dark', prefersDark);
+}
+
+async function persistTheme(theme: Theme): Promise<void> {
+	if (theme === 'system') {
+		await cookieStore.delete('theme');
+	} else {
+		await cookieStore.set('theme', theme);
+	}
+}
+
+export function ThemeToggle({ initialValue }: { initialValue: Theme }) {
 	const [open, setOpen] = useState(false);
-	const [value, setValue] = useState(initialValue);
+	const [value, setValue] = useState<Theme>(initialValue);
+
+	async function handleThemeChange(theme: Theme) {
+		setValue(theme);
+		applyThemeToDocument(theme);
+		await persistTheme(theme);
+	}
 
 	return (
 		<Menu.Root open={open} onOpenChange={setOpen}>
@@ -24,27 +49,7 @@ export function ThemeToggle({ initialValue }: { initialValue: string }) {
 							</Menu.GroupLabel>
 							<Menu.RadioGroup
 								value={value}
-								onValueChange={async value => {
-									setValue(value);
-
-									if (value === 'dark') {
-										document.documentElement.classList.add('dark');
-									} else if (value === 'light') {
-										document.documentElement.classList.remove('dark');
-									} else {
-										// system: respetar prefers-color-scheme
-										const prefersDark = window.matchMedia(
-											'(prefers-color-scheme: dark)',
-										).matches;
-										document.documentElement.classList.toggle('dark', prefersDark);
-									}
-
-									if (value === 'system') {
-										await cookieStore.delete('theme');
-									} else {
-										await cookieStore.set('theme', value);
-									}
-								}}
+								onValueChange={(value) => handleThemeChange(value as Theme)}
 							>
 								<Menu.RadioItem
 									value='light'
