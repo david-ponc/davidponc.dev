@@ -2,6 +2,7 @@
 import { getLocale, getTranslations } from "~/i18n";
 import ContactMe from "./contact-me.astro";
 import WireNode from "~/core/components/ui/wire/wire-node.astro";
+import { reveal } from "~/core/animations/transitions";
 
 const lang = getLocale(Astro.currentLocale);
 const t = getTranslations(lang);
@@ -27,10 +28,16 @@ const t = getTranslations(lang);
       >
         David Ponce Vargas
       </h1>
-      <h2 class="text-3xl font-medium text-muted-foreground text-balance">
+      <h2
+        class="text-3xl font-medium text-muted-foreground text-balance"
+        transition:animate={reveal}
+      >
         {t.hero.role}
       </h2>
-      <p class="mt-4 text-muted-foreground max-w-prose mb-12 text-pretty">
+      <p
+        class="mt-4 text-muted-foreground max-w-prose mb-12 text-pretty"
+        transition:animate={reveal}
+      >
         {t.hero.bio}
       </p>
       <div class="relative inline-block">

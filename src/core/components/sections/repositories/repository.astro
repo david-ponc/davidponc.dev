@@ -6,6 +6,7 @@ import Button from "../../ui/button";
 import CodeIcon from "~/assets/code.svg";
 import RocketIcon from "~/assets/rocket.svg";
 import BookmarkIcon from "~/assets/bookmark.svg";
+import { reveal } from "~/core/animations/transitions";
 type Props = Repository & RepositoryTranslation;
 
 const { title, tags, description, sourceUrl, websiteUrl } = Astro.props;
@@ -19,10 +20,10 @@ const t = getTranslations(lang);
 >
   <header class="flex items-center gap-2">
     <BookmarkIcon class="size-4 text-muted-foreground" />
-    <h3 class="text-base/none font-medium">{title}</h3>
+    <h3 class="text-base/none font-medium" transition:animate={reveal}>{title}</h3>
   </header>
   <section class="flex flex-col gap-2">
-    <p class="max-w-prose text-sm text-muted-foreground text-pretty">{description}</p>
+    <p class="max-w-prose text-sm text-muted-foreground text-pretty" transition:animate={reveal}>{description}</p>
     <ul class="text-xs font-medium flex items-center gap-4">
       {
         tags.map((tag) => (
@@ -46,6 +47,7 @@ const t = getTranslations(lang);
           href={sourceUrl}
           variant="ghost"
           rel="noopener noreferrer"
+          transition:animate={reveal}
         >
           {t.repositories.actions.source}
           <CodeIcon />
@@ -61,6 +63,7 @@ const t = getTranslations(lang);
           href={websiteUrl}
           variant="secondary"
           rel="noopener noreferrer"
+          transition:animate={reveal}
         >
           {t.repositories.actions.website}
           <RocketIcon />

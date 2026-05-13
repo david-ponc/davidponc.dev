@@ -5,6 +5,7 @@ import LinkedInLogo from "../../../../assets/linkedin.svg";
 import { getLocale, getTranslations, type Locale } from "~/i18n";
 import { ThemeToggle } from "./theme-toggle";
 import LanguageToggle from "./language-toggle.astro";
+import { reveal } from "~/core/animations/transitions";
 
 interface Props {
   lang?: Locale;
@@ -17,10 +18,10 @@ const theme =
   "system";
 ---
 
-<header
-  class="-mb-px w-full border-b py-1.5 text-sm font-medium border-b-border/50"
->
-  <div class="max-w-6xl mx-auto grid grid-cols-[auto_1fr_auto] items-center">
+<header class="-mb-px w-full border-b text-sm font-medium border-b-border/50">
+  <div
+    class="max-w-6xl mx-auto py-1.5 grid grid-cols-[auto_1fr_auto] items-center"
+  >
     <DavidPoncLogo class="size-6" />
 
     <div class="col-start-3 flex items-center gap-4">
@@ -30,18 +31,21 @@ const theme =
         <a
           href="#projects"
           class="px-2.5 py-1 transition-colors hover:text-brand-b focus-visible:text-brand-b hover:[anchor-name:--nav-anchor] focus-visible:[anchor-name:--nav-anchor]"
+          transition:animate={reveal}
         >
           {t.navbar.projects}
         </a>
         <a
           href="#skills"
           class="px-2.5 py-1 transition-colors hover:text-brand-b focus-visible:text-brand-b hover:[anchor-name:--nav-anchor] focus-visible:[anchor-name:--nav-anchor]"
+          transition:animate={reveal}
         >
           {t.navbar.skills}
         </a>
         <a
           href="#experience"
           class="px-2.5 py-1 transition-colors hover:text-brand-b focus-visible:text-brand-b hover:[anchor-name:--nav-anchor] focus-visible:[anchor-name:--nav-anchor]"
+          transition:animate={reveal}
         >
           {t.navbar.experience}
         </a>

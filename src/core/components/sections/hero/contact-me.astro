@@ -1,6 +1,7 @@
 ---
 import { getLocale, getTranslations } from "~/i18n";
 import Button from "~/core/components/ui/button";
+import { reveal } from "~/core/animations/transitions";
 
 const lang = getLocale(Astro.currentLocale);
 const t = getTranslations(lang);
@@ -14,7 +15,9 @@ const t = getTranslations(lang);
   rel="noopener noreferrer"
   href="https://www.linkedin.com/in/david-ponc/"
 >
-  <span class="relative z-1">{t.hero.contact}</span>
+  <span class="relative z-1" transition:animate={reveal}>
+    {t.hero.contact}
+  </span>
   <svg
     width="16"
     height="16"

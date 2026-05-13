@@ -7,6 +7,7 @@ import { getLocale, getTranslations } from "~/i18n";
 import type { Project } from "~/data/projects";
 import type { ProjectTranslation } from "~/i18n/types";
 import Badge from "../../ui/badge.astro";
+import { reveal } from "~/core/animations/transitions";
 
 type Props = Omit<Project, "key"> & ProjectTranslation;
 
@@ -18,13 +19,13 @@ const t = getTranslations(lang);
 <article class="grid grid-cols-[3fr_2fr] gap-16">
   <div class="flex flex-col gap-6">
     <header class="flex flex-col gap-2">
-      <h4 class="text-2xl text-balance">{title}</h4>
+      <h4 class="text-2xl text-balance" transition:animate={reveal}>{title}</h4>
       <div class="flex items-center gap-2">
         {tags.map((tag) => <Badge>{tag}</Badge>)}
       </div>
     </header>
     <div class="max-w-prose">
-      <p class="text-muted-foreground">
+      <p class="text-muted-foreground" transition:animate={reveal}>
         {description}
       </p>
     </div>
@@ -39,6 +40,7 @@ const t = getTranslations(lang);
         href={sourceUrl}
         variant="secondary"
         rel="noopener noreferrer"
+        transition:animate={reveal}
       >
         {t.projects.actions.source}
         <CodeIcon />
@@ -50,6 +52,7 @@ const t = getTranslations(lang);
         target="_blank"
         href={websiteUrl}
         rel="noopener noreferrer"
+        transition:animate={reveal}
       >
         {t.projects.actions.website}
         <RocketIcon />
