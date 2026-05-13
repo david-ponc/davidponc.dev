@@ -17,5 +17,11 @@
 				}
 			}
 		}
+	},
+	"languages": {
+		"Astro": {
+			"language_servers": ["astro-language-server"],
+			"formatter": ["prettier", { "language_server": { "name": "biome" } }]
+		}
 	}
 }
