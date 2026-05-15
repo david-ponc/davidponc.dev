@@ -23,7 +23,7 @@ const languages = [
 ---
 
 <nav
-  class="flex items-center p-0.5 rounded-lg bg-muted outline outline-border h-9"
+  class="flex items-center p-0.5 rounded-lg bg-muted outline outline-border h-9 dark:bg-card"
 >
   {
     languages.map((language) => {
@@ -32,13 +32,13 @@ const languages = [
         <a
           href={language.href}
           data-lang-toggle
-          class="relative size-8 flex items-center justify-center transition-colors"
+          class="relative size-8 flex items-center justify-center transition-colors text-xs"
         >
           {isActive ? (
             <span
               transition:name="language-active-indicator"
               aria-hidden="true"
-              class="absolute grid place-items-center inset-0 bg-background rounded-md outline outline-border shadow-xs"
+              class="absolute grid place-items-center inset-0 bg-background rounded-md outline outline-border shadow-xs dark:bg-secondary"
             >
               <span class="relative text-foreground">{language.label}</span>
             </span>

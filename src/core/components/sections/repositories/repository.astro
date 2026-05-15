@@ -20,16 +20,23 @@ const t = getTranslations(lang);
 >
   <header class="flex items-center gap-2">
     <BookmarkIcon class="size-4 text-muted-foreground" />
-    <h3 class="text-base/none font-medium" transition:animate={reveal}>{title}</h3>
+    <h3 class="text-base/none font-medium" transition:animate={reveal}>
+      {title}
+    </h3>
   </header>
   <section class="flex flex-col gap-2">
-    <p class="max-w-prose text-sm text-muted-foreground text-pretty" transition:animate={reveal}>{description}</p>
-    <ul class="text-xs font-medium flex items-center gap-4">
+    <p
+      class="max-w-prose text-sm text-muted-foreground text-pretty"
+      transition:animate={reveal}
+    >
+      {description}
+    </p>
+    <ul class="text-xs font-medium flex flex-wrap items-center gap-x-4 gap-y-1">
       {
         tags.map((tag) => (
           <li
             data-tag={tag.toLowerCase()}
-            class="flex items-center gap-1 before:size-1.5 before:rounded-full before:bg-muted text-muted-foreground"
+            class="flex items-center gap-1 before:size-1.5 before:rounded-full before:bg-muted text-muted-foreground whitespace-nowrap"
           >
             {tag}
           </li>
@@ -37,7 +44,9 @@ const t = getTranslations(lang);
       }
     </ul>
   </section>
-  <footer class="flex items-center justify-end-safe mt-1 gap-3">
+  <footer
+    class="flex flex-col lg:flex-row lg:items-center lg:justify-end-safe gap-3 mt-auto"
+  >
     {
       sourceUrl ? (
         <Button

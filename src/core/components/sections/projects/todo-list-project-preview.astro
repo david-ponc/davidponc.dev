@@ -22,14 +22,14 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", {
   </defs>
 </svg>
 
-<div class="perspective-[1950px]">
+<div class="perspective-distant pr-16">
   <div
-    class="size-full aspect-video rotate-x-60 transform-3d -rotate-z-45 [zoom:1.1] grid [grid-template-areas:'content']"
+    class="w-full mx-auto max-w-md aspect-16/10 rotate-x-46 transform-3d rotate-z-315 translate-x-10 grid [grid-template-areas:'content'] scale-[0.8] @xl/projects:scale-100"
   >
     <!-- Capa 1 -->
     <div
       data-layer="1"
-      class="relative size-full overflow-hidden rounded-md border border-brand-b/70 bg-background [grid-area:content]"
+      class="absolute inset-0 overflow-hidden rounded-md border border-brand-b/70 bg-background [grid-area:content]"
     >
       <svg class="absolute inset-0 h-full w-full text-brand-b/70">
         <defs>
@@ -52,7 +52,7 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", {
     <!-- Capa 2.1 -->
     <div
       data-layer="2"
-      class="bg-card flex flex-col gap-2 border border-border rounded-md [grid-area:content] translate-z-10 transition-[translate] duration-500 p-9 pb-4 text-sm transform-3d delay-75 [article:has(a:hover)_&]:translate-z-14 [article:has(a:hover)_&]:delay-75"
+      class="bg-card absolute inset-0 flex flex-col gap-2 border border-border rounded-md [grid-area:content] translate-z-10 transition-[translate] duration-500 p-9 pb-4 text-sm delay-75 [article:has(a:hover)_&]:translate-z-14 [article:has(a:hover)_&]:delay-75"
     >
       <header>
         <h5
@@ -61,6 +61,7 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", {
           Buen día, Usuario
         </h5>
         <p class="text-base truncate">Hoy es {formattedDate}</p>
+
         <p class="text-xs text-muted-foreground">
           Tienes{" "}
           <span class="text-amber-300 text-shadow-amber-400">2</span>{" "}
@@ -71,7 +72,7 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", {
         class="bg-background h-8 rounded-lg ring ring-border p-1 pl-3 text-muted-foreground flex items-center gap-4 invisible"
       >
         <p
-          class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background"
+          class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background truncate"
         >
           Escribe una tarea
         </p>
@@ -98,7 +99,7 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", {
           <div class="bg-background rounded size-3.5 ring ring-border shrink-0">
           </div>
           <p
-            class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background"
+            class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background truncate"
           >
             Reunión para análisis de requerimientos
           </p>
@@ -116,7 +117,7 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", {
           <div class="bg-background rounded size-3.5 ring ring-border shrink-0">
           </div>
           <p
-            class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background"
+            class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background truncate"
           >
             APP-32D - Diseño de interfaz
           </p>
@@ -133,7 +134,7 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", {
     <!-- Capa 2.2 -->
     <div
       data-layer="2"
-      class="flex flex-col gap-2 [grid-area:content] translate-z-10 p-9 pb-4 text-sm transform-3d transition-[translate] duration-500 delay-75 [article:has(a:hover)_&]:translate-z-14 [article:has(a:hover)_&]:delay-75"
+      class="absolute inset-0 flex flex-col gap-2 [grid-area:content] translate-z-10 p-9 pb-4 text-sm transition-[translate] duration-500 delay-75 [article:has(a:hover)_&]:translate-z-14 [article:has(a:hover)_&]:delay-75"
     >
       <div aria-hidden="true" class="invisible select-none">
         <p class="text-2xl font-bold">&nbsp;</p>
@@ -188,7 +189,7 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", {
     <!-- Capa 3 -->
     <div
       data-layer="3"
-      class="flex flex-col gap-2 [grid-area:content] translate-z-12 p-9 pb-4 text-sm transform-3d transition-[translate] duration-500 delay-150 [article:has(a:hover)_&]:translate-z-16 [article:has(a:hover)_&]:delay-0"
+      class="absolute inset-0 flex flex-col gap-2 [grid-area:content] translate-z-12 p-9 pb-4 text-sm transition-[translate] duration-500 delay-150 [article:has(a:hover)_&]:translate-z-16 [article:has(a:hover)_&]:delay-0"
     >
       <div aria-hidden="true" class="invisible select-none">
         <p class="text-2xl font-bold">&nbsp;</p>
@@ -199,7 +200,7 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", {
         class="bg-background h-8 rounded-lg ring ring-border p-1 pl-3 text-muted-foreground flex items-center gap-4"
       >
         <p
-          class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background"
+          class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background truncate"
         >
           Escribe una tarea
         </p>
@@ -227,7 +228,7 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", {
             </svg>
           </div>
           <p
-            class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background"
+            class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background truncate"
           >
             Reunión para análisis de requerimientos
           </p>
@@ -253,7 +254,7 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", {
             </svg>
           </div>
           <p
-            class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background"
+            class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background truncate"
           >
             APP-32D - Diseño de interfaz
           </p>
@@ -271,7 +272,7 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", {
     <!-- Capa 4 -->
     <div
       data-layer="4"
-      class="flex flex-col gap-2 [grid-area:content] translate-z-13 p-9 pb-4 text-sm transform-3d transition-[translate] duration-500 delay-150 [article:has(a:hover)_&]:translate-z-18 [article:has(a:hover)_&]:delay-0"
+      class="flex flex-col gap-2 [grid-area:content] translate-z-13 p-9 pb-4 text-sm transition-[translate] duration-500 delay-150 [article:has(a:hover)_&]:translate-z-18 [article:has(a:hover)_&]:delay-0"
     >
       <div aria-hidden="true" class="invisible select-none">
         <p class="text-2xl font-bold">&nbsp;</p>
@@ -279,7 +280,7 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", {
         <p class="text-xs">&nbsp;</p>
       </div>
       <div class="p-1 h-8 pl-3 text-muted-foreground flex items-center gap-4">
-        <p class="grow">Escribe una tarea</p>
+        <p class="grow truncate">Escribe una tarea</p>
         <div
           class="bg-card p-1.5 rounded-md shrink-0 flex items-center gap-1 ring ring-border h-6"
         >
@@ -300,7 +301,7 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", {
         <div class="text-xs p-1.5 text-foreground flex items-center gap-2">
           <div class="bg-background rounded size-3.5 ring ring-border shrink-0">
           </div>
-          <p class="grow">Reunión para análisis de requerimientos</p>
+          <p class="grow truncate">Reunión para análisis de requerimientos</p>
           <svg
             fill="currentColor"
             class="size-4 text-muted-foreground shrink-0"
@@ -312,7 +313,7 @@ const formattedDate = currentDate.toLocaleDateString("es-ES", {
         <div class="text-xs p-1.5 text-foreground flex items-center gap-2">
           <div class="bg-background rounded size-3.5 ring ring-border shrink-0">
           </div>
-          <p class="grow">APP-32D - Diseño de interfaz</p>
+          <p class="grow truncate">APP-32D - Diseño de interfaz</p>
           <svg
             fill="currentColor"
             class="size-4 text-muted-foreground shrink-0"
