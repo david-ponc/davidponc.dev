@@ -17,8 +17,12 @@ const localizedExperience = experience.map((item) => ({
 }));
 ---
 
-<section class="flex min-h-[65dvh] items-center justify-center">
-  <div class="z-1 mx-auto flex flex-col w-full max-w-6xl gap-12">
+<section
+  class="@container/experience flex min-h-[65dvh] items-center justify-center"
+>
+  <div
+    class="z-1 mx-auto flex flex-col w-full max-w-6xl gap-12 px-4 @6xl/experience:px-0"
+  >
     <header>
       <h2 id="experience" class="text-2xl font-medium text-muted-foreground">
         {t.experience.heading}

@@ -14,8 +14,12 @@ const localizedProjects = projects.map((project) => ({
 }));
 ---
 
-<section class="flex min-h-[75dvh] items-center justify-center">
-  <div class="z-1 mx-auto flex flex-col w-full max-w-6xl gap-32">
+<section
+  class="@container/projects flex min-h-[75dvh] items-center justify-center"
+>
+  <div
+    class="z-1 mx-auto flex flex-col w-full max-w-6xl gap-32 px-4 @6xl/projects:px-0"
+  >
     <header class="relative">
       <h2
         id="projects"

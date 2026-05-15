@@ -34,8 +34,12 @@ const skills = [
   </defs>
 </svg>
 
-<section class="flex items-center justify-center min-h-[50dvh]">
-  <div class="z-1 mx-auto flex flex-col w-full max-w-6xl gap-12">
+<section
+  class="@container/skills flex items-center justify-center min-h-[50dvh]"
+>
+  <div
+    class="z-1 mx-auto flex flex-col w-full max-w-6xl gap-12 px-4 @6xl/skills:px-0"
+  >
     <header class="relative">
       <h2 id="skills" class="text-2xl font-medium text-muted-foreground">
         {t.skills.heading}
