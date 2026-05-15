@@ -64,15 +64,32 @@ const localizedRepositories = repositories.map((repository) => ({
 </section>
 
 <script>
-  const container = document.getElementById("glow-container");
-  if (container) {
-    container.addEventListener("mousemove", (e) => {
-      const cards = container.querySelectorAll<HTMLElement>(".glow-card");
-      cards.forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        card.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
-        card.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
-      });
+  let container: HTMLElement | null = null;
+
+  function onMouseMove(e: MouseEvent) {
+    if (!container) return;
+    const cards = container.querySelectorAll<HTMLElement>(".glow-card");
+    cards.forEach((card) => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
+      card.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
     });
   }
+
+  function setup() {
+    container = document.getElementById("glow-container");
+    if (container) {
+      container.addEventListener("mousemove", onMouseMove);
+    }
+  }
+
+  function teardown() {
+    if (container) {
+      container.removeEventListener("mousemove", onMouseMove);
+      container = null;
+    }
+  }
+
+  document.addEventListener("astro:page-load", setup);
+  document.addEventListener("astro:before-swap", teardown);
 </script>

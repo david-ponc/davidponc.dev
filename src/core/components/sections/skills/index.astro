@@ -149,9 +149,9 @@ const skills = [
 </style>
 
 <script>
-  const cards = document.querySelectorAll<HTMLElement>(".skill-card");
+  let cards: NodeListOf<HTMLElement>;
 
-  document.addEventListener("pointermove", (e) => {
+  function onPointerMove(e: PointerEvent) {
     cards.forEach((card) => {
       const rect = card.getBoundingClientRect();
       const x = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
@@ -164,11 +164,25 @@ const skills = [
       const proximity = Math.max(0, 1 - dist / 2);
       card.style.setProperty("--border-opacity", proximity.toFixed(3));
     });
-  });
+  }
 
-  document.addEventListener("pointerleave", () => {
+  function onPointerLeave() {
     cards.forEach((card) => {
       card.style.setProperty("--border-opacity", "0");
     });
-  });
+  }
+
+  function setup() {
+    cards = document.querySelectorAll<HTMLElement>(".skill-card");
+    document.addEventListener("pointermove", onPointerMove);
+    document.addEventListener("pointerleave", onPointerLeave);
+  }
+
+  function teardown() {
+    document.removeEventListener("pointermove", onPointerMove);
+    document.removeEventListener("pointerleave", onPointerLeave);
+  }
+
+  document.addEventListener("astro:page-load", setup);
+  document.addEventListener("astro:before-swap", teardown);
 </script>
