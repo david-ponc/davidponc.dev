@@ -5,6 +5,7 @@ import LinkedInLogo from "../../../../assets/linkedin.svg";
 import { getLocale, getTranslations, type Locale } from "~/i18n";
 import { ThemeToggle } from "./theme-toggle";
 import LanguageToggle from "./language-toggle.astro";
+import { MobileMenu } from "./mobile-menu";
 import { reveal } from "~/core/animations/transitions";
 
 interface Props {
@@ -23,6 +24,15 @@ const theme =
     class="max-w-6xl mx-auto py-1.5 grid grid-cols-[auto_1fr_auto] items-center px-4 lg:px-0"
   >
     <DavidPoncLogo class="size-6" />
+
+    <div class="col-start-3 flex lg:hidden">
+      <MobileMenu
+        client:load
+        t={t.navbar}
+        initialTheme={theme}
+        lang={getLocale(lang)}
+      />
+    </div>
 
     <div class="hidden col-start-3 lg:flex items-center gap-4">
       <nav
