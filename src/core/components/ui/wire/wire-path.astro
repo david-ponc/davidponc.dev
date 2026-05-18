@@ -169,9 +169,6 @@
     );
     if (nodes.length < 2 || !glowEl || !staticEl || !svgEl) return;
 
-    const pageHeight = document.documentElement.scrollHeight;
-    svgEl.style.height = `${pageHeight}px`;
-
     const points = nodes.map((n) => {
       const r = n.getBoundingClientRect();
       return {

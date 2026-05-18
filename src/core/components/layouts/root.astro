@@ -31,7 +31,7 @@ const isDark = themeCookie === "dark";
 
 <html
   lang={lang}
-  class:list={["scroll-smooth antialiased", { dark: isDark }]}
+  class:list={["scroll-smooth antialiased h-full", { dark: isDark }]}
   transition:animate="none"
 >
   <head>
@@ -123,7 +123,7 @@ const isDark = themeCookie === "dark";
     </script>
   </head>
   <body
-    class="flex min-h-full flex-col bg-background text-foreground tracking-[-1.5%] overflow-x-hidden"
+    class="flex min-h-full flex-col bg-background text-foreground tracking-[-1.5%] overflow-x-clip"
   >
     <slot />
   </body>
