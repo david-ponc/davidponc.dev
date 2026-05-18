@@ -3,6 +3,7 @@ import LinkedInLogo from "~/assets/linkedin.svg";
 import GitHubLogo from "~/assets/github.svg";
 import WireNode from "../../ui/wire/wire-node.astro";
 import { getLocale, getTranslations } from "~/i18n";
+import ShareButton from "./share-button.astro";
 
 const lang = getLocale(Astro.currentLocale);
 const t = getTranslations(lang);
@@ -39,6 +40,7 @@ const t = getTranslations(lang);
         >
           <GitHubLogo class="size-7" />
         </a>
+        <ShareButton client:visible />
       </nav>
       {
         t.footer.contact.map((line) => (
