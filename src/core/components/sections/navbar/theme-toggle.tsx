@@ -49,7 +49,7 @@ export function ThemeToggle({ initialValue }: { initialValue: Theme }) {
 							</Menu.GroupLabel>
 							<Menu.RadioGroup
 								value={value}
-								onValueChange={(value) => handleThemeChange(value as Theme)}
+								onValueChange={value => handleThemeChange(value as Theme)}
 							>
 								<Menu.RadioItem
 									value='light'

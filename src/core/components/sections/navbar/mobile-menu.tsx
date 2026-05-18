@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/a11y/useAnchorContent: The content of the anchor is dynamic and descriptives */
 import { Drawer } from '@base-ui/react/drawer';
 import { type SVGProps, useState } from 'react';
 
