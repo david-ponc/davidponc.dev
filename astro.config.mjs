@@ -1,4 +1,5 @@
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, fontProviders } from 'astro/config';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -9,7 +10,8 @@ import vercel from '@astrojs/vercel';
 // @ts-check
 
 export default defineConfig({
-  integrations: [react()],
+  site: 'https://davidponc.dev',
+  integrations: [react(), sitemap()],
   vite: {
       plugins: [tsconfigPaths(), tailwindcss()],
 	},
