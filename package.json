@@ -11,6 +11,7 @@
 	},
 	"dependencies": {
 		"@astrojs/react": "5.0.4",
+		"@astrojs/sitemap": "3.7.2",
 		"@astrojs/vercel": "10.0.6",
 		"@base-ui/react": "1.4.1",
 		"@tailwindcss/vite": "4.2.4",
