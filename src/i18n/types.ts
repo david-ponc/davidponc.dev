@@ -16,6 +16,24 @@ export type Navbar = {
 	projects: string;
 	skills: string;
 	experience: string;
+	menu: {
+		groups: {
+			navigation: string;
+			preferences: string;
+			contact: string;
+		};
+		appearance: {
+			label: string;
+			light: string;
+			dark: string;
+			system: string;
+		};
+		language: {
+			label: string;
+			es: string;
+			en: string;
+		};
+	};
 };
 
 export type Hero = {

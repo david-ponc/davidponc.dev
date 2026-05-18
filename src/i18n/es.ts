@@ -9,6 +9,24 @@ export const es = {
 		projects: 'Proyectos',
 		skills: 'Habilidades',
 		experience: 'Experiencia',
+		menu: {
+			groups: {
+				navigation: 'Navegación',
+				preferences: 'Preferencias',
+				contact: 'Contacto',
+			},
+			appearance: {
+				label: 'Apariencia',
+				light: 'Claro',
+				dark: 'Oscuro',
+				system: 'Sistema',
+			},
+			language: {
+				label: 'Idioma',
+				es: 'Español',
+				en: 'English',
+			},
+		},
 	},
 	hero: {
 		role: 'Desarrollador Web',
