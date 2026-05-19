@@ -5,7 +5,7 @@
 		"jobs": [
 			{
 				"name": "biome-check",
-				"glob": "*.{js,ts,jsx,tsx,json,css,md,astro}",
+				"glob": "*.{js,ts,jsx,tsx,json,css,astro}",
 				"run": "pnpm biome check --fix {staged_files}",
 				"stage_fixed": true
 			}
