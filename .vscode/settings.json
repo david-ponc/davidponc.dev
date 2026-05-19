@@ -9,9 +9,5 @@
 		"editor.defaultFormatter": "astro-build.astro-vscode"
 	},
 	"editor.tabSize": 2,
-	"tailwindCSS.classAttributes": ["cn", "tv"],
-	"tailwindCSS.experimental.classRegex": [
-		"(?:tw|clsx|cn)\\(([^;]*)[\\);]",
-		"[`'\"`]([^'\"`;]*)[`'\"`]"
-	]
+	"tailwindCSS.classFunctions": ["cn", "tv"]
 }
