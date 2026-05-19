@@ -1,7 +1,5 @@
 # davidponc.dev
 
-> Portafolio personal de **David Ponce Vargas** — Desarrollador Web especializado en arquitectura frontend, calidad de código y entrega de producto.
-
 [![Astro](https://img.shields.io/badge/Astro-6.2.1-BC52EE?logo=astro)](https://astro.build)
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript)](https://www.typescriptlang.org)
