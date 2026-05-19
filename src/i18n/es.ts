@@ -32,6 +32,8 @@ export const es = {
 		role: 'Desarrollador Web',
 		bio: 'Más de 3 años de experiencia como Desarrollador de Software, especializado en Front-end con enfoque en arquitectura, calidad de código y entrega de producto.',
 		contact: 'Contáctame',
+		altImage:
+			'Retrato profesional en blanco y negro de un hombre joven con los brazos cruzados, vistiendo playera negra, mirando ligeramente hacia arriba',
 	},
 	projects: {
 		heading: 'Proyectos',

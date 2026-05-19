@@ -3,9 +3,16 @@ import { getLocale, getTranslations } from "~/i18n";
 import ContactMe from "./contact-me.astro";
 import WireNode from "~/core/components/ui/wire/wire-node.astro";
 import { reveal } from "~/core/animations/transitions";
+import { Picture } from "astro:assets";
+import meDark from "~/assets/images/me.avif";
+import meLight from "~/assets/images/me-light.avif";
 
 const lang = getLocale(Astro.currentLocale);
 const t = getTranslations(lang);
+
+const themeCookie = Astro.cookies.get("theme")?.value ?? "system";
+const isDark = themeCookie === "dark";
+const avatarImage = isDark ? meDark : meLight;
 ---
 
 <section
@@ -54,11 +61,27 @@ const t = getTranslations(lang);
     </section>
     <figure
       class:list={[
-        "aspect-square h-auto w-full max-w-36 bg-avatar relative size-full bg-cover bg-no-repeat rounded-lg",
+        "aspect-square h-auto w-full max-w-36 relative size-full rounded-lg",
         "md:aspect-3/4 md:max-w-xs md:mr-9",
-        "before:absolute before:top-4 before:-z-1 before:size-full before:opacity-50 before:blur-xl before:[background:inherit] before:rounded-lg",
       ]}
     >
+      <div
+        aria-hidden="true"
+        class="absolute top-4 -z-1 size-full opacity-50 blur-xl rounded-lg bg-cover bg-center bg-no-repeat select-none"
+        style={`background-image: url('${avatarImage.src}')`}
+      >
+      </div>
+      <Picture
+        src={avatarImage}
+        alt={t.hero.altImage}
+        formats={["avif", "webp"]}
+        fallbackFormat="webp"
+        fetchpriority="high"
+        loading="eager"
+        decoding="async"
+        draggable="false"
+        class="absolute inset-0 size-full object-cover rounded-lg select-none"
+      />
     </figure>
   </div>
 </section>

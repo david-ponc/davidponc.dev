@@ -41,7 +41,6 @@
 }
 
 .dark {
-	--background-image-avatar: url("../../assets/images/me.webp");
 	--background: var(--color-mauve-950);
 	--foreground: var(--color-mauve-50);
 	--primary: var(--color-indigo-500);
@@ -79,7 +78,6 @@
 @theme {
 	--animate-rail-draw: rail-draw 3s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
 
-	--background-image-avatar: url("../../assets/images/me-light.webp");
 	--background-image-noise: url("../../assets/images/noise.png");
 	--inset-shadow-t-px: inset 0 1px 0 0;
 	--background-image-default-active: linear-gradient(

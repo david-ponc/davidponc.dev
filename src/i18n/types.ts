@@ -40,6 +40,7 @@ export type Hero = {
 	role: string;
 	bio: string;
 	contact: string;
+	altImage: string;
 };
 
 export type ProjectTranslation = {
