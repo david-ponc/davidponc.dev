@@ -1,0 +1,49 @@
+---
+import { getLocale, getTranslations } from "~/i18n";
+import { projects } from "~/data/projects";
+import Project from "./project.astro";
+import ProjectPreview from "./project-preview.astro";
+import { reveal } from "~/core/animations/transitions";
+
+const lang = getLocale(Astro.currentLocale);
+const t = getTranslations(lang);
+
+const localizedProjects = projects.map((project) => ({
+  ...project,
+  ...t.projects.projects[project.key],
+}));
+---
+
+<section
+  class="@container/projects flex min-h-[75dvh] items-center justify-center py-16 sm:py-20 lg:py-0"
+>
+  <div
+    class="z-1 mx-auto flex flex-col w-full max-w-6xl gap-32 px-4 @6xl/projects:px-0"
+  >
+    <header class="relative">
+      <h2
+        id="projects"
+        class="text-2xl font-medium text-muted-foreground"
+        transition:animate={reveal}
+      >
+        {t.projects.heading}
+      </h2>
+    </header>
+
+    <section class="relative flex flex-col gap-64">
+      {
+        localizedProjects.map((project) => (
+          <Project
+            title={project.title}
+            description={project.description}
+            tags={project.tags}
+            sourceUrl={project.sourceUrl}
+            websiteUrl={project.websiteUrl}
+          >
+            <ProjectPreview key={project.key} />
+          </Project>
+        ))
+      }
+    </section>
+  </div>
+</section>

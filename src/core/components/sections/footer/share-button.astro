@@ -1,0 +1,49 @@
+---
+import ShareIcon from "../../../../assets/share.svg";
+---
+
+<button
+  id="share-button"
+  class="p-2.5 transition-colors text-muted-foreground hover:text-brand-a focus-visible:text-brand-a hover:[anchor-name:--social-anchor] focus-visible:[anchor-name:--social-anchor] cursor-pointer"
+>
+  <ShareIcon class="size-5" />
+</button>
+
+<script>
+  let button: HTMLButtonElement | null = null;
+
+  async function share() {
+    if (!button) return;
+
+    if (!navigator.share) {
+      button.style.display = "none";
+      return;
+    }
+
+    try {
+      await navigator.share({
+        title: document.title,
+        url: window.location.href,
+      });
+    } catch (error) {
+      console.error("Error sharing:", error);
+    }
+  }
+
+  function setup() {
+    button = document.getElementById(
+      "share-button",
+    ) as HTMLButtonElement | null;
+    if (!button) return;
+
+    button.addEventListener("click", share);
+  }
+
+  function teardown() {
+    if (!button) return;
+    button.removeEventListener("click", share);
+  }
+
+  document.addEventListener("astro:page-load", setup);
+  document.addEventListener("astro:before-swap", teardown);
+</script>

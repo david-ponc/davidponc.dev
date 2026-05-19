@@ -1,0 +1,83 @@
+---
+import "~/core/styles/global.css";
+
+import { Font } from "astro:assets";
+import type { Locale } from "~/i18n";
+import { DEFAULT_LOCALE } from "~/i18n";
+import { ClientRouter } from "astro:transitions";
+import Seo from "~/core/components/seo/seo.astro";
+
+interface Props {
+  lang?: Locale;
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  lang = DEFAULT_LOCALE,
+  title = "David Ponce Vargas",
+  description,
+  ogImage,
+} = Astro.props;
+
+const themeCookie = Astro.cookies.get("theme")?.value ?? "system";
+const isDark = themeCookie === "dark";
+---
+
+<html
+  lang={lang}
+  class:list={["scroll-smooth antialiased h-full", { dark: isDark }]}
+  transition:animate="none"
+>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="index, follow" />
+
+    <Seo lang={lang} title={title} description={description} ogImage={ogImage} />
+
+    <link rel="preconnect" href="https://github.com" />
+    <link rel="preconnect" href="https://www.linkedin.com" />
+    <link rel="dns-prefetch" href="https://github.com" />
+    <link rel="dns-prefetch" href="https://www.linkedin.com" />
+
+    <title>{title}</title>
+    <Font cssVariable="--font-app-sans" preload />
+    <Font cssVariable="--font-app-mono" />
+    <ClientRouter />
+
+    <script is:inline>
+      (function () {
+        const DARK_CLASS = "dark";
+        const systemMq = window.matchMedia("(prefers-color-scheme: dark)");
+
+        function getStoredTheme() {
+          const match = document.cookie.match(/(?:^|; )theme=([^;]*)/);
+          return match ? decodeURIComponent(match[1]) : "system";
+        }
+
+        function applyTheme() {
+          const theme = getStoredTheme();
+          const prefersDark =
+            theme === "system" ? systemMq.matches : theme === "dark";
+          document.documentElement.classList.toggle(DARK_CLASS, prefersDark);
+        }
+
+        applyTheme();
+
+        document.addEventListener("astro:after-swap", applyTheme);
+
+        systemMq.addEventListener("change", applyTheme);
+      })();
+    </script>
+  </head>
+  <body
+    class="flex min-h-full flex-col bg-background text-foreground tracking-[-1.5%] overflow-x-clip"
+  >
+    <slot />
+  </body>
+</html>

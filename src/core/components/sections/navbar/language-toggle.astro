@@ -1,0 +1,69 @@
+---
+import type { Locale } from "~/i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang } = Astro.props;
+const languages = [
+  {
+    code: "es",
+    name: "Español",
+    label: "ES",
+    href: "/",
+  },
+  {
+    code: "en",
+    name: "English",
+    label: "EN",
+    href: "/en",
+  },
+];
+---
+
+<nav
+  class="flex items-center p-0.5 rounded-lg bg-muted outline outline-border h-9 dark:bg-card"
+>
+  {
+    languages.map((language) => {
+      const isActive = language.code === lang;
+      return (
+        <a
+          href={language.href}
+          data-lang-toggle
+          class="relative size-8 flex items-center justify-center transition-colors text-xs"
+        >
+          {isActive ? (
+            <span
+              transition:name="language-active-indicator"
+              aria-hidden="true"
+              class="absolute grid place-items-center inset-0 bg-background rounded-md outline outline-border shadow-xs dark:bg-secondary"
+            >
+              <span class="relative text-foreground">{language.label}</span>
+            </span>
+          ) : (
+            <span class="relative text-muted-foreground/80">
+              {language.label}
+            </span>
+          )}
+        </a>
+      );
+    })
+  }
+</nav>
+
+<script>
+  import { navigate } from "astro:transitions/client";
+
+  document.addEventListener("astro:page-load", () => {
+    const toggle = document.querySelector("[data-lang-toggle]");
+    if (!toggle) return;
+
+    toggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      sessionStorage.setItem("lang-switch-scroll", String(window.scrollY));
+      navigate((toggle as HTMLAnchorElement).href);
+    });
+  });
+</script>

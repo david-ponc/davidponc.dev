@@ -1,0 +1,83 @@
+---
+import type { Repository } from "~/data/repositories";
+import { getLocale, getTranslations } from "~/i18n";
+import type { RepositoryTranslation } from "~/i18n/types";
+import Button from "../../ui/button";
+import CodeIcon from "~/assets/code.svg";
+import RocketIcon from "~/assets/rocket.svg";
+import BookmarkIcon from "~/assets/bookmark.svg";
+import { reveal } from "~/core/animations/transitions";
+type Props = Repository & RepositoryTranslation;
+
+const { title, tags, description, sourceUrl, websiteUrl } = Astro.props;
+
+const lang = getLocale(Astro.currentLocale);
+const t = getTranslations(lang);
+---
+
+<article
+  class="glow-card flex flex-col gap-4 bg-card rounded-xl border border-transparent bg-clip-padding p-4"
+>
+  <header class="flex items-center gap-2">
+    <BookmarkIcon class="size-4 text-muted-foreground" />
+    <h3 class="text-base/none font-medium" transition:animate={reveal}>
+      {title}
+    </h3>
+  </header>
+  <section class="flex flex-col gap-2">
+    <p
+      class="max-w-prose text-sm text-muted-foreground text-pretty"
+      transition:animate={reveal}
+    >
+      {description}
+    </p>
+    <ul class="text-xs font-medium flex flex-wrap items-center gap-x-4 gap-y-1">
+      {
+        tags.map((tag) => (
+          <li
+            data-tag={tag.toLowerCase()}
+            class="flex items-center gap-1 before:size-1.5 before:rounded-full before:bg-muted text-muted-foreground whitespace-nowrap"
+          >
+            {tag}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <footer
+    class="flex flex-col lg:flex-row lg:items-center lg:justify-end-safe gap-3 mt-auto"
+  >
+    {
+      sourceUrl ? (
+        <Button
+          as="a"
+          size="xs"
+          target="_blank"
+          href={sourceUrl}
+          variant="ghost"
+          rel="noopener noreferrer"
+          transition:animate={reveal}
+        >
+          {t.repositories.actions.source}
+          <CodeIcon />
+        </Button>
+      ) : null
+    }
+    {
+      websiteUrl ? (
+        <Button
+          as="a"
+          size="xs"
+          target="_blank"
+          href={websiteUrl}
+          variant="secondary"
+          rel="noopener noreferrer"
+          transition:animate={reveal}
+        >
+          {t.repositories.actions.website}
+          <RocketIcon />
+        </Button>
+      ) : null
+    }
+  </footer>
+</article>

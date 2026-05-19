@@ -1,0 +1,69 @@
+---
+import Button from "~/core/components/ui/button";
+import WireNode from "~/core/components/ui/wire/wire-node.astro";
+import RocketIcon from "~/assets/rocket.svg";
+import CodeIcon from "~/assets/code.svg";
+import { getLocale, getTranslations } from "~/i18n";
+import type { Project } from "~/data/projects";
+import type { ProjectTranslation } from "~/i18n/types";
+import Badge from "../../ui/badge.astro";
+import { reveal } from "~/core/animations/transitions";
+
+type Props = Omit<Project, "key"> & ProjectTranslation;
+
+const { title, tags, description, sourceUrl, websiteUrl } = Astro.props;
+const lang = getLocale(Astro.currentLocale);
+const t = getTranslations(lang);
+---
+
+<article
+  class="@container/project flex flex-col-reverse @4xl/projects:grid grid-cols-[3fr_2fr] gap-16"
+>
+  <div class="flex flex-col gap-6">
+    <header class="flex flex-col gap-2">
+      <h4 class="text-2xl text-balance" transition:animate={reveal}>{title}</h4>
+      <div class="flex flex-wrap items-center gap-2 @lg/project:flex-nowrap">
+        {tags.map((tag) => <Badge>{tag}</Badge>)}
+      </div>
+    </header>
+    <div class="w-full @4xl/projects:max-w-prose">
+      <p class="text-muted-foreground" transition:animate={reveal}>
+        {description}
+      </p>
+    </div>
+    <footer
+      class="flex flex-col gap-3 relative bg-background md:flex-row md:items-center"
+    >
+      <WireNode class="top-1/2 -left-2 lg:top-auto" />
+      <WireNode class="top-1/2 left-6 lg:top-auto" />
+      <WireNode class="top-1/2 -left-2 lg:top-auto" />
+      <Button
+        as="a"
+        size="sm"
+        target="_blank"
+        href={sourceUrl}
+        variant="secondary"
+        rel="noopener noreferrer"
+        transition:animate={reveal}
+      >
+        {t.projects.actions.source}
+        <CodeIcon />
+      </Button>
+
+      <Button
+        as="a"
+        size="sm"
+        target="_blank"
+        href={websiteUrl}
+        rel="noopener noreferrer"
+        transition:animate={reveal}
+      >
+        {t.projects.actions.website}
+        <RocketIcon />
+      </Button>
+    </footer>
+  </div>
+  <div class="aspect-video">
+    <slot />
+  </div>
+</article>

@@ -1,0 +1,220 @@
+---
+// Wire.astro
+// SVG overlay — path in page coordinates, glow follows scroll
+---
+
+<svg
+  id="wire-svg"
+  aria-hidden="true"
+  class="pointer-events-none size-full z-0 absolute top-0 left-0 overflow-visible"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient
+      id="wire-gradient"
+      gradientUnits="userSpaceOnUse"
+      x1="0"
+      y1="0"
+      x2="0"
+      y2="0"
+    >
+      <stop offset="0%" stop-color="var(--color-brand-a)" stop-opacity="0"
+      ></stop>
+      <stop offset="100%" stop-color="var(--color-brand-b)" stop-opacity="1"
+      ></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- Static cable (dim) -->
+  <path
+    id="wire-path-static"
+    stroke="oklch(50% 0 0)"
+    stroke-width="1"
+    fill="none"
+    opacity="0.14"></path>
+
+  <!-- Glow that follows scroll -->
+  <path
+    id="wire-glow"
+    stroke="url(#wire-gradient)"
+    stroke-width="2"
+    fill="none"
+    stroke-linecap="round"></path>
+</svg>
+
+<script>
+  const CORNER_RADIUS = 12;
+  const GLOW_LENGTH = 256;
+
+  function buildPath(points: { x: number; y: number }[]): string {
+    if (points.length < 2) return "";
+
+    // Expand diagonal segments into explicit H/V legs (vertical first)
+    const pts: { x: number; y: number }[] = [points[0]];
+    for (let i = 1; i < points.length; i++) {
+      const A = pts[pts.length - 1];
+      const B = points[i];
+      if (Math.abs(B.x - A.x) > 2 && Math.abs(B.y - A.y) > 2) {
+        pts.push({ x: A.x, y: B.y });
+      }
+      pts.push(B);
+    }
+
+    // Build path, rounding all interior corners using incoming/outgoing directions
+    let d = `M ${pts[0].x} ${pts[0].y}`;
+
+    for (let i = 1; i < pts.length; i++) {
+      const curr = pts[i];
+      const next = pts[i + 1] ?? null;
+
+      if (!next) {
+        d += ` L ${curr.x} ${curr.y}`;
+        continue;
+      }
+
+      const prev = pts[i - 1];
+      const dx1 = curr.x - prev.x;
+      const dy1 = curr.y - prev.y;
+      const len1 = Math.hypot(dx1, dy1);
+      const dx2 = next.x - curr.x;
+      const dy2 = next.y - curr.y;
+      const len2 = Math.hypot(dx2, dy2);
+
+      // Skip degenerate or collinear segments
+      const cross = dx1 * dy2 - dy1 * dx2;
+      if (len1 === 0 || len2 === 0 || Math.abs(cross) < 0.01) {
+        d += ` L ${curr.x} ${curr.y}`;
+        continue;
+      }
+
+      const r = Math.min(CORNER_RADIUS, len1 * 0.45, len2 * 0.45);
+      const ux1 = dx1 / len1;
+      const uy1 = dy1 / len1;
+      const ux2 = dx2 / len2;
+      const uy2 = dy2 / len2;
+
+      d += ` L ${curr.x - ux1 * r} ${curr.y - uy1 * r}`;
+      d += ` Q ${curr.x} ${curr.y} ${curr.x + ux2 * r} ${curr.y + uy2 * r}`;
+    }
+
+    return d;
+  }
+
+  let totalLength = 0;
+  let scrollStart = 0;
+  let scrollEnd = 0;
+  let lastNodeLength = 0;
+  let lastNode: HTMLElement | null = null;
+  let glowEl: SVGPathElement | null = null;
+  let staticEl: SVGPathElement | null = null;
+  let svgEl: SVGSVGElement | null = null;
+
+  function lengthAtMaxY(
+    path: SVGPathElement,
+    total: number,
+    maxY: number,
+  ): number {
+    let lo = 0;
+    let hi = total;
+    for (let i = 0; i < 24; i++) {
+      const mid = (lo + hi) / 2;
+      if (path.getPointAtLength(mid).y <= maxY) lo = mid;
+      else hi = mid;
+    }
+    return lo;
+  }
+
+  function updateGlow() {
+    if (!glowEl || totalLength === 0) return;
+
+    const sy = window.scrollY;
+    const range = scrollEnd - scrollStart;
+    const progress =
+      range > 0 ? Math.min(1, Math.max(0, (sy - scrollStart) / range)) : 0;
+
+    const rawTipLength = Math.max(0, progress * (totalLength + GLOW_LENGTH));
+
+    const viewportBottomY = sy + window.innerHeight;
+    const maxTipByViewport = lengthAtMaxY(glowEl, totalLength, viewportBottomY);
+    const tipLength = Math.min(rawTipLength, maxTipByViewport, totalLength);
+
+    const tailLength = Math.max(0, tipLength - GLOW_LENGTH);
+
+    const offset = GLOW_LENGTH - tipLength;
+    glowEl.style.strokeDashoffset = String(offset);
+
+    const tip = glowEl.getPointAtLength(tipLength);
+    const tail = glowEl.getPointAtLength(tailLength);
+    const gradient = document.getElementById("wire-gradient");
+    if (gradient) {
+      gradient.setAttribute("x1", String(tail.x));
+      gradient.setAttribute("y1", String(tail.y));
+      gradient.setAttribute("x2", String(tip.x));
+      gradient.setAttribute("y2", String(tip.y));
+    }
+    if (lastNode) {
+      lastNode.toggleAttribute("data-active", tipLength >= lastNodeLength);
+    }
+  }
+
+  function updatePath() {
+    glowEl = document.getElementById("wire-glow") as SVGPathElement | null;
+    staticEl = document.getElementById(
+      "wire-path-static",
+    ) as SVGPathElement | null;
+    svgEl = document.getElementById("wire-svg") as SVGSVGElement | null;
+
+    const nodes = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-wire-node]"),
+    );
+    if (nodes.length < 2 || !glowEl || !staticEl || !svgEl) return;
+
+    const points = nodes.map((n) => {
+      const r = n.getBoundingClientRect();
+      return {
+        x: r.left + r.width / 2,
+        y: r.top + r.height / 2 + window.scrollY,
+      };
+    });
+
+    const d = buildPath(points);
+    staticEl.setAttribute("d", d);
+    glowEl.setAttribute("d", d);
+
+    totalLength = glowEl.getTotalLength();
+
+    lastNode = nodes[nodes.length - 1];
+    lastNodeLength = lengthAtMaxY(
+      glowEl,
+      totalLength,
+      points[points.length - 1].y,
+    );
+
+    glowEl.style.strokeDasharray = `${GLOW_LENGTH} ${totalLength + GLOW_LENGTH}`;
+    glowEl.style.strokeDashoffset = String(GLOW_LENGTH);
+
+    const maxScroll =
+      document.documentElement.scrollHeight - window.innerHeight;
+    scrollStart = Math.max(0, points[0].y - window.innerHeight * 0.5);
+    scrollEnd = Math.min(
+      points[points.length - 1].y - window.innerHeight * 0.5,
+      maxScroll,
+    );
+
+    updateGlow();
+  }
+
+  function setup() {
+    updatePath();
+    window.addEventListener("resize", updatePath);
+    window.addEventListener("scroll", updateGlow, { passive: true });
+  }
+
+  function teardown() {
+    window.removeEventListener("resize", updatePath);
+    window.removeEventListener("scroll", updateGlow);
+  }
+
+  document.addEventListener("astro:page-load", setup);
+  document.addEventListener("astro:before-swap", teardown);
+</script>

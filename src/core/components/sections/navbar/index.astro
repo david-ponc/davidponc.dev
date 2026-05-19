@@ -1,0 +1,91 @@
+---
+import DavidPoncLogo from "../../../../assets/davidponc.svg";
+import GitHubLogo from "../../../../assets/github.svg";
+import LinkedInLogo from "../../../../assets/linkedin.svg";
+import { getLocale, getTranslations, type Locale } from "~/i18n";
+import { ThemeToggle } from "./theme-toggle";
+import LanguageToggle from "./language-toggle.astro";
+import { MobileMenu } from "./mobile-menu";
+import { reveal } from "~/core/animations/transitions";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(getLocale(lang));
+const theme =
+  (Astro.cookies.get("theme")?.value as "light" | "dark" | "system") ||
+  "system";
+---
+
+<header class="-mb-px w-full border-b text-sm font-medium border-b-border/50">
+  <div
+    class="max-w-6xl mx-auto py-1.5 grid grid-cols-[auto_1fr_auto] items-center px-4 xl:px-0"
+  >
+    <DavidPoncLogo class="size-6" />
+
+    <div class="col-start-3 flex lg:hidden">
+      <MobileMenu
+        client:load
+        t={t.navbar}
+        initialTheme={theme}
+        lang={getLocale(lang)}
+      />
+    </div>
+
+    <div class="hidden col-start-3 lg:flex items-center gap-4">
+      <nav
+        class="relative flex items-center text-muted-foreground before:pointer-events-none before:absolute before:rounded-md before:bg-brand-b/12 before:transition-[inset,opacity] before:duration-200 before:ease before:inset-[anchor(inside)] before:[position-anchor:--nav-anchor] before:opacity-0 has-[a:hover]:before:opacity-100 has-[a:focus-visible]:before:opacity-100"
+      >
+        <a
+          href="#projects"
+          class="px-2.5 py-1 transition-colors hover:text-brand-b focus-visible:text-brand-b hover:[anchor-name:--nav-anchor] focus-visible:[anchor-name:--nav-anchor]"
+          transition:animate={reveal}
+        >
+          {t.navbar.projects}
+        </a>
+        <a
+          href="#skills"
+          class="px-2.5 py-1 transition-colors hover:text-brand-b focus-visible:text-brand-b hover:[anchor-name:--nav-anchor] focus-visible:[anchor-name:--nav-anchor]"
+          transition:animate={reveal}
+        >
+          {t.navbar.skills}
+        </a>
+        <a
+          href="#experience"
+          class="px-2.5 py-1 transition-colors hover:text-brand-b focus-visible:text-brand-b hover:[anchor-name:--nav-anchor] focus-visible:[anchor-name:--nav-anchor]"
+          transition:animate={reveal}
+        >
+          {t.navbar.experience}
+        </a>
+      </nav>
+      <div class="h-8 w-px bg-muted"></div>
+      <nav
+        class="relative flex items-center before:pointer-events-none before:absolute before:rounded-md before:bg-brand-a/12 before:transition-[inset,opacity] before:duration-200 before:ease before:inset-[anchor(inside)] before:[position-anchor:--social-anchor] before:opacity-0 has-[a,button]:hover:before:opacity-100 has-[a,button]:focus-visible:before:opacity-100"
+      >
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.linkedin.com/in/david-ponc/"
+          class="p-2.5 transition-colors text-muted-foreground hover:text-brand-a focus-visible:text-brand-a hover:[anchor-name:--social-anchor] focus-visible:[anchor-name:--social-anchor]"
+        >
+          <LinkedInLogo class="size-5" />
+        </a>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/david-ponc"
+          class="p-2.5 transition-colors text-muted-foreground hover:text-brand-a focus-visible:text-brand-a hover:[anchor-name:--social-anchor] focus-visible:[anchor-name:--social-anchor]"
+        >
+          <GitHubLogo class="size-5" />
+        </a>
+        <ThemeToggle client:load initialValue={theme} />
+      </nav>
+      <div class="h-8 w-px bg-muted"></div>
+      <div>
+        <LanguageToggle lang={lang} />
+      </div>
+    </div>
+  </div>
+</header>

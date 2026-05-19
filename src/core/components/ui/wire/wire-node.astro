@@ -1,0 +1,13 @@
+---
+interface Props {
+  id?: string;
+  class?: string;
+}
+
+const { id = crypto.randomUUID(), class: className } = Astro.props;
+---
+
+<span
+  data-wire-node={id}
+  aria-hidden="true"
+  class:list={["pointer-events-none absolute block size-0", className]}></span>

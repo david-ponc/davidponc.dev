@@ -1,0 +1,105 @@
+---
+import { getLocale, getTranslations } from "~/i18n";
+import ContactMe from "./contact-me.astro";
+import WireNode from "~/core/components/ui/wire/wire-node.astro";
+import { reveal } from "~/core/animations/transitions";
+import { Picture } from "astro:assets";
+import meDark from "~/assets/images/me.avif";
+import meLight from "~/assets/images/me-light.avif";
+
+const lang = getLocale(Astro.currentLocale);
+const t = getTranslations(lang);
+---
+
+<section
+  class="@container/hero relative flex w-full min-h-[80dvh] items-center justify-center py-16 sm:pb-20 sm:pt-0 lg:py-0"
+>
+  <div
+    style={{ "--box-size": "1.5rem" }}
+    class:list={[
+      "absolute -z-1 h-full w-full bg-conic-[from_90deg_at_1px_1px] from-background from-25% to-muted to-0% bg-size-[var(--box-size)_var(--box-size)]",
+      "before:bg-noise before:absolute before:inset-0",
+      "after:absolute after:inset-0 after:bg-radial-[circle_at_center_top_in_oklch] after:from-transparent after:to-background after:to-55%",
+    ]}
+  >
+  </div>
+
+  <div
+    class:list={[
+      "z-1 mx-auto flex flex-col-reverse w-full max-w-6xl gap-16",
+      "lg:flex-row lg:items-center lg:justify-between",
+      "p-4 @6xl/hero:p-0",
+    ]}
+  >
+    <section>
+      <h1
+        class="bg-linear-to-r from-brand-a to-brand-b bg-clip-text text-3xl font-bold text-transparent text-balance sm:text-4xl"
+      >
+        David Ponce Vargas
+      </h1>
+      <h2
+        class="text-2xl font-medium text-muted-foreground text-balance sm:text-3xl"
+        transition:animate={reveal}
+      >
+        {t.hero.role}
+      </h2>
+      <p
+        class="mt-4 text-muted-foreground max-w-prose mb-12 text-pretty"
+        transition:animate={reveal}
+      >
+        {t.hero.bio}
+      </p>
+      <div class="relative flex md:inline-block">
+        <ContactMe />
+        <WireNode class="top-1/2 left-1/2" />
+        <WireNode class="top-1/2 -left-2" />
+      </div>
+    </section>
+    <figure
+      class:list={[
+        "aspect-square h-auto w-full max-w-36 relative size-full rounded-lg",
+        "md:aspect-3/4 md:max-w-xs md:mr-9",
+      ]}
+    >
+      {/* Light mode */}
+      <div
+        aria-hidden="true"
+        class="absolute top-4 -z-1 size-full blur-xl rounded-lg bg-cover bg-center bg-no-repeat select-none transition-opacity duration-500 ease-out opacity-50 dark:opacity-0"
+        style={`background-image: url('${meLight.src}')`}
+      >
+      </div>
+      <Picture
+        src={meLight}
+        alt={t.hero.altImage}
+        formats={["avif", "webp"]}
+        fallbackFormat="webp"
+        width={320}
+        fetchpriority="high"
+        loading="eager"
+        decoding="async"
+        draggable="false"
+        class="absolute inset-0 size-full object-cover rounded-lg select-none transition-opacity duration-500 ease-out opacity-100 dark:opacity-0"
+      />
+
+      {/* Dark mode */}
+      <div
+        aria-hidden="true"
+        class="absolute top-4 -z-1 size-full blur-xl rounded-lg bg-cover bg-center bg-no-repeat select-none transition-opacity duration-500 ease-out opacity-0 dark:opacity-50"
+        style={`background-image: url('${meDark.src}')`}
+      >
+      </div>
+      <Picture
+        src={meDark}
+        alt={t.hero.altImage}
+        formats={["avif", "webp"]}
+        fallbackFormat="webp"
+        width={320}
+        fetchpriority="high"
+        loading="eager"
+        decoding="async"
+        draggable="false"
+        class="absolute inset-0 size-full object-cover rounded-lg select-none transition-opacity duration-500 ease-out opacity-0 dark:opacity-100"
+      />
+    </figure>
+  </div>
+</section>

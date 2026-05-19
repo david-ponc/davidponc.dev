@@ -1,0 +1,28 @@
+---
+import Navbar from "~/core/components/sections/navbar/index.astro";
+import Root from "~/core/components/layouts/root.astro";
+import { getLocale } from "~/i18n";
+import Wire from "~/core/components/ui/wire/wire-path.astro";
+import PageRail from "~/core/components/ui/page-rail/page-rail.astro";
+import HeroSection from "~/core/components/sections/hero/index.astro";
+import ProjectsSection from "~/core/components/sections/projects/index.astro";
+import RepositoriesSection from "~/core/components/sections/repositories/index.astro";
+import SkillsSection from "~/core/components/sections/skills/index.astro";
+import ExperienceSection from "~/core/components/sections/experience/index.astro";
+import Footer from "~/core/components/sections/footer/index.astro";
+
+const lang = getLocale(Astro.currentLocale);
+---
+
+<Root lang={lang} title="David Ponce Vargas">
+  <PageRail>
+    <Navbar lang={lang} />
+    <Wire />
+    <HeroSection />
+    <ProjectsSection />
+    <RepositoriesSection />
+    <SkillsSection />
+    <ExperienceSection />
+    <Footer />
+  </PageRail>
+</Root>

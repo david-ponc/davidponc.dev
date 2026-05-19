@@ -1,0 +1,74 @@
+---
+import type { Experience } from "~/data/experience";
+import type { ExperienceTranslation } from "~/i18n/types";
+import type { Period } from "./format-period";
+import Badge from "../../ui/badge.astro";
+import Button from "../../ui/button";
+import ArrowTopRightOnSquareIcon from "~/assets/arrow-top-right-on-square.svg";
+
+type Props = Experience & ExperienceTranslation & { period: Period };
+
+const {
+  role,
+  company,
+  location,
+  period,
+  tags,
+  websiteUrl,
+  achievements,
+  heading,
+} = Astro.props;
+---
+
+<article
+  class="@container/experience grid grid-rows-[auto_1fr] lg:grid-cols-[1fr_2fr] lg:gap-6"
+>
+  <aside class="flex flex-col justify-between gap-4">
+    <header class="sticky top-4">
+      <span
+        class="absolute -left-2.75 top-1.75 size-1.5 rounded-full bg-brand-a before:absolute before:-inset-0.75 before:rounded-[inherit] before:bg-brand-a/28"
+      ></span>
+      <p class="relative text-sm text-muted-foreground text-balance truncate">
+        {period.range}
+      </p>
+      <p class="text-xs font-medium text-muted-foreground/80 mb-4">
+        {period.duration}
+      </p>
+      <h3 class="text-lg/none font-medium text-balance">
+        {role}
+      </h3>
+      <div class="flex gap-3 items-center mt-1">
+        <Button
+          as="a"
+          size="inline"
+          target="_blank"
+          href={websiteUrl}
+          variant="link"
+          rel="noopener noreferrer"
+          class="gap-1"
+        >
+          {company}
+          <ArrowTopRightOnSquareIcon class="size-4" />
+        </Button>
+        <span class="text-sm text-muted-foreground">{location}</span>
+      </div>
+    </header>
+  </aside>
+  <section class="flex flex-col gap-4">
+    <header>
+      <h4 class="text-base font-medium">{heading}</h4>
+    </header>
+    <ul class="space-y-1.5 list-disc ml-4">
+      {
+        achievements.map((achievement) => (
+          <li class="marker:text-brand-b">
+            <span class="text-muted-foreground text-pretty">{achievement}</span>
+          </li>
+        ))
+      }
+    </ul>
+    <footer class="mt-6 flex items-center gap-3 flex-wrap">
+      {tags.map((tag) => <Badge>{tag}</Badge>)}
+    </footer>
+  </section>
+</article>

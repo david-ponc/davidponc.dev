@@ -1,0 +1,30 @@
+{
+	"$schema": "https://raw.githubusercontent.com/evilmartians/lefthook/master/schema.json",
+	"pre-commit": {
+		"parallel": true,
+		"jobs": [
+			{
+				"name": "biome-check",
+				"glob": "*.{js,ts,jsx,tsx,json,css,md,astro}",
+				"run": "pnpm biome check --fix {staged_files}",
+				"stage_fixed": true
+			}
+		]
+	},
+	"commit-msg": {
+		"jobs": [
+			{
+				"name": "commitlint",
+				"run": "pnpm commitlint --edit {1}"
+			}
+		]
+	},
+	"pre-push": {
+		"jobs": [
+			{
+				"name": "biome-check-all",
+				"run": "pnpm biome check"
+			}
+		]
+	}
+}

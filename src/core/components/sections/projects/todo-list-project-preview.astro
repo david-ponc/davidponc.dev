@@ -1,0 +1,327 @@
+---
+const currentDate = new Date();
+const formattedDate = currentDate.toLocaleDateString("es-ES", {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<svg class="hidden" aria-hidden="true">
+  <defs>
+    <symbol id="icon-briefcase" viewBox="0 0 24 24">
+      <path
+        fill-rule="evenodd"
+        d="M7.5 5.25a3 3 0 0 1 3-3h3a3 3 0 0 1 3 3v.205c.933.085 1.857.197 2.774.334 1.454.218 2.476 1.483 2.476 2.917v3.033c0 1.211-.734 2.352-1.936 2.752A24.726 24.726 0 0 1 12 15.75c-2.73 0-5.357-.442-7.814-1.259-1.202-.4-1.936-1.541-1.936-2.752V8.706c0-1.434 1.022-2.7 2.476-2.917A48.814 48.814 0 0 1 7.5 5.455V5.25Zm7.5 0v.09a49.488 49.488 0 0 0-6 0v-.09a1.5 1.5 0 0 1 1.5-1.5h3a1.5 1.5 0 0 1 1.5 1.5Zm-3 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+        clip-rule="evenodd"></path>
+      <path
+        d="M3 18.4v-2.796a4.3 4.3 0 0 0 .713.31A26.226 26.226 0 0 0 12 17.25c2.892 0 5.68-.468 8.287-1.335.252-.084.49-.189.713-.311V18.4c0 1.452-1.047 2.728-2.523 2.923-2.12.282-4.282.427-6.477.427a49.19 49.19 0 0 1-6.477-.427C4.047 21.128 3 19.852 3 18.4Z"
+      ></path>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="perspective-distant pr-16">
+  <div
+    class="w-full mx-auto max-w-md aspect-16/10 rotate-x-46 transform-3d rotate-z-315 translate-x-10 grid [grid-template-areas:'content'] scale-[0.8] @xl/projects:scale-100"
+  >
+    <!-- Capa 1 -->
+    <div
+      data-layer="1"
+      class="absolute inset-0 overflow-hidden rounded-md border border-brand-b/70 bg-background [grid-area:content]"
+    >
+      <svg class="absolute inset-0 h-full w-full text-brand-b/70">
+        <defs>
+          <pattern
+            id="stripes"
+            width="5"
+            height="5"
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M-1 5L5 -1M3 6L6 3"
+              stroke="currentColor"
+              stroke-width="0.32"></path>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#stripes)"></rect>
+      </svg>
+    </div>
+
+    <!-- Capa 2.1 -->
+    <div
+      data-layer="2"
+      class="bg-card absolute inset-0 flex flex-col gap-2 border border-border rounded-md [grid-area:content] translate-z-10 transition-[translate] duration-500 p-9 pb-4 text-sm delay-75 [article:has(a:hover)_&]:translate-z-14 [article:has(a:hover)_&]:delay-75"
+    >
+      <header>
+        <h5
+          class="font-bold text-2xl bg-clip-text text-transparent bg-linear-to-r from-brand-a to-brand-b"
+        >
+          Buen día, Usuario
+        </h5>
+        <p class="text-base truncate">Hoy es {formattedDate}</p>
+
+        <p class="text-xs text-muted-foreground">
+          Tienes{" "}
+          <span class="text-amber-300 text-shadow-amber-400">2</span>{" "}
+          tareas pendientes
+        </p>
+      </header>
+      <div
+        class="bg-background h-8 rounded-lg ring ring-border p-1 pl-3 text-muted-foreground flex items-center gap-4 invisible"
+      >
+        <p
+          class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background truncate"
+        >
+          Escribe una tarea
+        </p>
+        <div
+          class="bg-muted p-1 rounded-md shrink-0 flex items-center gap-1 h-6"
+        >
+          <svg viewBox="0 0 16 16" fill="currentColor" class="size-4">
+            <path
+              d="M3.5 2A1.5 1.5 0 0 0 2 3.5v2A1.5 1.5 0 0 0 3.5 7h2A1.5 1.5 0 0 0 7 5.5v-2A1.5 1.5 0 0 0 5.5 2h-2ZM3.5 9A1.5 1.5 0 0 0 2 10.5v2A1.5 1.5 0 0 0 3.5 14h2A1.5 1.5 0 0 0 7 12.5v-2A1.5 1.5 0 0 0 5.5 9h-2ZM9 3.5A1.5 1.5 0 0 1 10.5 2h2A1.5 1.5 0 0 1 14 3.5v2A1.5 1.5 0 0 1 12.5 7h-2A1.5 1.5 0 0 1 9 5.5v-2ZM10.5 9A1.5 1.5 0 0 0 9 10.5v2a1.5 1.5 0 0 0 1.5 1.5h2a1.5 1.5 0 0 0 1.5-1.5v-2A1.5 1.5 0 0 0 12.5 9h-2Z"
+            ></path>
+          </svg>
+          <svg viewBox="0 0 16 16" fill="currentColor" class="size-3.5">
+            <path
+              fill-rule="evenodd"
+              d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </div>
+      </div>
+      <section class="flex flex-col gap-2 mt-3 invisible">
+        <div
+          class="bg-muted h-7 text-xs/none rounded-lg ring ring-border p-1.5 text-foreground flex items-center gap-2"
+        >
+          <div class="bg-background rounded size-3.5 ring ring-border shrink-0">
+          </div>
+          <p
+            class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background truncate"
+          >
+            Reunión para análisis de requerimientos
+          </p>
+          <svg
+            fill="currentColor"
+            class="size-4 text-muted-foreground/40 shrink-0"
+          >
+            <use href="#icon-briefcase"></use>
+          </svg>
+        </div>
+
+        <div
+          class="bg-muted h-7 text-xs/none rounded-lg ring ring-border p-1.5 text-foreground flex items-center gap-2"
+        >
+          <div class="bg-background rounded size-3.5 ring ring-border shrink-0">
+          </div>
+          <p
+            class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background truncate"
+          >
+            APP-32D - Diseño de interfaz
+          </p>
+          <svg
+            fill="currentColor"
+            class="size-4 text-muted-foreground/40 shrink-0"
+          >
+            <use href="#icon-briefcase"></use>
+          </svg>
+        </div>
+      </section>
+    </div>
+
+    <!-- Capa 2.2 -->
+    <div
+      data-layer="2"
+      class="absolute inset-0 flex flex-col gap-2 [grid-area:content] translate-z-10 p-9 pb-4 text-sm transition-[translate] duration-500 delay-75 [article:has(a:hover)_&]:translate-z-14 [article:has(a:hover)_&]:delay-75"
+    >
+      <div aria-hidden="true" class="invisible select-none">
+        <p class="text-2xl font-bold">&nbsp;</p>
+        <p class="text-base">&nbsp;</p>
+        <p class="text-xs">&nbsp;</p>
+      </div>
+      <div
+        class="relative bg-background h-8 rounded-lg p-1 pl-3 text-muted-foreground flex items-center gap-4"
+      >
+        <svg
+          class="absolute inset-0 h-full w-full text-muted-foreground/60 bg-background/24 rounded border border-border"
+        >
+          <defs>
+            <pattern
+              id="stripes-2"
+              width="5"
+              height="5"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M-1 5L5 -1M3 6L6 3"
+                stroke="currentColor"
+                stroke-width="0.32"></path>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#stripes-2)"></rect>
+        </svg>
+      </div>
+      <section class="flex flex-col gap-2 mt-3">
+        <div
+          class="relative h-7 text-xs/none rounded-lg p-1.5 text-foreground flex items-center gap-2"
+        >
+          <svg
+            class="absolute inset-0 h-full w-full text-muted-foreground/60 bg-background/24 rounded border border-border"
+          >
+            <rect width="100%" height="100%" fill="url(#stripes-2)"></rect>
+          </svg>
+        </div>
+
+        <div
+          class="relative h-7 text-xs/none rounded-lg p-1.5 text-foreground flex items-center gap-2"
+        >
+          <svg
+            class="absolute inset-0 h-full w-full text-muted-foreground/60 bg-background/24 rounded border border-border"
+          >
+            <rect width="100%" height="100%" fill="url(#stripes-2)"></rect>
+          </svg>
+        </div>
+      </section>
+    </div>
+
+    <!-- Capa 3 -->
+    <div
+      data-layer="3"
+      class="absolute inset-0 flex flex-col gap-2 [grid-area:content] translate-z-12 p-9 pb-4 text-sm transition-[translate] duration-500 delay-150 [article:has(a:hover)_&]:translate-z-16 [article:has(a:hover)_&]:delay-0"
+    >
+      <div aria-hidden="true" class="invisible select-none">
+        <p class="text-2xl font-bold">&nbsp;</p>
+        <p class="text-base">&nbsp;</p>
+        <p class="text-xs">&nbsp;</p>
+      </div>
+      <div
+        class="bg-background h-8 rounded-lg ring ring-border p-1 pl-3 text-muted-foreground flex items-center gap-4"
+      >
+        <p
+          class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background truncate"
+        >
+          Escribe una tarea
+        </p>
+        <div
+          class="relative bg-muted p-1 rounded-md shrink-0 flex items-center gap-1 h-6 w-12"
+        >
+          <svg
+            class="absolute inset-0 h-full w-full text-muted-foreground/60 bg-background/24 rounded border border-border"
+          >
+            <rect width="100%" height="100%" fill="url(#stripes-2)"></rect>
+          </svg>
+        </div>
+      </div>
+      <section class="flex flex-col gap-2 mt-3">
+        <div
+          class="bg-muted h-7 text-xs/none rounded-lg ring ring-border p-1.5 text-foreground flex items-center gap-2"
+        >
+          <div
+            class="relative bg-background rounded size-3.5 ring ring-border shrink-0"
+          >
+            <svg
+              class="absolute inset-0 h-full w-full text-muted-foreground/60 bg-background/24 rounded"
+            >
+              <rect width="100%" height="100%" fill="url(#stripes-2)"></rect>
+            </svg>
+          </div>
+          <p
+            class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background truncate"
+          >
+            Reunión para análisis de requerimientos
+          </p>
+          <svg
+            fill="url(#stripes-2)"
+            class="size-4 text-muted-foreground/40 shrink-0"
+            stroke="currentColor"
+          >
+            <use href="#icon-briefcase"></use>
+          </svg>
+        </div>
+
+        <div
+          class="bg-muted h-7 text-xs/none rounded-lg ring ring-border p-1.5 text-foreground flex items-center gap-2"
+        >
+          <div
+            class="relative bg-background rounded size-3.5 ring ring-border shrink-0"
+          >
+            <svg
+              class="absolute inset-0 h-full w-full text-muted-foreground/60 bg-background/24 rounded"
+            >
+              <rect width="100%" height="100%" fill="url(#stripes-2)"></rect>
+            </svg>
+          </div>
+          <p
+            class="grow text-muted-foreground/36 blur-[1.5px] dark:text-background truncate"
+          >
+            APP-32D - Diseño de interfaz
+          </p>
+          <svg
+            fill="url(#stripes-2)"
+            class="size-4 text-muted-foreground/40 shrink-0"
+            stroke="currentColor"
+          >
+            <use href="#icon-briefcase"></use>
+          </svg>
+        </div>
+      </section>
+    </div>
+
+    <!-- Capa 4 -->
+    <div
+      data-layer="4"
+      class="flex flex-col gap-2 [grid-area:content] translate-z-13 p-9 pb-4 text-sm transition-[translate] duration-500 delay-150 [article:has(a:hover)_&]:translate-z-18 [article:has(a:hover)_&]:delay-0"
+    >
+      <div aria-hidden="true" class="invisible select-none">
+        <p class="text-2xl font-bold">&nbsp;</p>
+        <p class="text-base">&nbsp;</p>
+        <p class="text-xs">&nbsp;</p>
+      </div>
+      <div class="p-1 h-8 pl-3 text-muted-foreground flex items-center gap-4">
+        <p class="grow truncate">Escribe una tarea</p>
+        <div
+          class="bg-card p-1.5 rounded-md shrink-0 flex items-center gap-1 ring ring-border h-6"
+        >
+          <svg viewBox="0 0 16 16" fill="currentColor" class="size-4">
+            <path
+              d="M3.5 2A1.5 1.5 0 0 0 2 3.5v2A1.5 1.5 0 0 0 3.5 7h2A1.5 1.5 0 0 0 7 5.5v-2A1.5 1.5 0 0 0 5.5 2h-2ZM3.5 9A1.5 1.5 0 0 0 2 10.5v2A1.5 1.5 0 0 0 3.5 14h2A1.5 1.5 0 0 0 7 12.5v-2A1.5 1.5 0 0 0 5.5 9h-2ZM9 3.5A1.5 1.5 0 0 1 10.5 2h2A1.5 1.5 0 0 1 14 3.5v2A1.5 1.5 0 0 1 12.5 7h-2A1.5 1.5 0 0 1 9 5.5v-2ZM10.5 9A1.5 1.5 0 0 0 9 10.5v2a1.5 1.5 0 0 0 1.5 1.5h2a1.5 1.5 0 0 0 1.5-1.5v-2A1.5 1.5 0 0 0 12.5 9h-2Z"
+            ></path>
+          </svg>
+          <svg viewBox="0 0 16 16" fill="currentColor" class="size-4">
+            <path
+              fill-rule="evenodd"
+              d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </div>
+      </div>
+      <section class="flex flex-col gap-2 mt-3">
+        <div class="text-xs p-1.5 text-foreground flex items-center gap-2">
+          <div class="bg-background rounded size-3.5 ring ring-border shrink-0">
+          </div>
+          <p class="grow truncate">Reunión para análisis de requerimientos</p>
+          <svg
+            fill="currentColor"
+            class="size-4 text-muted-foreground shrink-0"
+          >
+            <use href="#icon-briefcase"></use>
+          </svg>
+        </div>
+
+        <div class="text-xs p-1.5 text-foreground flex items-center gap-2">
+          <div class="bg-background rounded size-3.5 ring ring-border shrink-0">
+          </div>
+          <p class="grow truncate">APP-32D - Diseño de interfaz</p>
+          <svg
+            fill="currentColor"
+            class="size-4 text-muted-foreground shrink-0"
+          >
+            <use href="#icon-briefcase"></use>
+          </svg>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
