@@ -81,14 +81,4 @@ Código fuente de [davidponc.dev](https://davidponc.dev), mi sitio personal. Un 
 └── package.json
 ```
 
----
 
-## Licencia
-
-Este proyecto es de uso personal. El código fuente está disponible como referencia técnica.
-
----
-
-<p align="center">
-  <em>Construido con precisión. Diseñado para durar.</em>
-</p>
