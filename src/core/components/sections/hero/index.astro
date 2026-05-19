@@ -9,10 +9,6 @@ import meLight from "~/assets/images/me-light.avif";
 
 const lang = getLocale(Astro.currentLocale);
 const t = getTranslations(lang);
-
-const themeCookie = Astro.cookies.get("theme")?.value ?? "system";
-const isDark = themeCookie === "dark";
-const avatarImage = isDark ? meDark : meLight;
 ---
 
 <section
@@ -65,14 +61,15 @@ const avatarImage = isDark ? meDark : meLight;
         "md:aspect-3/4 md:max-w-xs md:mr-9",
       ]}
     >
+      {/* Light mode */}
       <div
         aria-hidden="true"
-        class="absolute top-4 -z-1 size-full opacity-50 blur-xl rounded-lg bg-cover bg-center bg-no-repeat select-none"
-        style={`background-image: url('${avatarImage.src}')`}
+        class="absolute top-4 -z-1 size-full blur-xl rounded-lg bg-cover bg-center bg-no-repeat select-none transition-opacity duration-500 ease-out opacity-50 dark:opacity-0"
+        style={`background-image: url('${meLight.src}')`}
       >
       </div>
       <Picture
-        src={avatarImage}
+        src={meLight}
         alt={t.hero.altImage}
         formats={["avif", "webp"]}
         fallbackFormat="webp"
@@ -81,7 +78,27 @@ const avatarImage = isDark ? meDark : meLight;
         loading="eager"
         decoding="async"
         draggable="false"
-        class="absolute inset-0 size-full object-cover rounded-lg select-none"
+        class="absolute inset-0 size-full object-cover rounded-lg select-none transition-opacity duration-500 ease-out opacity-100 dark:opacity-0"
+      />
+
+      {/* Dark mode */}
+      <div
+        aria-hidden="true"
+        class="absolute top-4 -z-1 size-full blur-xl rounded-lg bg-cover bg-center bg-no-repeat select-none transition-opacity duration-500 ease-out opacity-0 dark:opacity-50"
+        style={`background-image: url('${meDark.src}')`}
+      >
+      </div>
+      <Picture
+        src={meDark}
+        alt={t.hero.altImage}
+        formats={["avif", "webp"]}
+        fallbackFormat="webp"
+        width={320}
+        fetchpriority="high"
+        loading="eager"
+        decoding="async"
+        draggable="false"
+        class="absolute inset-0 size-full object-cover rounded-lg select-none transition-opacity duration-500 ease-out opacity-0 dark:opacity-100"
       />
     </figure>
   </div>
