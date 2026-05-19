@@ -10,7 +10,8 @@
 		"astro": "astro",
 		"format": "biome format",
 		"lint": "biome lint",
-		"check": "biome check"
+		"check": "biome check",
+		"prepare": "lefthook install"
 	},
 	"dependencies": {
 		"@astrojs/react": "5.0.4",
@@ -30,6 +31,9 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.4.14",
+		"@commitlint/cli": "21.0.1",
+		"@commitlint/config-conventional": "21.0.1",
+		"lefthook": "2.1.6",
 		"vite-tsconfig-paths": "6.1.1"
 	},
 	"engines": {
