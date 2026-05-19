@@ -3,27 +3,23 @@ import "~/core/styles/global.css";
 
 import { Font } from "astro:assets";
 import type { Locale } from "~/i18n";
-import { DEFAULT_LOCALE, getTranslations } from "~/i18n";
+import { DEFAULT_LOCALE } from "~/i18n";
 import { ClientRouter } from "astro:transitions";
+import Seo from "~/core/components/seo/seo.astro";
 
 interface Props {
   lang?: Locale;
   title?: string;
   description?: string;
+  ogImage?: string;
 }
 
 const {
   lang = DEFAULT_LOCALE,
   title = "David Ponce Vargas",
   description,
+  ogImage,
 } = Astro.props;
-
-const t = getTranslations(lang);
-const pageDescription = description ?? t.hero.bio;
-
-const SITE_URL = "https://davidponc.dev";
-const currentPath = Astro.url.pathname;
-const canonicalUrl = `${SITE_URL}${currentPath}`;
 
 const themeCookie = Astro.cookies.get("theme")?.value ?? "system";
 const isDark = themeCookie === "dark";
@@ -40,41 +36,9 @@ const isDark = themeCookie === "dark";
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={pageDescription} />
     <meta name="robots" content="index, follow" />
 
-    <link rel="canonical" href={canonicalUrl} />
-
-    <link rel="alternate" hreflang="es" href={`${SITE_URL}${currentPath}`} />
-    <link
-      rel="alternate"
-      hreflang="en"
-      href={`${SITE_URL}/en${currentPath === "/" ? "" : currentPath}`}
-    />
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href={`${SITE_URL}${currentPath}`}
-    />
-
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content={lang === "es" ? "es_MX" : "en_US"} />
-    <meta property="og:site_name" content="David Ponce Vargas" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={pageDescription} />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={`${SITE_URL}/opengraph-image.jpg`} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="David Ponce Vargas - Web Developer Portfolio"
-    />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={pageDescription} />
-    <meta name="twitter:image" content={`${SITE_URL}/opengraph-image.jpg`} />
+    <Seo lang={lang} title={title} description={description} ogImage={ogImage} />
 
     <link rel="preconnect" href="https://github.com" />
     <link rel="preconnect" href="https://www.linkedin.com" />
@@ -85,22 +49,6 @@ const isDark = themeCookie === "dark";
     <Font cssVariable="--font-app-sans" preload />
     <Font cssVariable="--font-app-mono" />
     <ClientRouter />
-
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Person",
-        name: "David Ponce Vargas",
-        url: SITE_URL,
-        jobTitle: lang === "es" ? "Desarrollador Web" : "Web Developer",
-        description: pageDescription,
-        sameAs: [
-          "https://github.com/david-ponc",
-          "https://www.linkedin.com/in/david-ponc/",
-        ],
-      })}
-    />
 
     <script is:inline>
       (function () {
