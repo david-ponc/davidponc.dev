@@ -32,7 +32,10 @@ export function ThemeToggle({ initialValue }: { initialValue: Theme }) {
 
 	return (
 		<Menu.Root open={open} onOpenChange={setOpen}>
-			<Menu.Trigger className='not-disabled:cursor-pointer p-2.5 text-muted-foreground transition-colors not-disabled:hover:text-brand-a focus-visible:text-brand-a hover:[anchor-name:--social-anchor] focus-visible:[anchor-name:--social-anchor]'>
+			<Menu.Trigger
+				aria-label='Toggle theme'
+				className='not-disabled:cursor-pointer p-2.5 text-muted-foreground transition-colors not-disabled:hover:text-brand-a focus-visible:text-brand-a hover:[anchor-name:--social-anchor] focus-visible:[anchor-name:--social-anchor]'
+			>
 				<PaletteSolidIcon className='size-5' />
 			</Menu.Trigger>
 			<Menu.Portal>
