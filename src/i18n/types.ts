@@ -16,6 +16,10 @@ export type Navbar = {
 	projects: string;
 	skills: string;
 	experience: string;
+	social: {
+		linkedIn: string;
+		github: string;
+	};
 	menu: {
 		groups: {
 			navigation: string;
