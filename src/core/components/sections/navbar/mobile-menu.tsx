@@ -1,4 +1,4 @@
-/** biome-ignore-all lint/a11y/useAnchorContent: The content of the anchor is dynamic and descriptives */
+/** biome-ignore-all lint/a11y/useAnchorContent: Base UI Drawer.Close renders the anchor with accessible content via children, which Biome cannot infer from the render prop. */
 import { Drawer } from '@base-ui/react/drawer';
 import { type SVGProps, useState } from 'react';
 
@@ -40,20 +40,20 @@ function RootMenu({ t, onNavigate, onClose }: RootMenuProps) {
 	return (
 		<>
 			<Drawer.Close
-				render={<a href='/#projects' />}
+				render={<a href='/#projects' aria-label={t.projects} />}
 				className='inline-flex items-center justify-between gap-4 rounded-xl px-4 py-3 text-muted-foreground hover:bg-muted/48 hover:text-foreground'
 			>
 				{t.projects}
 			</Drawer.Close>
 
 			<Drawer.Close
-				render={<a href='/#skills' />}
+				render={<a href='/#skills' aria-label={t.skills} />}
 				className='inline-flex items-center justify-between gap-4 rounded-xl px-4 py-3 text-muted-foreground hover:bg-muted/48 hover:text-foreground'
 			>
 				{t.skills}
 			</Drawer.Close>
 			<Drawer.Close
-				render={<a href='/#experience' />}
+				render={<a href='/#experience' aria-label={t.experience} />}
 				className='inline-flex items-center justify-between gap-4 rounded-xl px-4 py-3 text-muted-foreground hover:bg-muted/48 hover:text-foreground'
 			>
 				{t.experience}
@@ -81,7 +81,7 @@ function RootMenu({ t, onNavigate, onClose }: RootMenuProps) {
 				onClick={onClose}
 				className='inline-flex items-center justify-between gap-4 rounded-xl px-4 py-3 text-muted-foreground hover:bg-muted/48 hover:text-foreground'
 			>
-				LinkedIn
+				{t.social.linkedInLabel}
 			</a>
 			<a
 				target='_blank'
@@ -90,7 +90,7 @@ function RootMenu({ t, onNavigate, onClose }: RootMenuProps) {
 				onClick={onClose}
 				className='inline-flex items-center justify-between gap-4 rounded-xl px-4 py-3 text-muted-foreground hover:bg-muted/48 hover:text-foreground'
 			>
-				GitHub
+				{t.social.githubLabel}
 			</a>
 		</>
 	);
@@ -111,7 +111,7 @@ function AppearanceMenu({ t, currentTheme, onBack, onThemeChange }: AppearanceMe
 					type='button'
 					onClick={onBack}
 					className='grid size-10 cursor-pointer place-items-center rounded-lg text-muted-foreground transition-colors hover:bg-muted/48 hover:text-foreground active:scale-[0.96]'
-					aria-label='Back'
+					aria-label={t.menu.back}
 				>
 					<ChevronLeftIcon className='size-5' />
 				</button>
@@ -169,7 +169,7 @@ function LanguageMenu({ t, lang, onBack, onClose }: LanguageMenuProps) {
 					type='button'
 					onClick={onBack}
 					className='grid size-10 cursor-pointer place-items-center rounded-lg text-muted-foreground transition-colors hover:bg-muted/48 hover:text-foreground active:scale-[0.96]'
-					aria-label='Back'
+					aria-label={t.menu.back}
 				>
 					<ChevronLeftIcon className='size-5' />
 				</button>

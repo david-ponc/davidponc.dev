@@ -19,6 +19,8 @@ export type Navbar = {
 	social: {
 		linkedIn: string;
 		github: string;
+		linkedInLabel: string;
+		githubLabel: string;
 	};
 	menu: {
 		groups: {
@@ -31,12 +33,14 @@ export type Navbar = {
 			light: string;
 			dark: string;
 			system: string;
+			toggle: string;
 		};
 		language: {
 			label: string;
 			es: string;
 			en: string;
 		};
+		back: string;
 	};
 };
 
@@ -95,4 +99,5 @@ export type Experience = {
 
 export type Footer = {
 	contact: string[];
+	share: string;
 };

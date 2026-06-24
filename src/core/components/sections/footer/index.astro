@@ -25,6 +25,7 @@ const t = getTranslations(lang);
           target="_blank"
           rel="noopener noreferrer"
           href="https://www.linkedin.com/in/david-ponc/"
+          aria-label={t.navbar.social.linkedIn}
           class="relative p-1.5 transition-colors text-muted-foreground hover:text-brand-a focus-visible:text-brand-a hover:[anchor-name:--social-anchor] focus-visible:[anchor-name:--social-anchor]"
         >
           <WireNode class="top-1/2 left-1/2 peer" />
@@ -36,11 +37,12 @@ const t = getTranslations(lang);
           target="_blank"
           rel="noopener noreferrer"
           href="https://github.com/david-ponc"
+          aria-label={t.navbar.social.github}
           class="p-1.5 transition-colors text-muted-foreground hover:text-brand-a focus-visible:text-brand-a hover:[anchor-name:--social-anchor] focus-visible:[anchor-name:--social-anchor]"
         >
           <GitHubLogo class="size-7" />
         </a>
-        <ShareButton />
+        <ShareButton label={t.footer.share} />
       </nav>
       {
         t.footer.contact.map((line) => (

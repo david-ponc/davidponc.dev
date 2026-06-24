@@ -1,11 +1,13 @@
 ---
 import type { Locale } from "~/i18n";
+import { getLocale, getTranslations } from "~/i18n";
 
 interface Props {
   lang?: Locale;
 }
 
 const { lang } = Astro.props;
+const t = getTranslations(getLocale(lang));
 const languages = [
   {
     code: "es",
@@ -32,6 +34,7 @@ const languages = [
         <a
           href={language.href}
           data-lang-toggle
+          aria-label={`${t.navbar.menu.language.label}: ${language.name}`}
           class="relative size-8 flex items-center justify-center transition-colors text-xs"
         >
           {isActive ? (
