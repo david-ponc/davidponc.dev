@@ -6,6 +6,7 @@ import type { Locale } from "~/i18n";
 import { DEFAULT_LOCALE } from "~/i18n";
 import { ClientRouter } from "astro:transitions";
 import Seo from "~/core/components/seo/seo.astro";
+import Analytics from "@vercel/analytics/astro";
 
 interface Props {
   lang?: Locale;
@@ -38,7 +39,12 @@ const isDark = themeCookie === "dark";
     <meta name="generator" content={Astro.generator} />
     <meta name="robots" content="index, follow" />
 
-    <Seo lang={lang} title={title} description={description} ogImage={ogImage} />
+    <Seo
+      lang={lang}
+      title={title}
+      description={description}
+      ogImage={ogImage}
+    />
 
     <link rel="preconnect" href="https://github.com" />
     <link rel="preconnect" href="https://www.linkedin.com" />
@@ -49,7 +55,7 @@ const isDark = themeCookie === "dark";
     <Font cssVariable="--font-app-sans" preload />
     <Font cssVariable="--font-app-mono" />
     <ClientRouter />
-
+    <Analytics />
     <script is:inline>
       (function () {
         const DARK_CLASS = "dark";

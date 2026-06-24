@@ -1,7 +1,10 @@
 import { Menu } from '@base-ui/react/menu';
 import { type SVGProps, useState } from 'react';
 
+import type { Navbar } from '~/i18n';
+
 type Theme = 'light' | 'dark' | 'system';
+type Appearance = Navbar['menu']['appearance'];
 
 function applyThemeToDocument(theme: Theme): void {
 	const prefersDark =
@@ -20,7 +23,12 @@ async function persistTheme(theme: Theme): Promise<void> {
 	}
 }
 
-export function ThemeToggle({ initialValue }: { initialValue: Theme }) {
+interface ThemeToggleProps {
+	initialValue: Theme;
+	appearance: Appearance;
+}
+
+export function ThemeToggle({ initialValue, appearance }: ThemeToggleProps) {
 	const [open, setOpen] = useState(false);
 	const [value, setValue] = useState<Theme>(initialValue);
 
@@ -33,7 +41,7 @@ export function ThemeToggle({ initialValue }: { initialValue: Theme }) {
 	return (
 		<Menu.Root open={open} onOpenChange={setOpen}>
 			<Menu.Trigger
-				aria-label='Toggle theme'
+				aria-label={appearance.toggle}
 				className='not-disabled:cursor-pointer p-2.5 text-muted-foreground transition-colors not-disabled:hover:text-brand-a focus-visible:text-brand-a hover:[anchor-name:--social-anchor] focus-visible:[anchor-name:--social-anchor]'
 			>
 				<PaletteSolidIcon className='size-5' />
@@ -48,7 +56,7 @@ export function ThemeToggle({ initialValue }: { initialValue: Theme }) {
 					<Menu.Popup className='relative flex h-(--popup-height,auto) w-(--popup-width,auto) origin-(--transform-origin) flex-col rounded-lg border border-border bg-card not-dark:bg-clip-padding p-0.5 text-foreground text-sm shadow-lg/5 outline-none transition-[width,height,scale,opacity] ease-out data-ending-style:scale-98 data-starting-style:scale-98 data-ending-style:opacity-0 data-starting-style:opacity-0'>
 						<Menu.Group className='flex flex-col'>
 							<Menu.GroupLabel className='cursor-default select-none px-1.5 py-1 font-medium text-muted-foreground text-xs'>
-								Appearance
+								{appearance.label}
 							</Menu.GroupLabel>
 							<Menu.RadioGroup
 								value={value}
@@ -59,7 +67,7 @@ export function ThemeToggle({ initialValue }: { initialValue: Theme }) {
 									className='relative grid cursor-pointer grid-cols-[1rem_1fr_0.875rem] items-center gap-1.5 rounded-md px-1.5 py-1 text-sm outline-none data-checked:bg-muted data-highlighted:bg-muted'
 								>
 									<SunIcon className='col-start-1 size-4' />
-									<span className='col-start-2 pr-8'>Light</span>
+									<span className='col-start-2 pr-8'>{appearance.light}</span>
 									<Menu.RadioItemIndicator className='col-start-3'>
 										<CheckIcon className='size-3.5' />
 									</Menu.RadioItemIndicator>
@@ -69,7 +77,7 @@ export function ThemeToggle({ initialValue }: { initialValue: Theme }) {
 									className='relative grid cursor-pointer grid-cols-[1rem_1fr_0.875rem] items-center gap-1.5 rounded-md px-1.5 py-1 text-sm outline-none data-checked:bg-muted data-highlighted:bg-muted'
 								>
 									<MoonIcon className='col-start-1 size-4' />
-									<span className='col-start-2 pr-8'>Dark</span>
+									<span className='col-start-2 pr-8'>{appearance.dark}</span>
 									<Menu.RadioItemIndicator className='col-start-3'>
 										<CheckIcon className='size-3.5' />
 									</Menu.RadioItemIndicator>
@@ -79,7 +87,7 @@ export function ThemeToggle({ initialValue }: { initialValue: Theme }) {
 									className='relative grid cursor-pointer grid-cols-[1rem_1fr_0.875rem] items-center gap-1.5 rounded-md px-1.5 py-1 text-sm outline-none data-checked:bg-muted data-highlighted:bg-muted'
 								>
 									<SystemIcon className='col-start-1 size-4' />
-									<span className='col-start-2 pr-8'>System</span>
+									<span className='col-start-2 pr-8'>{appearance.system}</span>
 									<Menu.RadioItemIndicator className='col-start-3'>
 										<CheckIcon className='size-3.5' />
 									</Menu.RadioItemIndicator>

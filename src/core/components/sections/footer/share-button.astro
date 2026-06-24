@@ -1,10 +1,16 @@
 ---
 import ShareIcon from "../../../../assets/share.svg";
+
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
 ---
 
 <button
   id="share-button"
-  aria-label="Share this page"
+  aria-label={label}
   class="p-2.5 transition-colors text-muted-foreground hover:text-brand-a focus-visible:text-brand-a hover:[anchor-name:--social-anchor] focus-visible:[anchor-name:--social-anchor] cursor-pointer"
 >
   <ShareIcon class="size-5" />

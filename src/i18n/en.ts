@@ -12,6 +12,8 @@ export const en = {
 		social: {
 			linkedIn: 'Go to my LinkedIn profile',
 			github: 'Go to my GitHub profile',
+			linkedInLabel: 'LinkedIn',
+			githubLabel: 'GitHub',
 		},
 		menu: {
 			groups: {
@@ -24,6 +26,7 @@ export const en = {
 				light: 'Light',
 				dark: 'Dark',
 				system: 'System',
+				toggle: 'Toggle theme',
 			},
 
 			language: {
@@ -31,6 +34,7 @@ export const en = {
 				es: 'Español',
 				en: 'English',
 			},
+			back: 'Back',
 		},
 	},
 	hero: {
@@ -108,5 +112,6 @@ export const en = {
 			'Always open to new projects and collaborations.',
 			'Feel free to reach out to me',
 		],
+		share: 'Share this page',
 	},
 } satisfies Translations;

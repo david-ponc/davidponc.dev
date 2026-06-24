@@ -1,9 +1,9 @@
 # davidponc.dev
 
-[![Astro](https://img.shields.io/badge/Astro-6.2.1-BC52EE?logo=astro)](https://astro.build)
+[![Astro](https://img.shields.io/badge/Astro-7-BC52EE?logo=astro)](https://astro.build)
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript)](https://www.typescriptlang.org)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.2-06B6D4?logo=tailwindcss)](https://tailwindcss.com)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.3-06B6D4?logo=tailwindcss)](https://tailwindcss.com)
 [![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?logo=vercel)](https://vercel.com)
 
 ---
@@ -18,9 +18,9 @@ Código fuente de [davidponc.dev](https://davidponc.dev), mi sitio personal. Un 
 
 | Capa | Tecnología |
 |------|-----------|
-| Framework | [Astro](https://astro.build) v6 con renderizado híbrido (SSR) |
+| Framework | [Astro](https://astro.build) v7 con renderizado híbrido (SSR) |
 | Interactividad | [React](https://react.dev) v19 + [Base UI](https://base-ui.com) |
-| Estilos | [Tailwind CSS](https://tailwindcss.com) v4 con configuración Vite |
+| Estilos | [Tailwind CSS](https://tailwindcss.com) v4.3 con configuración Vite |
 | Tipografía | Geist Sans & Geist Mono vía Fontsource |
 | Lenguaje | TypeScript con paths absolutos |
 | Calidad de código | [Biome](https://biomejs.dev) (lint, format, check) |

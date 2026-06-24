@@ -12,6 +12,8 @@ export const es = {
 		social: {
 			linkedIn: 'Ir a mi perfil de LinkedIn',
 			github: 'Ir a mi perfil de GitHub',
+			linkedInLabel: 'LinkedIn',
+			githubLabel: 'GitHub',
 		},
 		menu: {
 			groups: {
@@ -24,6 +26,7 @@ export const es = {
 				light: 'Claro',
 				dark: 'Oscuro',
 				system: 'Sistema',
+				toggle: 'Cambiar tema',
 			},
 
 			language: {
@@ -31,6 +34,7 @@ export const es = {
 				es: 'Español',
 				en: 'English',
 			},
+			back: 'Atrás',
 		},
 	},
 	hero: {
@@ -110,5 +114,6 @@ export const es = {
 			'Siempre abierto a nuevos proyectos y colaboraciones.',
 			'No dudes en escribirme',
 		],
+		share: 'Compartir esta página',
 	},
 } satisfies Translations;
