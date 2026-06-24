@@ -3,7 +3,6 @@ import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, fontProviders } from 'astro/config';
-import tsconfigPaths from 'vite-tsconfig-paths';
 
 // https://astro.build/config
 // @ts-check
@@ -12,7 +11,10 @@ export default defineConfig({
 	site: 'https://davidponc.dev',
 	integrations: [react(), sitemap()],
 	vite: {
-		plugins: [tsconfigPaths(), tailwindcss()],
+		plugins: [tailwindcss()],
+		resolve: {
+			tsConfigPahts: true,
+		},
 	},
 
 	fonts: [
