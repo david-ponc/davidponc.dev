@@ -9,6 +9,10 @@ export const en = {
 		projects: 'Projects',
 		skills: 'Skills',
 		experience: 'Experience',
+		social: {
+			linkedIn: 'Go to my LinkedIn profile',
+			github: 'Go to my GitHub profile',
+		},
 		menu: {
 			groups: {
 				navigation: 'Navigation',
@@ -21,6 +25,7 @@ export const en = {
 				dark: 'Dark',
 				system: 'System',
 			},
+
 			language: {
 				label: 'Language',
 				es: 'Español',
