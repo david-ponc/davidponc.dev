@@ -1,4 +1,4 @@
-import { createTV, type VariantProps } from 'tailwind-variants';
+import { createTV, type VariantProps } from 'tailwind-variants/config';
 
 const tv = createTV({
 	twMergeConfig: {
@@ -13,7 +13,7 @@ const tv = createTV({
 export const buttonVariants = tv({
 	base: [
 		'relative inline-flex items-center justify-center gap-2 rounded-lg ring',
-		'select-none whitespace-nowrap',
+		'whitespace-nowrap select-none',
 		'transition-[color,background-color,box-shadow,scale] duration-75 ease-in-out',
 		'focus-visible:outline-2 focus-visible:outline-offset-2',
 	],
@@ -22,22 +22,22 @@ export const buttonVariants = tv({
 			default: [
 				'ring-primary bg-primary text-primary-foreground inset-shadow-t-px inset-shadow-white/32',
 				'hover:bg-primary/90',
-				'active:after:absolute active:after:rounded-[inherit] active:after:inset-0 active:after:bg-default-active',
+				'active:after:bg-default-active active:after:absolute active:after:inset-0 active:after:rounded-[inherit]',
 			],
 			secondary: [
 				'ring-border bg-secondary text-secondary-foreground inset-shadow-t-px inset-shadow-white/56 dark:inset-shadow-white/16',
 				'hover:text-foreground hover:bg-secondary/80',
-				'active:after:absolute active:after:rounded-[inherit] active:after:inset-0 active:after:bg-secondary-active',
+				'active:after:bg-secondary-active active:after:absolute active:after:inset-0 active:after:rounded-[inherit]',
 			],
 			'glow-outline': [
-				'ring-transparent contact-me text-muted-foreground hover:text-foreground',
+				'contact-me text-muted-foreground hover:text-foreground ring-transparent',
 			],
 			ghost: [
-				'ring-transparent bg-transparent text-secondary-foreground hover:bg-muted hover:text-foreground',
-				'active:after:absolute active:after:rounded-[inherit] active:after:inset-0 active:after:bg-accent/50',
+				'text-secondary-foreground hover:bg-muted hover:text-foreground bg-transparent ring-transparent',
+				'active:after:bg-accent/50 active:after:absolute active:after:inset-0 active:after:rounded-[inherit]',
 			],
 			link: [
-				'ring-transparent bg-transparent text-primary underline-offset-4 hover:underline',
+				'text-primary bg-transparent underline-offset-4 ring-transparent hover:underline',
 			],
 		},
 		size: {
