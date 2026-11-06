@@ -16,16 +16,16 @@ Código fuente de [davidponc.dev](https://davidponc.dev), mi sitio personal. Un 
 
 ## Stack Tecnológico
 
-| Capa | Tecnología |
-|------|-----------|
-| Framework | [Astro](https://astro.build) v7 con renderizado híbrido (SSR) |
-| Interactividad | [React](https://react.dev) v19 + [Base UI](https://base-ui.com) |
-| Estilos | [Tailwind CSS](https://tailwindcss.com) v4.3 con configuración Vite |
-| Tipografía | Geist Sans & Geist Mono vía Fontsource |
-| Lenguaje | TypeScript con paths absolutos |
-| Calidad de código | [Biome](https://biomejs.dev) (lint, format, check) |
-| Control de versiones | Commitlint + Lefthook |
-| Despliegue | [Vercel](https://vercel.com) con Image Service |
+| Capa                 | Tecnología                                                          |
+| -------------------- | ------------------------------------------------------------------- |
+| Framework            | [Astro](https://astro.build) v7 con renderizado híbrido (SSR)       |
+| Interactividad       | [React](https://react.dev) v19 + [Base UI](https://base-ui.com)     |
+| Estilos              | [Tailwind CSS](https://tailwindcss.com) v4.3 con configuración Vite |
+| Tipografía           | Geist Sans & Geist Mono vía Fontsource                              |
+| Lenguaje             | TypeScript con paths absolutos                                      |
+| Calidad de código    | [Biome](https://biomejs.dev) (lint, format, check)                  |
+| Control de versiones | Commitlint + Lefthook                                               |
+| Despliegue           | [Vercel](https://vercel.com) con Image Service                      |
 
 ---
 
@@ -50,16 +50,16 @@ Código fuente de [davidponc.dev](https://davidponc.dev), mi sitio personal. Un 
 
 ## Scripts Disponibles
 
-| Comando | Acción |
-|---------|--------|
-| `pnpm install` | Instala las dependencias |
-| `pnpm dev` | Inicia el servidor de desarrollo en `localhost:4321` |
-| `pnpm build` | Compila el sitio para producción en `./dist/` |
-| `pnpm preview` | Previsualiza la build localmente |
-| `pnpm format` | Formatea el código con Biome |
-| `pnpm lint` | Ejecuta el linter de Biome |
-| `pnpm check` | Verifica format y lint en conjunto |
-| `pnpm prepare` | Instala los hooks de Git con Lefthook |
+| Comando        | Acción                                               |
+| -------------- | ---------------------------------------------------- |
+| `pnpm install` | Instala las dependencias                             |
+| `pnpm dev`     | Inicia el servidor de desarrollo en `localhost:4321` |
+| `pnpm build`   | Compila el sitio para producción en `./dist/`        |
+| `pnpm preview` | Previsualiza la build localmente                     |
+| `pnpm format`  | Formatea el código con Biome                         |
+| `pnpm lint`    | Ejecuta el linter de Biome                           |
+| `pnpm check`   | Verifica format y lint en conjunto                   |
+| `pnpm prepare` | Instala los hooks de Git con Lefthook                |
 
 ---
 
@@ -80,5 +80,3 @@ Código fuente de [davidponc.dev](https://davidponc.dev), mi sitio personal. Un 
 ├── lefthook.json        # Hooks de Git
 └── package.json
 ```
-
-

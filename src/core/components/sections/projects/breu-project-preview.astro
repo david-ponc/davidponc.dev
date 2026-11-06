@@ -1,0 +1,265 @@
+---
+// Illustrative daily clicks sum to 1,000, matching the period KPI.
+const activity = [14, 22, 18, 36, 29, 74, 44, 78, 63, 110, 80, 150, 102, 180];
+const chart = {
+  width: 320,
+  height: 104,
+  left: 4,
+  right: 4,
+  top: 8,
+  bottom: 10,
+  max: 200,
+};
+const plotWidth = chart.width - chart.left - chart.right;
+const plotHeight = chart.height - chart.top - chart.bottom;
+const points = activity.map((clicks, index) => ({
+  x: chart.left + (index / (activity.length - 1)) * plotWidth,
+  y: chart.top + ((chart.max - clicks) / chart.max) * plotHeight,
+}));
+const toSvgPoint = ({ x, y }: (typeof points)[number]) =>
+  `${x.toFixed(1)} ${y.toFixed(1)}`;
+const linePath = points.reduce((path, point, index) => {
+  if (index === 0) return `M ${toSvgPoint(point)}`;
+
+  const previous = points[index - 1] ?? point;
+  const beforePrevious = points[index - 2] ?? previous;
+  const next = points[index + 1] ?? point;
+  const control1 = {
+    x: previous.x + (point.x - beforePrevious.x) / 6,
+    y: previous.y + (point.y - beforePrevious.y) / 6,
+  };
+  const control2 = {
+    x: point.x - (next.x - previous.x) / 6,
+    y: point.y - (next.y - previous.y) / 6,
+  };
+
+  return `${path} C ${toSvgPoint(control1)} ${toSvgPoint(control2)} ${toSvgPoint(point)}`;
+}, "");
+const firstPoint = points[0] ?? { x: chart.left, y: chart.height - chart.bottom };
+const lastPoint = points[points.length - 1] ?? firstPoint;
+const chartBottom = chart.height - chart.bottom;
+const areaPath = [
+  linePath,
+  `L ${lastPoint.x.toFixed(1)} ${chartBottom}`,
+  `L ${firstPoint.x.toFixed(1)} ${chartBottom} Z`,
+].join(" ");
+const ticks = [200, 150, 100, 50, 0].map((value) => ({
+  value,
+  y: chart.top + ((chart.max - value) / chart.max) * plotHeight,
+}));
+
+const metrics = [
+  { label: "Clicks", value: "2,847" },
+  { label: "Period", value: "1,000" },
+  { label: "Bots", value: "24" },
+  { label: "Last click", value: "2 min ago" },
+];
+---
+
+<div aria-hidden="true" class="breu-preview perspective-distant pr-16">
+  <div
+    class="w-full mx-auto max-w-md aspect-16/10 rotate-x-46 transform-3d rotate-z-315 translate-x-10 grid [grid-template-areas:'content'] scale-[0.8] @xl/projects:scale-100"
+  >
+    <div
+      data-layer="1"
+      class="breu-base absolute inset-0 overflow-hidden rounded-md border [grid-area:content]"
+    >
+      <svg class="breu-stripe absolute inset-0 size-full">
+        <defs>
+          <pattern
+            id="breu-preview-stripes"
+            width="5"
+            height="5"
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M-1 5L5 -1M3 6L6 3"
+              stroke="currentColor"
+              stroke-width="0.32"></path>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#breu-preview-stripes)"></rect>
+      </svg>
+    </div>
+
+    <!-- Layer 2: the dashboard surface -->
+    <div
+      data-layer="2"
+      class="breu-dashboard absolute inset-0 overflow-hidden rounded-md border p-3 [grid-area:content] translate-z-10 transition-[translate] duration-500 delay-75 [article:has(a:hover)_&]:translate-z-14 [article:has(a:hover)_&]:delay-75"
+    >
+      <header class="breu-header h-8 shrink-0">
+        <div class="flex items-center gap-1.5">
+          <h4 class="truncate text-xs font-semibold tracking-tight">/r/launch-notes</h4>
+          <span class="breu-status shrink-0 rounded-sm px-1.5 py-0.5 text-[8px] font-medium">
+            Active
+          </span>
+        </div>
+        <p class="breu-muted mt-1 truncate text-[9px]">→ &nbsp;example.com/launch</p>
+      </header>
+    </div>
+
+    <!-- Layer 3: reserved metric and activity-card surfaces -->
+    <div
+      data-layer="3"
+      class="absolute inset-0 flex flex-col p-3 [grid-area:content] translate-z-12 transition-[translate] duration-500 delay-150 [article:has(a:hover)_&]:translate-z-16 [article:has(a:hover)_&]:delay-0"
+    >
+      <div class="h-8 shrink-0"></div>
+      <div class="mt-3 grid h-11 shrink-0 grid-cols-4 gap-1.5">
+        {
+          metrics.map(() => (
+            <div class="breu-reserved-space rounded-md"></div>
+          ))
+        }
+      </div>
+      <div class="breu-reserved-space mt-3 min-h-0 flex-1 rounded-md p-0.5"></div>
+    </div>
+
+    <!-- Layer 4: link details, metric values, labels, and the activity line -->
+    <div
+      data-layer="4"
+      class="breu-content absolute inset-0 flex flex-col p-3 [grid-area:content] translate-z-13 transition-[translate] duration-500 delay-150 [article:has(a:hover)_&]:translate-z-18 [article:has(a:hover)_&]:delay-0"
+    >
+      <div class="h-8 shrink-0"></div>
+
+      <dl class="mt-3 grid h-11 shrink-0 grid-cols-4 gap-1.5">
+        {
+          metrics.map(({ label, value }) => (
+            <div class="breu-metric-card m-0.5 flex min-w-0 flex-col justify-center rounded-md border px-1.5 py-1">
+              <dt class="breu-muted truncate text-[8px]">{label}</dt>
+              <dd class="truncate text-[11px] font-semibold tabular-nums tracking-tight">
+                {value}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <section class="mt-3 min-h-0 flex-1 p-0.5">
+        <div class="breu-activity-card flex h-full min-h-0 flex-col rounded-md border p-2">
+          <header class="h-7 shrink-0">
+            <h5 class="text-[10px] font-medium">Activity</h5>
+            <p class="breu-muted text-[8px]">Clicks over time</p>
+          </header>
+          <svg
+            viewBox={`0 0 ${chart.width} ${chart.height}`}
+            class="mt-1 min-h-0 w-full flex-1"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <linearGradient id="breu-activity-fill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="var(--breu-primary)" stop-opacity="0.12"></stop>
+                <stop offset="58%" stop-color="var(--breu-primary)" stop-opacity="0.04"></stop>
+                <stop offset="100%" stop-color="var(--breu-primary)" stop-opacity="0"></stop>
+              </linearGradient>
+            </defs>
+            {
+              ticks.map(({ y }) => (
+                <line
+                  x1={chart.left}
+                  y1={y}
+                  x2={chart.width}
+                  y2={y}
+                  stroke="var(--breu-grid)"
+                  stroke-dasharray="2 3"
+                />
+              ))
+            }
+            <path d={areaPath} fill="url(#breu-activity-fill)"></path>
+            <path
+              d={linePath}
+              stroke="var(--breu-primary)"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            ></path>
+            <circle
+              cx={lastPoint.x}
+              cy={lastPoint.y}
+              r="3"
+              fill="var(--breu-primary)"
+              stroke="var(--breu-surface)"
+              stroke-width="1.5"
+            ></circle>
+          </svg>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<style>
+  .breu-preview {
+    --breu-base: #f4f4f5;
+    --breu-surface: #fff;
+    --breu-foreground: #09090b;
+    --breu-muted: #71717a;
+    --breu-border: rgb(212 212 216 / 70%);
+    --breu-card-border: rgb(9 9 11 / 10%);
+    --breu-primary: #7dd3fc;
+    --breu-pattern: rgb(14 165 233 / 30%);
+    --breu-grid: rgb(9 9 11 / 12%);
+    --breu-success-background: rgb(132 204 22 / 12%);
+    --breu-success-foreground: #3f6212;
+  }
+
+  :global(.dark) .breu-preview {
+    --breu-base: #09090b;
+    --breu-surface: #18181b;
+    --breu-foreground: #fafafa;
+    --breu-muted: #a1a1aa;
+    --breu-border: rgb(255 255 255 / 10%);
+    --breu-card-border: rgb(255 255 255 / 10%);
+    --breu-primary: #0ea5e9;
+    --breu-pattern: rgb(14 165 233 / 30%);
+    --breu-grid: rgb(255 255 255 / 12%);
+    --breu-success-background: rgb(16 185 129 / 12%);
+    --breu-success-foreground: #34d399;
+  }
+
+  .breu-base {
+    border-color: var(--breu-pattern);
+  }
+
+  .breu-stripe {
+    color: var(--breu-pattern);
+  }
+
+  .breu-dashboard {
+    border-color: var(--breu-border);
+    background-color: var(--breu-base);
+    color: var(--breu-foreground);
+  }
+
+  .breu-header,
+  .breu-content {
+    color: var(--breu-foreground);
+  }
+
+  .breu-muted {
+    color: var(--breu-muted);
+  }
+
+  .breu-status {
+    background-color: var(--breu-success-background);
+    color: var(--breu-success-foreground);
+  }
+
+  .breu-metric-card,
+  .breu-activity-card {
+    border-color: var(--breu-card-border);
+    background-color: var(--breu-surface);
+  }
+
+  .breu-reserved-space {
+    background-color: color-mix(in srgb, var(--breu-primary) 4%, transparent);
+    border: 1px solid var(--breu-pattern);
+    background-image: repeating-linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 4px,
+      var(--breu-pattern) 4px,
+      var(--breu-pattern) 5px
+    );
+  }
+</style>

@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.5.11/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
@@ -23,7 +23,7 @@
 				"noUnknownAtRules": "off"
 			},
 			"nursery": {
-				"useSortedClasses": {
+				"useTailwindSortedClasses": {
 					"level": "warn",
 					"fix": "safe",
 					"options": {}

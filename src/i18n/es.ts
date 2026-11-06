@@ -51,15 +51,15 @@ export const es = {
 			website: 'Visitar sitio',
 		},
 		projects: {
+			[PROJECT_KEY.Breu]: {
+				title: 'Breu',
+				description:
+					'Acorta y organiza tus enlaces; mide su rendimiento con clics, fuentes de tráfico y dispositivos.',
+			},
 			[PROJECT_KEY.TodoList]: {
 				title: 'Lista de pendientes',
 				description:
 					'Esta aplicación fue inspirada por el grupo Dona con el lema de hacer una lista de tareas más humana. La aplicación cuenta con un sistema de usuarios autenticados mediante correo electrónico y contraseña.',
-			},
-			[PROJECT_KEY.FrontendSummer]: {
-				title: 'Concurso Verano Frontend',
-				description:
-					'Sitio web estático para el concurso de verano Frontend organizado por la empresa codigofacilito. Cuenta con diversas secciones que cuentan la historia de Cody, así como una galería de fotos de los lugares donde estuvo.',
 			},
 		},
 	},
@@ -71,9 +71,10 @@ export const es = {
 				description:
 					'Aplicación web con catálogo de libros y gestión de lista de lectura',
 			},
-			[REPOSITORY_KEY.UploadFile]: {
-				title: 'Subida de archivo',
-				description: 'Aplicación que permite la subida de imágenes con Firebase',
+			[REPOSITORY_KEY.FrontendSummer]: {
+				title: 'Concurso Verano Frontend',
+				description:
+					'Sitio web que obtuvo el segundo lugar en el Concurso Verano Frontend de Código Facilito.',
 			},
 			[REPOSITORY_KEY.Enviroment]: {
 				title: 'Medio Ambiente FCC',

@@ -1,7 +1,7 @@
 saveExact: true
 minimumReleaseAge: 1440
 packages:
-  - '.'
+  - "."
 allowBuilds:
   esbuild: true
   lefthook: true

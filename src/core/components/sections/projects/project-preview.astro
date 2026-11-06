@@ -1,7 +1,7 @@
 ---
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
-import { PROJECT_KEY, type Project, type ProjectKey } from "~/data/projects";
-import FrontendSummerProjectPreview from "./frontend-summer-project-preview.astro";
+import { PROJECT_KEY, type ProjectKey } from "~/data/projects";
+import BreuProjectPreview from "./breu-project-preview.astro";
 import TodoListProjectPreview from "./todo-list-project-preview.astro";
 
 type Props = { key: ProjectKey };
@@ -9,8 +9,8 @@ type Props = { key: ProjectKey };
 const { key } = Astro.props;
 
 const PREVIEWS: Record<ProjectKey, AstroComponentFactory> = {
+  [PROJECT_KEY.Breu]: BreuProjectPreview,
   [PROJECT_KEY.TodoList]: TodoListProjectPreview,
-  [PROJECT_KEY.FrontendSummer]: FrontendSummerProjectPreview,
 };
 
 const Preview = PREVIEWS[key];
