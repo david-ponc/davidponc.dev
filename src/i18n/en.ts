@@ -51,15 +51,15 @@ export const en = {
 			website: 'Visit website',
 		},
 		projects: {
+			[PROJECT_KEY.Breu]: {
+				title: 'Breu',
+				description:
+					'Shorten and organize links, then see how they perform through click, traffic-source, and device analytics.',
+			},
 			[PROJECT_KEY.TodoList]: {
 				title: 'Todo List',
 				description:
 					'This application was inspired by the Dona group with the motto of making a more human to-do list. The application features a user system authenticated via email and password.',
-			},
-			[PROJECT_KEY.FrontendSummer]: {
-				title: 'Frontend Summer Contest',
-				description:
-					'Static website for the Frontend Summer contest organized by the company codigofacilito. It features various sections that tell the story of Cody, as well as a photo gallery of the places he was.',
 			},
 		},
 	},
@@ -70,9 +70,10 @@ export const en = {
 				title: 'Reading List',
 				description: 'Web application with a book catalog and reading list management',
 			},
-			[REPOSITORY_KEY.UploadFile]: {
-				title: 'File Upload',
-				description: 'Application that allows image upload with Firebase',
+			[REPOSITORY_KEY.FrontendSummer]: {
+				title: 'Frontend Summer Contest',
+				description:
+					'Website awarded second place in Código Facilito’s Frontend Summer Contest.',
 			},
 			[REPOSITORY_KEY.Enviroment]: {
 				title: 'FCC Environment',

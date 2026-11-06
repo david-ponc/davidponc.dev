@@ -2,7 +2,7 @@ import { z } from 'astro/zod';
 
 export const REPOSITORY_KEY = {
 	ReadingList: 'reading-list',
-	UploadFile: 'upload-file',
+	FrontendSummer: 'frontend-summer',
 	Enviroment: 'enviroment',
 } as const;
 
@@ -26,10 +26,10 @@ export const repositories: Repository[] = [
 		websiteUrl: 'https://reading-list.davidponc.dev',
 	},
 	{
-		key: REPOSITORY_KEY.UploadFile,
-		tags: ['Next.js', 'JavaScript', 'CSS', 'Firebase'],
-		sourceUrl: 'https://github.com/david-ponc/upload-file',
-		websiteUrl: 'https://upload-file.vercel.app/',
+		key: REPOSITORY_KEY.FrontendSummer,
+		tags: ['HTML', 'CSS', 'JavaScript'],
+		sourceUrl: 'https://github.com/david-ponc/vacaciones-cody',
+		websiteUrl: 'https://david-ponc.github.io/vacaciones-cody',
 	},
 	{
 		key: REPOSITORY_KEY.Enviroment,

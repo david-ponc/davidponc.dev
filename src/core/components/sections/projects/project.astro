@@ -17,12 +17,12 @@ const t = getTranslations(lang);
 ---
 
 <article
-  class="@container/project flex flex-col-reverse @4xl/projects:grid grid-cols-[3fr_2fr] gap-16"
+  class="@container/project flex flex-col-reverse gap-16 @4xl/projects:grid @4xl/projects:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]"
 >
-  <div class="flex flex-col gap-6">
+  <div class="flex min-w-0 flex-col gap-6">
     <header class="flex flex-col gap-2">
       <h3 class="text-2xl text-balance" transition:animate={reveal}>{title}</h3>
-      <div class="flex flex-wrap items-center gap-2 @lg/project:flex-nowrap">
+      <div class="flex flex-wrap items-center gap-2">
         {tags.map((tag) => <Badge>{tag}</Badge>)}
       </div>
     </header>
@@ -37,18 +37,22 @@ const t = getTranslations(lang);
       <WireNode class="top-1/2 -left-2 lg:top-auto" />
       <WireNode class="top-1/2 left-6 lg:top-auto" />
       <WireNode class="top-1/2 -left-2 lg:top-auto" />
-      <Button
-        as="a"
-        size="sm"
-        target="_blank"
-        href={sourceUrl}
-        variant="secondary"
-        rel="noopener noreferrer"
-        transition:animate={reveal}
-      >
-        {t.projects.actions.source}
-        <CodeIcon />
-      </Button>
+      {
+        sourceUrl ? (
+          <Button
+            as="a"
+            size="sm"
+            target="_blank"
+            href={sourceUrl}
+            variant="secondary"
+            rel="noopener noreferrer"
+            transition:animate={reveal}
+          >
+            {t.projects.actions.source}
+            <CodeIcon />
+          </Button>
+        ) : null
+      }
 
       <Button
         as="a"
@@ -63,7 +67,7 @@ const t = getTranslations(lang);
       </Button>
     </footer>
   </div>
-  <div class="aspect-video">
+  <div class="aspect-video min-w-0">
     <slot />
   </div>
 </article>
