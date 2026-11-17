@@ -28,6 +28,7 @@ export const projects: Project[] = [
 			'Redis',
 			'Vercel Queues',
 		],
+		sourceUrl: 'https://github.com/david-ponc/breu.dev',
 		websiteUrl: 'https://breu.davidponc.dev',
 	},
 	{
